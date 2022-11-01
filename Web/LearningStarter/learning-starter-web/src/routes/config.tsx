@@ -14,6 +14,10 @@ import { IngredientUpdatePage } from "../pages/ingredients/update-page/ingredien
 import { ShoppingListListingPage } from "../pages/shopping-lists/listing-page/shopping-lists-listing";
 import { ShoppingListCreatePage } from "../pages/shopping-lists/create-page/shopping-lists-create";
 import { ShoppingListUpdatePage } from "../pages/shopping-lists/update-page/shopping-list-update";
+import { GroupListingPage } from "../pages/group-page/listing-page/group-listing";
+import { GroupCreatePage } from "../pages/group-page/create-page/group-create";
+import { GroupUpdatePage } from "../pages/group-page/update-page/group-update";
+
 //import { ShoppingListUpdatePage } from "../pages/shopping-lists/update-page/shopping-list-update";
 //This is where you will declare all of your routes (the ones that show up in the search bar)
 export const routes = {
@@ -35,7 +39,13 @@ export const routes = {
     create: "/shopping-lists/create",
     update: "/shopping-lists/:id",
   },
+  group:{
+    listing: '/group',
+    create: '/group/create',
+    update: '/group/:id',
+  }
 };
+
 
 //This is where you will tell React Router what to render when the path matches the route specified.
 export const Routes = () => {
@@ -75,6 +85,15 @@ export const Routes = () => {
           </Route>
           <Route path={routes.ingredients.update} exact>
             <IngredientUpdatePage />
+          </Route>     
+          <Route path={routes.group.listing} exact>
+            <GroupListingPage />
+          </Route>
+          <Route path={routes.group.create} exact>
+            <GroupCreatePage />
+          </Route>
+          <Route path={routes.group.update} exact>
+            <GroupUpdatePage />
           </Route>     
           <Route path={routes.shoppingList.create} exact>
             <ShoppingListCreatePage />
