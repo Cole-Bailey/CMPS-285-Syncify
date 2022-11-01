@@ -55,8 +55,8 @@ export type UserUpdateDto = {
 
 export type GroupGetDto = {
   id: number;
-  groupName: string;
-  groupImage: string;
+  Name: string;
+  Image: string;
 };
 
 export type GroupCreateDto = {
