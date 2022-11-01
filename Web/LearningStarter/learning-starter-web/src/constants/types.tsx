@@ -55,18 +55,18 @@ export type UserUpdateDto = {
 
 export type GroupGetDto = {
   id: number;
-  Name: string;
-  Image: string;
+  name: string;
+  image: string;
 };
 
 export type GroupCreateDto = {
-  groupName: string;
-  groupImage: string;
+  name: string;
+  image: string;
 };
 
 export type GroupUpdateDto = {
-  groupName: string;
-  groupImage: string;
+  name: string;
+  image: string;
 };
 
 export type MemberRoleGetDto = {
@@ -217,7 +217,7 @@ export type RecipeCreateDto = {
   name: string;
   image: string;
   servings: number;
-  directions: string;  
+  directions: string;
   mealTypeId: MealTypeGetDto;
   calendarId: CalendarGetDto;
 };
@@ -226,7 +226,7 @@ export type RecipeUpdateDto = {
   name: string;
   image: string;
   servings: number;
-  directions: string;  
+  directions: string;
   mealTypeId: MealTypeGetDto;
   calendarId: CalendarGetDto;
 };
@@ -272,15 +272,14 @@ export type ShoppingListRecipeIngredientUpdateDto = {
 };
 
 export type ShoppingListGetDto = {
-  id: number;   
-  name: string; 
-}; 
-
-export type ShoppingListCreateDto = {   
-  name:string; 
-}; 
-
-export type ShoppingListUpdateDto = {   
-  name: string; 
+  id: number;
+  name: string;
 };
 
+export type ShoppingListCreateDto = {
+  name: string;
+};
+
+export type ShoppingListUpdateDto = {
+  name: string;
+};
