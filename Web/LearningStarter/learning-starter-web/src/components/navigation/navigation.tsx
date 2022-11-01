@@ -77,6 +77,36 @@ const DesktopNavigation = () => {
         ],
       },
       {
+      text: "Group",
+      children: [
+        {
+          text: "List",
+          icon: "list",
+          hide: false,
+          nav: {
+          to: routes.group.listing,
+          },
+        },
+        {
+          text: "Update",
+          icon: "pencil",
+          hide: false,
+          nav: {
+          to: routes.group.update,
+          },
+        },
+        {
+          text: "Create",
+          icon: "plus",
+          hide: false,
+          nav: {
+          to: routes.group.create,
+        },
+      },
+      
+    ],
+  },
+  {
         text: "Ingredients",
         children: [
           {
@@ -237,4 +267,4 @@ export const PrimaryNavigation: React.FC<PrimaryNavigationProps> = ({
       )}
     </Menu>
   );
-};
+}; 
