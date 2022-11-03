@@ -103,15 +103,15 @@ export type GroupMemberUpdateDto = {
 
 export type CalendarGetDto = {
   id: number;
-  groupId: GroupGetDto;
+  groupId: number;
 };
 
 export type CalendarCreateDto = {
-  groupId: GroupGetDto;
+  groupId: number;
 };
 
 export type CalendarUpdateDto = {
-  groupId: GroupGetDto;
+  groupId: number;
 };
 
 export type ToDoGetDto = {
