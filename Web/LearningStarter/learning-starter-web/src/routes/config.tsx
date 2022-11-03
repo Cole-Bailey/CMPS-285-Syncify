@@ -17,6 +17,9 @@ import { ShoppingListUpdatePage } from "../pages/shopping-lists/update-page/shop
 import { GroupListingPage } from "../pages/group-page/listing-page/group-listing";
 import { GroupCreatePage } from "../pages/group-page/create-page/group-create";
 import { GroupUpdatePage } from "../pages/group-page/update-page/group-update";
+import { RecipeListingPage } from "../pages/recipes-page/listing-page/recipe-listing";
+import { RecipeCreatePage } from "../pages/recipes-page/create-page/recipe-create";
+import { RecipeUpdatePage } from "../pages/recipes-page/update-page/recipe-update";
 
 //import { ShoppingListUpdatePage } from "../pages/shopping-lists/update-page/shopping-list-update";
 //This is where you will declare all of your routes (the ones that show up in the search bar)
@@ -33,6 +36,11 @@ export const routes = {
     listing: '/ingredients',
     create: "/ingredients/create",
     update: "/ingredients/:id",
+  },
+  recipes: {
+    listing: '/recipes',
+    create: "/recipes/create",
+    update: "/recipes/:id",
   },
   shoppingList: {
     listing: '/shopping-lists',
@@ -85,6 +93,15 @@ export const Routes = () => {
           </Route>
           <Route path={routes.ingredients.update} exact>
             <IngredientUpdatePage />
+          </Route>
+          <Route path={routes.recipes.listing} exact>
+            <RecipeListingPage />
+          </Route>
+          <Route path={routes.recipes.create} exact>
+            <RecipeCreatePage />
+          </Route>
+          <Route path={routes.recipes.update} exact>
+            <RecipeUpdatePage />
           </Route>     
           <Route path={routes.group.listing} exact>
             <GroupListingPage />
