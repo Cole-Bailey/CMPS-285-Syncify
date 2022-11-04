@@ -25,7 +25,7 @@ export type ProfileColorGetDto = {
 
 export type UserGetDto = {
   id: number;
-  profileColorId: ProfileColorGetDto;
+  profileColorId: number;
   firstName: string;
   lastName: string;
   username: string;
@@ -35,7 +35,7 @@ export type UserGetDto = {
 };
 
 export type UserCreateDto = {
-  profileColorId: ProfileColorGetDto;
+  profileColorId: number;
   firstName: string;
   lastName: string;
   username: string;
@@ -45,7 +45,7 @@ export type UserCreateDto = {
 };
 
 export type UserUpdateDto = {
-  profileColorId: ProfileColorGetDto;
+  profileColorId: number;
   firstName: string;
   lastName: string;
   username: string;
@@ -103,15 +103,15 @@ export type GroupMemberUpdateDto = {
 
 export type CalendarGetDto = {
   id: number;
-  groupId: GroupGetDto;
+  groupId: number;
 };
 
 export type CalendarCreateDto = {
-  groupId: GroupGetDto;
+  groupId: number;
 };
 
 export type CalendarUpdateDto = {
-  groupId: GroupGetDto;
+  groupId: number;
 };
 
 export type ToDoGetDto = {
@@ -209,8 +209,8 @@ export type RecipeGetDto = {
   image: string;
   servings: number;
   directions: string;
-  mealTypeId: MealTypeGetDto;
-  calendarId: CalendarGetDto;
+  mealTypeId: number;
+  calendarId: number;
 };
 
 export type RecipeCreateDto = {
@@ -218,8 +218,8 @@ export type RecipeCreateDto = {
   image: string;
   servings: number;
   directions: string;
-  mealTypeId: MealTypeGetDto;
-  calendarId: CalendarGetDto;
+  mealTypeId: number;
+  calendarId: number;
 };
 
 export type RecipeUpdateDto = {
@@ -227,8 +227,8 @@ export type RecipeUpdateDto = {
   image: string;
   servings: number;
   directions: string;
-  mealTypeId: MealTypeGetDto;
-  calendarId: CalendarGetDto;
+  mealTypeId: number;
+  calendarId: number;
 };
 
 export type RecipeIngredientGetDto = {

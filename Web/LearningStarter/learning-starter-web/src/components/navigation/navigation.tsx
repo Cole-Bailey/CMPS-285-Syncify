@@ -165,6 +165,36 @@ const DesktopNavigation = () => {
           
         ],
       },
+      {
+        text: "Recipes",
+        children: [
+          {
+            text: "Listing",
+            icon: "list",
+            hide: false,
+            nav: {
+              to: routes.recipes.listing,
+            },
+          },
+          {
+            text: "Update",
+            icon: "pencil",
+            hide: false,
+            nav: {
+              to: routes.recipes.update,
+            },
+          },
+          {
+            text: "Create",
+            icon: "plus",
+            hide: false,
+            nav: {
+              to: routes.recipes.create,
+            },
+          },
+          
+        ],
+      },
     ];
   }, []);
 
