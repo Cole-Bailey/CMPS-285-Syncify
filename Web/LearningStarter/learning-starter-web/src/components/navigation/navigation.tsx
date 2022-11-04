@@ -39,6 +39,14 @@ const DesktopNavigation = () => {
         },
       },
       {
+        text: "Calendar",
+        icon: "calendar alternate outline",
+        hide: false,
+        nav: {
+          to: routes.calendar,
+        },
+      },
+      {
         text: "User",
         icon: "user",
         hide: false,

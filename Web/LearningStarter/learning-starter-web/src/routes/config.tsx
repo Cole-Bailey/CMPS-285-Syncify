@@ -30,6 +30,7 @@ export const routes = {
   root: `/`,
   home: `/home`,
   user: `/user`,
+  calendar: '/calendar',
   mealTypes: {
     listing: '/meal-types',
     create: "/meal-types/create",
@@ -83,6 +84,9 @@ export const Routes = () => {
           {/* Going to route "localhost:5001/" will go to homepage */}
           <Route path={routes.root} exact>
             <Redirect to={routes.home} />
+          </Route>
+          <Route path={routes.calendar} exact>
+            <App/>
           </Route>
           <Route path={routes.mealTypes.listing} exact>
             <MealTypeListingPage />
