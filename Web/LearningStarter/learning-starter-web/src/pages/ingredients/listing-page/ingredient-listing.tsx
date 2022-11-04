@@ -5,14 +5,11 @@ import { BaseUrl } from "../../../constants/env-cars";
 import { ApiResponse, IngredientGetDto } from "../../../constants/types";
 import {useHistory} from "react-router-dom";
 import { routes } from "../../../routes/config";
+import { GroupsButton, HomeButton, MealTypesButton, MemberRolesButton, RecipesButton, ShoppingListsButton } from "../../../components/buttons/navigation-buttons";
 
 export const IngredientListingPage = () => {
     const [ingredients, setIngredients] = useState<IngredientGetDto[]>();
     const history = useHistory();
-
-    const goHome = () => {
-        history.push(routes.home);
-    };
 
     useEffect(() => {
         const fetchIngredients = async() => {
@@ -36,15 +33,16 @@ export const IngredientListingPage = () => {
         <Segment>
             {ingredients && (
                 <>
-            <Header>Meal Types</Header>
+            <Header>Ingredients</Header>
             <Button type="button" onClick={() => history.push(routes.ingredients.create)}>+ Create</Button>
             <Table striped celled>
             <Table.Header>
                 <Table.Row>
-                    <Table.HeaderCell width={1} />
+                    <Table.HeaderCell width={1}>Edit</Table.HeaderCell>
                     <Table.HeaderCell>Id</Table.HeaderCell>
                     <Table.HeaderCell>Name</Table.HeaderCell>
                     <Table.HeaderCell>Image</Table.HeaderCell>
+                    <Table.HeaderCell>Delete</Table.HeaderCell>
                 </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -65,6 +63,17 @@ export const IngredientListingPage = () => {
                     <Table.Cell>{ingredient.id}</Table.Cell>
                     <Table.Cell>{ingredient.name}</Table.Cell>
                     <Table.Cell>{ingredient.image}</Table.Cell>
+                    <Table.Cell>
+                        <Icon
+                            link
+                            name="trash"
+                            onClick={() =>
+                            history.push(
+                                routes.ingredients.delete.replace(":id", `${ingredient.id}`)
+                            )
+                        }
+                        />
+                    </Table.Cell>
                     </Table.Row>
                     );
                 })}
@@ -72,7 +81,12 @@ export const IngredientListingPage = () => {
             </Table>
                 </>
             )}
-            <Button onClick={goHome}>Home</Button>
+            <HomeButton></HomeButton>
+            <MemberRolesButton></MemberRolesButton>
+            <GroupsButton></GroupsButton>
+            <ShoppingListsButton></ShoppingListsButton>
+            <RecipesButton></RecipesButton>
+            <MealTypesButton></MealTypesButton>
         </Segment>
     );
 };
