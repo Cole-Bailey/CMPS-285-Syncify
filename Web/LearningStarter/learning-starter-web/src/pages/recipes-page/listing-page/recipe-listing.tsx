@@ -1,49 +1,85 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Segment } from "semantic-ui-react";
+import { Button, Header, Icon, Segment, Table } from "semantic-ui-react";
 import { BaseUrl } from "../../../constants/env-cars";
 import { ApiResponse, RecipeGetDto } from "../../../constants/types";
+import {useHistory} from "react-router-dom";
+import { routes } from "../../../routes/config";
 
 export const RecipeListingPage = () => {
     const [recipes, setRecipes] = useState<RecipeGetDto[]>();
-    const fetchRecipes = async() => {
-        const response = await axios.get<ApiResponse<RecipeGetDto[]>>(
-            `${BaseUrl}/api/recipes`
-            );
-        if(response.data.hasErrors){
-            response.data.errors.forEach((err) => {
-                console.log(err.message);
-            });
-        } else {
-            setRecipes(response.data.data);
-        }
-    };
+    const history = useHistory();
 
+    const goHome = () => {
+        history.push(routes.home);
+    };
     useEffect(() => {
+        const fetchRecipes = async() => {
+            const response = await axios.get<ApiResponse<RecipeGetDto[]>>(
+                `${BaseUrl}/api/recipes`
+            );
+
+            if(response.data.hasErrors){
+                response.data.errors.forEach((err) => {
+                    console.log(err.message);
+                });
+            } else {
+                setRecipes(response.data.data);
+            }
+        };
+    
         fetchRecipes();
     }, []);
 
     return (
-        <>
-            <div>
-                {recipes ? ( 
-                recipes.map(recipes => {
-                    return (
-                        <Segment>
-                            <div>Id: {recipes.id}</div>
-                            <div>Name: {recipes.name}</div>
-                            <div>Image: {recipes.image}</div>
-                            <div>Servings: {recipes.servings}</div>
-                            <div>Directions: {recipes.directions}</div>
-                            <div>Meal Type: {recipes.mealTypeId}</div>
-                            <div>Calendar: {recipes.calendarId}</div>
-                        </Segment>
-                    );
-                }) 
-            ) : (
-                <div>Loading</div>
-            )}
-        </div>
-        </>
+        <Segment>
+        {recipes && (
+            <>
+        <Header>Meal Types</Header>
+        <Button type="button" onClick={() => history.push(routes.recipes.create)}>+ Create</Button>
+        <Table striped celled>
+        <Table.Header>
+            <Table.Row>
+                <Table.HeaderCell width={1} />
+                <Table.HeaderCell>Id</Table.HeaderCell>
+                <Table.HeaderCell>Name</Table.HeaderCell>
+                <Table.HeaderCell>Image</Table.HeaderCell>
+                <Table.HeaderCell>Servings</Table.HeaderCell>
+                <Table.HeaderCell>Directions</Table.HeaderCell>
+                <Table.HeaderCell>Meal Type Id</Table.HeaderCell>
+                <Table.HeaderCell>Calendar Id</Table.HeaderCell>
+            </Table.Row>
+        </Table.Header>
+        <Table.Body>
+            {recipes.map((recipe) => {
+                return (
+                <Table.Row key={recipe.id}>
+                <Table.Cell>
+                    <Icon
+                        link
+                        name="pencil"
+                        onClick={() =>
+                        history.push(
+                            routes.recipes.update.replace(":id", `${recipe.id}`)
+                        )
+                    }
+                    />
+                </Table.Cell>
+                <Table.Cell>{recipe.id}</Table.Cell>
+                <Table.Cell>{recipe.name}</Table.Cell>
+                <Table.Cell>{recipe.image}</Table.Cell>
+                <Table.Cell>{recipe.servings}</Table.Cell>
+                <Table.Cell>{recipe.directions}</Table.Cell>
+                <Table.Cell>{recipe.mealTypeId}</Table.Cell>
+                <Table.Cell>{recipe.calendarId}</Table.Cell>
+                </Table.Row>
+                );
+            })}
+        </Table.Body>
+        </Table>
+            </>
+        )}
+        <Button onClick={goHome}>Home</Button>
+    </Segment>
     );
 };
