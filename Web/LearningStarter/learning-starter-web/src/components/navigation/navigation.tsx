@@ -77,6 +77,36 @@ const DesktopNavigation = () => {
         ],
       },
       {
+      text: "Group",
+      children: [
+        {
+          text: "List",
+          icon: "list",
+          hide: false,
+          nav: {
+          to: routes.group.listing,
+          },
+        },
+        {
+          text: "Update",
+          icon: "pencil",
+          hide: false,
+          nav: {
+          to: routes.group.update,
+          },
+        },
+        {
+          text: "Create",
+          icon: "plus",
+          hide: false,
+          nav: {
+          to: routes.group.create,
+        },
+      },
+      
+    ],
+  },
+  {
         text: "Ingredients",
         children: [
           {
@@ -161,6 +191,36 @@ const DesktopNavigation = () => {
               to: routes.toDos.create,
             },
           },
+        ],
+      },
+      {
+        text: "Recipes",
+        children: [
+          {
+            text: "Listing",
+            icon: "list",
+            hide: false,
+            nav: {
+              to: routes.recipes.listing,
+            },
+          },
+          {
+            text: "Update",
+            icon: "pencil",
+            hide: false,
+            nav: {
+              to: routes.recipes.update,
+            },
+          },
+          {
+            text: "Create",
+            icon: "plus",
+            hide: false,
+            nav: {
+              to: routes.recipes.create,
+            },
+          },
+          
         ],
       },
     ];
@@ -264,4 +324,4 @@ export const PrimaryNavigation: React.FC<PrimaryNavigationProps> = ({
       )}
     </Menu>
   );
-};
+}; 

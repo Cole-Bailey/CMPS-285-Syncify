@@ -17,6 +17,13 @@ import { ShoppingListUpdatePage } from "../pages/shopping-lists/update-page/shop
 import { ToDoListingPage } from "../pages/to-dos/listing-page/listing page/to-dos-listing";
 import { ToDoCreatePage } from "../pages/to-dos/listing-page/create page/to-dos-create";
 import { ToDoUpdatePage } from "../pages/to-dos/listing-page/update page/to-dos-update";
+import { GroupListingPage } from "../pages/group-page/listing-page/group-listing";
+import { GroupCreatePage } from "../pages/group-page/create-page/group-create";
+import { GroupUpdatePage } from "../pages/group-page/update-page/group-update";
+import { RecipeListingPage } from "../pages/recipes-page/listing-page/recipe-listing";
+import { RecipeCreatePage } from "../pages/recipes-page/create-page/recipe-create";
+import { RecipeUpdatePage } from "../pages/recipes-page/update-page/recipe-update";
+
 //import { ShoppingListUpdatePage } from "../pages/shopping-lists/update-page/shopping-list-update";
 //This is where you will declare all of your routes (the ones that show up in the search bar)
 export const routes = {
@@ -33,10 +40,20 @@ export const routes = {
     create: "/ingredients/create",
     update: "/ingredients/:id",
   },
+  recipes: {
+    listing: '/recipes',
+    create: "/recipes/create",
+    update: "/recipes/:id",
+  },
   shoppingList: {
     listing: '/shopping-lists',
     create: "/shopping-lists/create",
     update: "/shopping-lists/:id",
+  },
+  group:{
+    listing: '/group',
+    create: '/group/create',
+    update: '/group/:id',
   },
   toDos: {
     listing: '/to-dos',
@@ -44,6 +61,7 @@ export const routes = {
     update: "/to-dos/:id",
   },
 };
+
 
 //This is where you will tell React Router what to render when the path matches the route specified.
 export const Routes = () => {
@@ -83,6 +101,24 @@ export const Routes = () => {
           </Route>
           <Route path={routes.ingredients.update} exact>
             <IngredientUpdatePage />
+          </Route>
+          <Route path={routes.recipes.listing} exact>
+            <RecipeListingPage />
+          </Route>
+          <Route path={routes.recipes.create} exact>
+            <RecipeCreatePage />
+          </Route>
+          <Route path={routes.recipes.update} exact>
+            <RecipeUpdatePage />
+          </Route>     
+          <Route path={routes.group.listing} exact>
+            <GroupListingPage />
+          </Route>
+          <Route path={routes.group.create} exact>
+            <GroupCreatePage />
+          </Route>
+          <Route path={routes.group.update} exact>
+            <GroupUpdatePage />
           </Route>     
           <Route path={routes.shoppingList.create} exact>
             <ShoppingListCreatePage />
