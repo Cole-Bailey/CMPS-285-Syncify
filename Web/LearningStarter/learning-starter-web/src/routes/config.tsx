@@ -14,6 +14,9 @@ import { IngredientUpdatePage } from "../pages/ingredients/update-page/ingredien
 import { ShoppingListListingPage } from "../pages/shopping-lists/listing-page/shopping-lists-listing";
 import { ShoppingListCreatePage } from "../pages/shopping-lists/create-page/shopping-lists-create";
 import { ShoppingListUpdatePage } from "../pages/shopping-lists/update-page/shopping-list-update";
+import { ToDoListingPage } from "../pages/to-dos/listing-page/listing page/to-dos-listing";
+import { ToDoCreatePage } from "../pages/to-dos/listing-page/create page/to-dos-create";
+import { ToDoUpdatePage } from "../pages/to-dos/listing-page/update page/to-dos-update";
 import { GroupListingPage } from "../pages/group-page/listing-page/group-listing";
 import { GroupCreatePage } from "../pages/group-page/create-page/group-create";
 import { GroupUpdatePage } from "../pages/group-page/update-page/group-update";
@@ -36,6 +39,7 @@ export const routes = {
     update: "/users/:id",
   },
   user: `/user`,
+  calendar: '/calendar',
   mealTypes: {
     listing: '/meal-types',
     create: "/meal-types/create",
@@ -60,7 +64,12 @@ export const routes = {
     listing: '/group',
     create: '/group/create',
     update: '/group/:id',
-  }
+  },
+  toDos: {
+    listing: '/to-dos',
+    create: "/to-dos/create",
+    update: "/to-dos/:id",
+  },
 };
 
 
@@ -85,6 +94,8 @@ export const Routes = () => {
           <Route path={routes.root} exact>
             <Redirect to={routes.home} />
           </Route>
+          <Route path={routes.calendar} exact>
+            <App/>
           <Route path={routes.users.create} exact>
             <UsersCreatePage />
           </Route>
@@ -138,6 +149,15 @@ export const Routes = () => {
           </Route>
           <Route path={routes.shoppingList.update} exact>
             <ShoppingListUpdatePage />
+          </Route>
+          <Route path={routes.toDos.listing} exact>
+            <ToDoListingPage />
+          </Route>
+          <Route path={routes.toDos.create}exact>
+            <ToDoCreatePage />
+          </Route>
+          <Route path={routes.toDos.update}exact>
+            <ToDoUpdatePage />
           </Route>
           {/* This should always come last.  
             If the path has no match, show page not found */}

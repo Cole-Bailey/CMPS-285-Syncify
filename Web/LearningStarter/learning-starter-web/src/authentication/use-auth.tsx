@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { createContext, useContext } from "react";
 import { useAsyncRetry, useAsyncFn } from "react-use";
 import { Dimmer, Loader } from "semantic-ui-react";
-import { ApiResponse } from "../constants/types";
+import { ApiResponse, CalendarGetDto } from "../constants/types";
 import { useSubscription } from "../hooks/use-subscription";
 import { useProduce } from "../hooks/use-produce";
 import { Error } from "../constants/types";
