@@ -161,8 +161,36 @@ const DesktopNavigation = () => {
             nav: {
               to: routes.shoppingList.create,
             },
+          },             
+        ],
+      },
+      {
+        text: "To Dos",
+        children: [
+          {
+            text: "Listing",
+            icon: "list",
+            hide: false,
+            nav: {
+              to: routes.toDos.listing,
+            },
           },
-          
+          {
+            text: "Update",
+            icon: "pencil",
+            hide: false,
+            nav: {
+              to: routes.toDos.update,
+            },
+          },
+          {
+            text: "Create",
+            icon: "plus",
+            hide: false,
+            nav: {
+              to: routes.toDos.create,
+            },
+          },
         ],
       },
       {
@@ -197,7 +225,6 @@ const DesktopNavigation = () => {
       },
     ];
   }, []);
-
   //This is where the navigation buttons are mapped over to produce the links and such.
   return (
     <Menu

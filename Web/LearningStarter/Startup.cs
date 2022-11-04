@@ -149,7 +149,7 @@ namespace LearningStarter
             SeedIngredients(dataContext);
             SeedRecipes(dataContext);
             SeedGroupMembers(dataContext);
-            //SeedToDos(dataContext);
+            SeedToDos(dataContext);
             SeedRecipeIngredients(dataContext);
             //SeedShoppingListRecipeIngredients(dataContext);
         }
