@@ -20,12 +20,21 @@ import { GroupUpdatePage } from "../pages/group-page/update-page/group-update";
 import { RecipeListingPage } from "../pages/recipes-page/listing-page/recipe-listing";
 import { RecipeCreatePage } from "../pages/recipes-page/create-page/recipe-create";
 import { RecipeUpdatePage } from "../pages/recipes-page/update-page/recipe-update";
+import { UsersCreatePage } from "../pages/users-page/create-page/user-create";
+import { UsersListingPage } from "../pages/users-page/listing-page/user-listing";
+import { UsersUpdatePage } from "../pages/users-page/update-page/user-update";
+
 
 //import { ShoppingListUpdatePage } from "../pages/shopping-lists/update-page/shopping-list-update";
 //This is where you will declare all of your routes (the ones that show up in the search bar)
 export const routes = {
   root: `/`,
   home: `/home`,
+  users: {
+    listing: '/users',
+    create: "/users/create",
+    update: "/users/:id",
+  },
   user: `/user`,
   mealTypes: {
     listing: '/meal-types',
@@ -75,6 +84,15 @@ export const Routes = () => {
           {/* Going to route "localhost:5001/" will go to homepage */}
           <Route path={routes.root} exact>
             <Redirect to={routes.home} />
+          </Route>
+          <Route path={routes.users.create} exact>
+            <UsersCreatePage />
+          </Route>
+          <Route path={routes.users.listing} exact>
+            <UsersListingPage />
+          </Route>
+          <Route path={routes.users.update} exact>
+            <UsersUpdatePage />
           </Route>
           <Route path={routes.mealTypes.listing} exact>
             <MealTypeListingPage />

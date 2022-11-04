@@ -47,6 +47,36 @@ const DesktopNavigation = () => {
         },
       },
       {
+        text: "Users",
+        children: [
+          {
+            text: "Listing",
+            icon: "list",
+            hide: false,
+            nav: {
+              to: routes.users.listing,
+            },
+          },
+          {
+            text: "Update",
+            icon: "pencil",
+            hide: false,
+            nav: {
+              to: routes.users.update,
+            },
+          },
+          {
+            text: "Create",
+            icon: "plus",
+            hide: false,
+            nav: {
+              to: routes.users.create,
+            },
+          },
+          
+        ],
+      },
+      {
         text: "Meal Types",
         children: [
           {
