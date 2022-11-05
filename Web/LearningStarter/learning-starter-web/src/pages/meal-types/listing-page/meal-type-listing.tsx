@@ -5,16 +5,11 @@ import { BaseUrl } from "../../../constants/env-cars";
 import { ApiResponse, MealTypeGetDto } from "../../../constants/types";
 import {useHistory} from "react-router-dom";
 import { routes } from "../../../routes/config";
-
-
+import { GroupsButton, HomeButton, IngredientsButton, MealTypesButton, RecipesButton, ShoppingListsButton } from "../../../components/buttons/navigation-buttons";
 
 export const MealTypeListingPage = () => {
     const [mealTypes, setMealTypes] = useState<MealTypeGetDto[]>();
     const history = useHistory();
-
-    const goHome = () => {
-        history.push(routes.home);
-    };
 
     useEffect(() => {
         const fetchMealTypes = async() => {
@@ -43,9 +38,10 @@ export const MealTypeListingPage = () => {
             <Table striped celled>
             <Table.Header>
                 <Table.Row>
-                    <Table.HeaderCell width={1} />
+                    <Table.HeaderCell width={1}>Edit</Table.HeaderCell>
                     <Table.HeaderCell>Id</Table.HeaderCell>
                     <Table.HeaderCell>Name</Table.HeaderCell>
+                    <Table.HeaderCell>Delete</Table.HeaderCell>
                 </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -65,14 +61,30 @@ export const MealTypeListingPage = () => {
                     </Table.Cell>
                     <Table.Cell>{mealType.id}</Table.Cell>
                     <Table.Cell>{mealType.name}</Table.Cell>
+                    <Table.Cell>
+                        <Icon
+                            link
+                            name="trash"
+                            onClick={() =>
+                            history.push(
+                                routes.mealTypes.delete.replace(":id", `${mealType.id}`)
+                            )
+                        }
+                        />
+                    </Table.Cell>
                     </Table.Row>
                     );
                 })}
             </Table.Body>
             </Table>
                 </>
-            )}
-            <Button onClick={goHome}>Home</Button>
+            )}            
+            <HomeButton></HomeButton>
+            <GroupsButton></GroupsButton>
+            <IngredientsButton></IngredientsButton>
+            <ShoppingListsButton></ShoppingListsButton>
+            <RecipesButton></RecipesButton>
+            <MealTypesButton></MealTypesButton>
         </Segment>
     );
 };
