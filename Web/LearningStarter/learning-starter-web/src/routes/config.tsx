@@ -16,6 +16,9 @@ import { ShoppingListListingPage } from "../pages/shopping-lists/listing-page/sh
 import { ShoppingListCreatePage } from "../pages/shopping-lists/create-page/shopping-lists-create";
 import { ShoppingListUpdatePage } from "../pages/shopping-lists/update-page/shopping-list-update";
 import { ShoppingListDeletePage } from "../pages/shopping-lists/delete-page/shopping-list-delete";
+import { UnitListingPage } from "../pages/units/listing-page/units-listing";
+import { UnitCreatePage } from "../pages/units/create-page/unit-create";
+import { UnitUpdatePage } from "../pages/units/update-page/unit-update";
 import { ToDoListingPage } from "../pages/to-dos/listing-page/listing page/to-dos-listing";
 import { ToDoCreatePage } from "../pages/to-dos/listing-page/create page/to-dos-create";
 import { ToDoUpdatePage } from "../pages/to-dos/listing-page/update page/to-dos-update";
@@ -35,7 +38,6 @@ import { MemberRoleListingPage } from "../pages/member-role-page/listing-page/me
 import { MemberRoleDeletePage } from "../pages/member-role-page/delete-page/member-role-delete";
 import { MemberRoleCreatePage } from "../pages/member-role-page/create-page/member-role-create";
 import { MemberRoleUpdatePage } from "../pages/member-role-page/update-page/member-role-update";
-
 
 //import { ShoppingListUpdatePage } from "../pages/shopping-lists/update-page/shopping-list-update";
 //This is where you will declare all of your routes (the ones that show up in the search bar)
@@ -89,6 +91,11 @@ export const routes = {
     create: "/to-dos/create",
     update: "/to-dos/:id",
   },
+  units: {
+    listing: '/units',
+    create: '/units/create',
+    update: '/units/:id'
+  }
 };
 
 
@@ -178,6 +185,15 @@ export const Routes = () => {
           </Route>
           <Route path={routes.shoppingLists.update} exact>
             <ShoppingListUpdatePage />
+          </Route> 
+          <Route path={routes.units.listing} exact>
+            <UnitListingPage />
+          </Route>
+          <Route path={routes.units.create} exact>
+            <UnitCreatePage />
+          </Route>
+          <Route path={routes.units.update} exact>
+            <UnitUpdatePage />
           </Route>
           <Route path={routes.shoppingLists.delete} exact>
             <ShoppingListDeletePage />
