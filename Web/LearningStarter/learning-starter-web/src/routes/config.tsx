@@ -11,9 +11,13 @@ import { MealTypeUpdatePage } from "../pages/meal-types/update-page/meal-type-up
 import { IngredientListingPage } from "../pages/ingredients/listing-page/ingredient-listing";
 import { IngredientCreatePage } from "../pages/ingredients/create-page/ingredient-create";
 import { IngredientUpdatePage } from "../pages/ingredients/update-page/ingredient-update";
-import { ShoppingListListingPage } from "../pages/shopping-lists/listing-page/shopping-lists-listing";
-import { ShoppingListCreatePage } from "../pages/shopping-lists/create-page/shopping-lists-create";
+import { ShoppingListListingPage } from "../pages/shopping-lists/listing-page/shopping-list-listing";
+import { ShoppingListCreatePage } from "../pages/shopping-lists/create-page/shopping-list-create";
 import { ShoppingListUpdatePage } from "../pages/shopping-lists/update-page/shopping-list-update";
+import { UnitListingPage } from "../pages/units/listing-page/units-listing";
+import { UnitCreatePage } from "../pages/units/create-page/unit-create";
+import { UnitUpdatePage } from "../pages/units/update-page/unit-update";
+
 //import { ShoppingListUpdatePage } from "../pages/shopping-lists/update-page/shopping-list-update";
 //This is where you will declare all of your routes (the ones that show up in the search bar)
 export const routes = {
@@ -35,6 +39,11 @@ export const routes = {
     create: "/shopping-lists/create",
     update: "/shopping-lists/:id",
   },
+  units: {
+    listing: '/units',
+    create: '/units/create',
+    update: '/units/:id'
+  }
 };
 
 //This is where you will tell React Router what to render when the path matches the route specified.
@@ -84,6 +93,15 @@ export const Routes = () => {
           </Route>
           <Route path={routes.shoppingList.update} exact>
             <ShoppingListUpdatePage />
+          </Route> 
+          <Route path={routes.units.listing} exact>
+            <UnitListingPage />
+          </Route>
+          <Route path={routes.units.create} exact>
+            <UnitCreatePage />
+          </Route>
+          <Route path={routes.units.update} exact>
+            <UnitUpdatePage />
           </Route>
           {/* This should always come last.  
             If the path has no match, show page not found */}

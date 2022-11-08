@@ -272,6 +272,7 @@ export type ShoppingListRecipeIngredientUpdateDto = {
 };
 
 export type ShoppingListGetDto = {
+  [x: string]: any;
   id: number;   
   name: string; 
 }; 
@@ -283,4 +284,5 @@ export type ShoppingListCreateDto = {
 export type ShoppingListUpdateDto = {   
   name: string; 
 };
+
 
