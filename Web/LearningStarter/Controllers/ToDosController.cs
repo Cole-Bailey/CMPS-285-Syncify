@@ -150,8 +150,7 @@ namespace LearningStarter.Controllers
 
             //returns 201 Code, which means created
             response.Data = toDoToReturn;
-            return Created("api/to-dos/" + toDoToAdd.Id,
-                toDoToReturn);
+            return Created("", response);
         }
 
         [HttpPut("{id}")]
