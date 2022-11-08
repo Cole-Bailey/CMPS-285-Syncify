@@ -65,7 +65,7 @@ export const RecipeUpdatePage = () => {
                     </div>
                     <div className="recipe-update-container">
                     <Field id="servings" name="servings" >
-                        {({ field }) => <Input type="number" {...field} />}
+                        {({ field }) => <Input {...field} />}
                     </Field>
                     </div>
                     <div className="recipe-update-container">

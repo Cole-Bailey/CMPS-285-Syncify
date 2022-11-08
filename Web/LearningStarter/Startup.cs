@@ -331,7 +331,7 @@ namespace LearningStarter
                     Email = StringEnums.UserEmails.One,
                     PhoneNumber = StringEnums.UserPhoneNumbers.One,
                     Password = StringEnums.UserPasswords.One,
-                    Birthday = StringEnums.UserBirthdays.One
+                    BirthDay = StringEnums.UserBirthdays.One
                 },
 
                 new User
@@ -344,7 +344,7 @@ namespace LearningStarter
                     Email = StringEnums.UserEmails.Two,
                     PhoneNumber = StringEnums.UserPhoneNumbers.Two,
                     Password = StringEnums.UserPasswords.Two,
-                    Birthday = StringEnums.UserBirthdays.Two
+                    BirthDay = StringEnums.UserBirthdays.Two
                 },
 
                 new User
@@ -357,7 +357,7 @@ namespace LearningStarter
                     Email = StringEnums.UserEmails.Three,
                     PhoneNumber = StringEnums.UserPhoneNumbers.Three,
                     Password = StringEnums.UserPasswords.Three,
-                    Birthday = StringEnums.UserBirthdays.Three
+                    BirthDay = StringEnums.UserBirthdays.Three
                 }
 
             };

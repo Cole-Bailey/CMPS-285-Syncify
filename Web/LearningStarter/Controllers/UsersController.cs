@@ -41,7 +41,7 @@ namespace LearningStarter.Controllers
                     Username = users.Username,
                     PhoneNumber = users.PhoneNumber,
                     Email = users.Email,
-                    Birthday = users.Birthday,
+                    BirthDay = users.BirthDay,
 
                 })
                 .ToList();
@@ -80,7 +80,7 @@ namespace LearningStarter.Controllers
                 Username = users.Username,
                 PhoneNumber = users.PhoneNumber,
                 Email = users.Email,
-                Birthday = users.Birthday
+                BirthDay = users.BirthDay
 
             };          
             response.Data = userGetDto;
@@ -139,7 +139,7 @@ namespace LearningStarter.Controllers
                 LastName = userCreateDto.LastName,
                 Username = userCreateDto.Username,
                 Password = userCreateDto.Password,
-                Birthday = userCreateDto.Birthday,
+                BirthDay = userCreateDto.BirthDay,
                 Email = userCreateDto.Email,
                 PhoneNumber = userCreateDto.PhoneNumber,
             };
@@ -166,7 +166,7 @@ namespace LearningStarter.Controllers
                 Username = userToCreate.Username,
                 Email = userToCreate.Email,
                 PhoneNumber = userToCreate.PhoneNumber,
-                Birthday = userToCreate.Birthday
+                BirthDay = userToCreate.BirthDay
 
             };
 
@@ -266,7 +266,7 @@ namespace LearningStarter.Controllers
                 Username = user.Username,
                 PhoneNumber = user.PhoneNumber,
                 Email = user.Email,
-                Birthday = user.Birthday
+                BirthDay = user.BirthDay
 
             };
 

@@ -55,14 +55,14 @@ const DesktopNavigation = () => {
         },
       },
       {
-        text: "Users",
+        text: "Meal Types",
         children: [
           {
             text: "Listing",
             icon: "list",
             hide: false,
             nav: {
-              to: routes.users.listing,
+              to: routes.mealTypes.listing,
             },
           },
           {
@@ -70,7 +70,7 @@ const DesktopNavigation = () => {
             icon: "pencil",
             hide: false,
             nav: {
-              to: routes.users.update,
+              to: routes.mealTypes.update,
             },
           },
           {
@@ -78,10 +78,98 @@ const DesktopNavigation = () => {
             icon: "plus",
             hide: false,
             nav: {
-              to: routes.users.create,
+              to: routes.mealTypes.create,
             },
           },
           
+        ],
+      },
+      {
+      text: "Group",
+      children: [
+        {
+          text: "List",
+          icon: "list",
+          hide: false,
+          nav: {
+          to: routes.group.listing,
+          },
+        },
+        {
+          text: "Update",
+          icon: "pencil",
+          hide: false,
+          nav: {
+          to: routes.group.update,
+          },
+        },
+        {
+          text: "Create",
+          icon: "plus",
+          hide: false,
+          nav: {
+          to: routes.group.create,
+        },
+      },
+      
+    ],
+  },
+  {
+        text: "Ingredients",
+        children: [
+          {
+            text: "List",
+            icon: "list",
+            hide: false,
+            nav: {
+            to: routes.ingredients.listing,
+            },
+          },
+          {
+            text: "Update",
+            icon: "pencil",
+            hide: false,
+            nav: {
+            to: routes.ingredients.update,
+            },
+          },
+          {
+            text: "Create",
+            icon: "plus",
+            hide: false,
+            nav: {
+            to: routes.ingredients.create,
+            },
+          },
+        ]
+      },
+      {
+      text: "Shopping List",
+        children: [
+          {
+            text: "Listing",
+            icon: "list",
+            hide: false,
+            nav: {
+              to: routes.shoppingList.listing,
+            },
+          },
+          {
+            text: "Update",
+            icon: "pencil",
+            hide: false,
+            nav: {
+              to: routes.shoppingList.update,
+            },
+          },
+          {
+            text: "Create",
+            icon: "plus",
+            hide: false,
+            nav: {
+              to: routes.shoppingList.create,
+            },
+          },             
         ],
       },
       {
@@ -96,6 +184,14 @@ const DesktopNavigation = () => {
             },
           },
           {
+            text: "Update",
+            icon: "pencil",
+            hide: false,
+            nav: {
+              to: routes.toDos.update,
+            },
+          },
+          {
             text: "Create",
             icon: "plus",
             hide: false,
@@ -106,27 +202,23 @@ const DesktopNavigation = () => {
         ],
       },
       {
-        text: "Units",
-          children: [
-            {
-              text: "Listing",
-              icon: "list",
-              hide: false,
-              nav: {
-                to: routes.units.listing,
-              },
+        text: "Recipes",
+        children: [
+          {
+            text: "Listing",
+            icon: "list",
+            hide: false,
+            nav: {
+              to: routes.recipes.listing,
             },
-            {
-              text: "Create",
-              icon: "plus",
-              hide: false,
-              nav: {
-                to: routes.units.create,
-              },
+          },
+          {
+            text: "Update",
+            icon: "pencil",
+            hide: false,
+            nav: {
+              to: routes.recipes.update,
             },
-            
-          ],
-        },
           },
           {
             text: "Create",

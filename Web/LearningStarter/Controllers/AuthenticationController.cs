@@ -72,7 +72,7 @@ namespace LearningStarter.Controllers
                 Username = user.Username,
                 PhoneNumber = user.PhoneNumber,
                 Email = user.Email,
-                Birthday = user.Birthday
+                BirthDay = user.BirthDay
 
             };
 

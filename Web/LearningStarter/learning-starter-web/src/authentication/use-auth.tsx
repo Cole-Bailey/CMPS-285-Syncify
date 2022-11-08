@@ -142,5 +142,5 @@ export const mapUser = (user: any): UserGetDto => ({
   username: user.userName,
   phoneNumber: user.phoneNumber,
   email: user.email,
-  birthday: user.birthday,
+  birthDay: user.birthDay,
 });
