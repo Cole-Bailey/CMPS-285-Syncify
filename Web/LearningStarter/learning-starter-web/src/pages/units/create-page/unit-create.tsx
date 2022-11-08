@@ -22,7 +22,7 @@ export const UnitCreatePage = () => {
 
     const onSubmit = async (values: UnitCreateDto) => {
     const response = await axios.post<ApiResponse<UnitGetDto>>(
-        `${BaseUrl}/api/unit`,
+        `${BaseUrl}/api/units`,
         values
     );
 
