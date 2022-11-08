@@ -2,13 +2,13 @@ import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { Button, Input } from "semantic-ui-react";
-import { ApiResponse, RecipeGetDto, RecipeUpdateDto } from "../../../constants/types";
+import { ApiResponse, RecipeGetDto } from "../../../constants/types";
 import { useRouteMatch } from "react-router-dom";
 import { routes } from "../../../routes/config";
 import { useHistory } from "react-router-dom";
-import "./recipe-update.css";
+import "./recipe-delete.css";
 
-export const RecipeUpdatePage = () => {
+export const RecipeDeletePage = () => {
     const history = useHistory();
     let match = useRouteMatch<{id: string}>();
     const id = match.params.id;
@@ -31,10 +31,9 @@ export const RecipeUpdatePage = () => {
         fetchRecipe();
     }, [id]);
 
-    const onSubmit = async (values: RecipeUpdateDto) => {
-        const response = await axios.put<ApiResponse<RecipeGetDto>>(
+    const onSubmit = async () => {
+        const response = await axios.delete<ApiResponse<RecipeGetDto>>(
             `/api/recipes/${id}`,
-            values
         );
         
             if (response.data.hasErrors) {
@@ -52,32 +51,32 @@ export const RecipeUpdatePage = () => {
         {recipe &&   (
             <Formik initialValues={recipe} onSubmit={onSubmit}>
                 <Form>
-                    <div className="recipe-update-container">
+                    <div className="recipe-delete-container">
                         <label htmlFor="name">Name</label>
                     </div>
-                    <div className="recipe-update-container">
+                    <div className="recipe-delete-container">
                     <Field id="name" name="name" >
                         {({ field }) => <Input {...field} />}
                     </Field>
                     </div>
-                    <div className="recipe-update-container">
+                    <div className="recipe-delete-container">
                         <label htmlFor="servings">Servings</label>
                     </div>
-                    <div className="recipe-update-container">
+                    <div className="recipe-delete-container">
                     <Field id="servings" name="servings" >
                         {({ field }) => <Input type="number" {...field} />}
                     </Field>
                     </div>
-                    <div className="recipe-update-container">
+                    <div className="recipe-delete-container">
                         <label htmlFor="directions">Directions</label>
                     </div>
-                    <div className="recipe-update-container">
+                    <div className="recipe-delete-container">
                     <Field id="directions" name="directions" >
                         {({ field }) => <Input {...field} />}
                     </Field>
                     </div>
-                    <div className="recipe-update-container">
-                        <Button type="submit">Update</Button>
+                    <div className="recipe-delete-container">
+                        <Button type="submit">Delete</Button>
                     </div>
                 </Form>
             </Formik>

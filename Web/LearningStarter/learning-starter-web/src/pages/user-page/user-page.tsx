@@ -29,7 +29,7 @@ export const UserPage = () => {
           <p>{user.email}</p>
           <Divider />
           <Header size="small">Birthday</Header>
-          <p>{user.birthDay}</p>
+          <p>{user.birthday}</p>
           <Divider />
         </Container>
       </div>

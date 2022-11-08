@@ -2,68 +2,64 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button, Header, Icon, Segment, Table } from "semantic-ui-react";
 import { BaseUrl } from "../../../constants/env-cars";
-import { ApiResponse, GroupGetDto } from "../../../constants/types";
+import { ApiResponse, ShoppingListGetDto } from "../../../constants/types";
 import {useHistory} from "react-router-dom";
 import { routes } from "../../../routes/config";
+import "./shopping-list-listing.css";
 
-export const GroupListingPage = () => {
-  const [groups, setGroup] = useState<GroupGetDto[]>();
+export const ShoppingListListingPage = () => {
+  const [shoppingLists, setShoppingList] = useState<ShoppingListGetDto[]>();
   const history = useHistory();
 
-  const goHome = () => {
-    history.push(routes.home);
-  };
 
   useEffect(() => {
-    const fetchGroup = async () => {
-      const response = await axios.get<ApiResponse<GroupGetDto[]>>(
-        `${BaseUrl}/api/groups`
+    const fetchShoppingList = async () => {
+      const response = await axios.get<ApiResponse<ShoppingListGetDto[]>>(
+        `${BaseUrl}/api/shopping-lists`
       );
       if (response.data.hasErrors) {
         response.data.errors.forEach((err) => {
           console.log(err.message);
         });
       } else {
-        setGroup(response.data.data);
+        setShoppingList(response.data.data);
       }
     };
 
-    fetchGroup();
+    fetchShoppingList();
   }, []);
 
   return (
     <Segment>
-      {groups && (
+    <Header>Shopping List Items</Header>   
+      {shoppingLists && (
       <>
-      <Header>Groups</Header>
-            <Button type="button" onClick={() => history.push(routes.group.create)}>+ Create</Button>
+            <Button type="button" onClick={() => history.push(routes.shoppingList.create)}>+ Create</Button>
             <Table striped celled>
             <Table.Header>
                 <Table.Row>
-                    <Table.HeaderCell width={1} />
+                    <Table.HeaderCell width= {1}>Edit Item</Table.HeaderCell>
                     <Table.HeaderCell>Id</Table.HeaderCell>
                     <Table.HeaderCell>Name</Table.HeaderCell>
-                    <Table.HeaderCell>Image</Table.HeaderCell>
                 </Table.Row>
             </Table.Header>
             <Table.Body>
-                {groups.map((group) => {
+                {shoppingLists.map((shoppingList) => {
                     return (
-                    <Table.Row key={group.id}>
+                    <Table.Row key={shoppingList.id}>
                     <Table.Cell>
                         <Icon
                             link
                             name="pencil"
                             onClick={() =>
                             history.push(
-                                routes.mealTypes.update.replace(":id", `${group.id}`)
+                                routes.shoppingList.update.replace(":id", `${shoppingList.id}`)
                             )
                         }
                         />
                     </Table.Cell>
-                    <Table.Cell>{group.id}</Table.Cell>
-                    <Table.Cell>{group.name}</Table.Cell>
-                    <Table.Cell>{group.image}</Table.Cell>
+                    <Table.Cell>{shoppingList.id}</Table.Cell>
+                    <Table.Cell>{shoppingList.name}</Table.Cell>
                     </Table.Row>
                     );
                 })}
@@ -71,8 +67,6 @@ export const GroupListingPage = () => {
             </Table>
                 </>
             )}
-            <Button onClick={goHome}>Home</Button>
-      
     </Segment>
-  );
+);
 };

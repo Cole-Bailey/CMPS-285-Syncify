@@ -31,7 +31,7 @@ export type UserGetDto = {
   username: string;
   phoneNumber: string;
   email: string;
-  birthDay: string;
+  birthday: string;
 };
 
 export type UserCreateDto = {
@@ -39,9 +39,10 @@ export type UserCreateDto = {
   firstName: string;
   lastName: string;
   username: string;
+  password: string;
   phoneNumber: string;
   email: string;
-  birthDay: string;
+  birthday: string;
 };
 
 export type UserUpdateDto = {
@@ -49,6 +50,7 @@ export type UserUpdateDto = {
   firstName: string;
   lastName: string;
   username: string;
+  password: string;
   phoneNumber: string;
   email: string;
 };
