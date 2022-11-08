@@ -231,6 +231,35 @@ const DesktopNavigation = () => {
           
         ],
       },
+      {
+        text: "Events",
+        children: [
+          {
+            text: "Listing",
+            icon: "list",
+            hide: false,
+            nav: {
+              to: routes.events.listing,
+            },
+          },
+          {
+            text: "Update",
+            icon: "pencil",
+            hide: false,
+            nav: {
+              to: routes.events.update,
+            },
+          },
+          {
+            text: "Create",
+            icon: "plus",
+            hide: false,
+            nav: {
+              to: routes.events.create,
+            },
+          },
+        ],
+      },
     ];
   }, []);
   //This is where the navigation buttons are mapped over to produce the links and such.

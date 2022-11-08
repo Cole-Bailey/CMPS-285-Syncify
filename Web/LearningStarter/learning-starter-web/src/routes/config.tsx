@@ -23,6 +23,10 @@ import { GroupUpdatePage } from "../pages/group-page/update-page/group-update";
 import { RecipeListingPage } from "../pages/recipes-page/listing-page/recipe-listing";
 import { RecipeCreatePage } from "../pages/recipes-page/create-page/recipe-create";
 import { RecipeUpdatePage } from "../pages/recipes-page/update-page/recipe-update";
+import { EventListingPage } from "../pages/events/listing-page/events-listing";
+import { EventUpdatePage } from "../pages/events/listing-page/update-page/events-update";
+import { EventCreatePage } from "../pages/events/listing-page/create-page/events-create";
+import App from "../components/calendar/calendar";
 
 //import { ShoppingListUpdatePage } from "../pages/shopping-lists/update-page/shopping-list-update";
 //This is where you will declare all of your routes (the ones that show up in the search bar)
@@ -60,6 +64,11 @@ export const routes = {
     listing: '/to-dos',
     create: "/to-dos/create",
     update: "/to-dos/:id",
+  },
+  events: {
+    listing: "/events",
+    create: "/events/create",
+    update: "/events/:id",
   },
 };
 
@@ -141,6 +150,15 @@ export const Routes = () => {
           </Route>
           <Route path={routes.toDos.update}exact>
             <ToDoUpdatePage />
+          </Route>
+          <Route path={routes.events.listing}exact>
+            <EventListingPage/>
+          </Route>
+          <Route path={routes.events.create}exact>
+            <EventCreatePage/>
+          </Route>
+          <Route path={routes.events.update}exact>
+            <EventUpdatePage/>
           </Route>
           {/* This should always come last.  
             If the path has no match, show page not found */}
