@@ -12,10 +12,9 @@ import { IngredientListingPage } from "../pages/ingredients/listing-page/ingredi
 import { IngredientCreatePage } from "../pages/ingredients/create-page/ingredient-create";
 import { IngredientUpdatePage } from "../pages/ingredients/update-page/ingredient-update";
 import { IngredientDeletePage } from "../pages/ingredients/delete-page/ingredient-delete";
-import { ShoppingListListingPage } from "../pages/shopping-lists/listing-page/shopping-lists-listing";
-import { ShoppingListCreatePage } from "../pages/shopping-lists/create-page/shopping-lists-create";
+import { ShoppingListListingPage } from "../pages/shopping-lists/listing-page/shopping-list-listing";
+import { ShoppingListCreatePage } from "../pages/shopping-lists/create-page/shopping-list-create";
 import { ShoppingListUpdatePage } from "../pages/shopping-lists/update-page/shopping-list-update";
-import { ShoppingListDeletePage } from "../pages/shopping-lists/delete-page/shopping-list-delete";
 import { UnitListingPage } from "../pages/units/listing-page/units-listing";
 import { UnitCreatePage } from "../pages/units/create-page/unit-create";
 import { UnitUpdatePage } from "../pages/units/update-page/unit-update";
@@ -32,12 +31,13 @@ import { RecipeDeletePage } from "../pages/recipes-page/delete-page/recipe-delet
 import { UsersCreatePage } from "../pages/users-page/create-page/user-create";
 import { UsersListingPage } from "../pages/users-page/listing-page/user-listing";
 import { UsersUpdatePage } from "../pages/users-page/update-page/user-update";
-import App from "../components/calendar/calendar"
 import { MealTypeDeletePage } from "../pages/meal-types/delete-page/meal-type-delete";
-import { MemberRoleListingPage } from "../pages/member-role-page/listing-page/member-role-listing";
-import { MemberRoleDeletePage } from "../pages/member-role-page/delete-page/member-role-delete";
+import { MemberRoleListingPage } from "../pages/member-role-page/listing-page/member-role-listing-page";
 import { MemberRoleCreatePage } from "../pages/member-role-page/create-page/member-role-create";
 import { MemberRoleUpdatePage } from "../pages/member-role-page/update-page/member-role-update";
+import { MemberRoleDeletePage } from "../pages/member-role-page/delete-page/member-role-delete";
+import App from "../components/calendar/calendar"
+
 
 //import { ShoppingListUpdatePage } from "../pages/shopping-lists/update-page/shopping-list-update";
 //This is where you will declare all of your routes (the ones that show up in the search bar)
@@ -194,9 +194,6 @@ export const Routes = () => {
           </Route>
           <Route path={routes.units.update} exact>
             <UnitUpdatePage />
-          </Route>
-          <Route path={routes.shoppingLists.delete} exact>
-            <ShoppingListDeletePage />
           </Route>
           <Route path={routes.toDos.listing} exact>
             <ToDoListingPage />
