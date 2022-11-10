@@ -2,12 +2,13 @@ import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { Button, Header, Input } from "semantic-ui-react";
-import { ApiResponse, UnitGetDto, UnitUpdateDto } from "../../../constants/types";
+import { ApiResponse, UnitGetDto } from "../../../constants/types";
 import { useRouteMatch } from "react-router-dom";
 import { routes } from "../../../routes/config";
 import { useHistory } from "react-router-dom";
-import "./unit-update.css";
-export const UnitUpdatePage = () => {
+import "./unit-delete.css";
+
+export const UnitDeletePage = () => {
     const history = useHistory();
     let match = useRouteMatch<{id: string}>();
     const id = match.params.id;
@@ -30,10 +31,10 @@ export const UnitUpdatePage = () => {
         fetchUnits();
     }, [id]);
 
-    const onSubmit = async (values: UnitUpdateDto) => {
-        const response = await axios.put<ApiResponse<UnitGetDto>>(
+    const onSubmit = async () => {
+        const response = await axios.delete<ApiResponse<UnitGetDto>>(
             `/api/units/${id}`,
-            values
+            
         );
         
             if (response.data.hasErrors) {
@@ -48,29 +49,31 @@ export const UnitUpdatePage = () => {
         <>
         {unit &&   (
             <Formik initialValues={unit} onSubmit={onSubmit}>
+            <div className="unit-delete-container">
             <Form>
-            <Header>Units</Header>
+            <Header>Delete Unit</Header>
 
-            <div className="unit-update-container">
+                <div className="unit-delete-container">
                     <label htmlFor="name">Name</label>
                 </div>
-                <div className="unit-update-container">
+                <div className="unit-delete-container">
                 <Field id="name" name="name">
                     {({field}) => <Input {...field} />}
                 </Field>
                 </div>
-                <div className="unit-update-container">
+                <div className="unit-delete-container">
                     <label htmlFor="name">Abbreviation</label>
                 </div>
-                <div className="unit-update-container">
+                <div className="unit-delete-container">
                 <Field id="abbreviation" name="abbreviation">
                     {({field}) => <Input {...field} />}
                 </Field>
                 </div>
-                <div className="unit-update-container">
-                <Button type="submit">Submit</Button>
+                <div className="unit-delete-container">
+                <Button color="red" type="submit">Delete</Button>
                 </div>
             </Form>
+            </div>
         </Formik>
         )}
         </>

@@ -12,13 +12,14 @@ import { IngredientListingPage } from "../pages/ingredients/listing-page/ingredi
 import { IngredientCreatePage } from "../pages/ingredients/create-page/ingredient-create";
 import { IngredientUpdatePage } from "../pages/ingredients/update-page/ingredient-update";
 import { IngredientDeletePage } from "../pages/ingredients/delete-page/ingredient-delete";
-import { ShoppingListListingPage } from "../pages/shopping-lists/listing-page/shopping-lists-listing";
-import { ShoppingListCreatePage } from "../pages/shopping-lists/create-page/shopping-lists-create";
+import { ShoppingListListingPage } from "../pages/shopping-lists/listing-page/shopping-list-listing";
+import { ShoppingListCreatePage } from "../pages/shopping-lists/create-page/shopping-list-create";
 import { ShoppingListUpdatePage } from "../pages/shopping-lists/update-page/shopping-list-update";
 import { ShoppingListDeletePage } from "../pages/shopping-lists/delete-page/shopping-list-delete";
 import { UnitListingPage } from "../pages/units/listing-page/units-listing";
 import { UnitCreatePage } from "../pages/units/create-page/unit-create";
 import { UnitUpdatePage } from "../pages/units/update-page/unit-update";
+import { UnitDeletePage } from "../pages/units/delete-page/unit-delete";
 import { ToDoListingPage } from "../pages/to-dos/listing-page/listing page/to-dos-listing";
 import { ToDoCreatePage } from "../pages/to-dos/listing-page/create page/to-dos-create";
 import { ToDoUpdatePage } from "../pages/to-dos/listing-page/update page/to-dos-update";
@@ -34,10 +35,10 @@ import { UsersListingPage } from "../pages/users-page/listing-page/user-listing"
 import { UsersUpdatePage } from "../pages/users-page/update-page/user-update";
 import App from "../components/calendar/calendar"
 import { MealTypeDeletePage } from "../pages/meal-types/delete-page/meal-type-delete";
-import { MemberRoleListingPage } from "../pages/member-role-page/listing-page/member-role-listing";
-import { MemberRoleDeletePage } from "../pages/member-role-page/delete-page/member-role-delete";
-import { MemberRoleCreatePage } from "../pages/member-role-page/create-page/member-role-create";
-import { MemberRoleUpdatePage } from "../pages/member-role-page/update-page/member-role-update";
+//import { MemberRoleListingPage } from "../pages/member-role-page/listing-page/member-role-listing";
+//import { MemberRoleDeletePage } from "../pages/member-role-page/delete-page/member-role-delete";
+//import { MemberRoleCreatePage } from "../pages/member-role-page/create-page/member-role-create";
+//import { MemberRoleUpdatePage } from "../pages/member-role-page/update-page/member-role-update";
 
 //import { ShoppingListUpdatePage } from "../pages/shopping-lists/update-page/shopping-list-update";
 //This is where you will declare all of your routes (the ones that show up in the search bar)
@@ -94,7 +95,8 @@ export const routes = {
   units: {
     listing: '/units',
     create: '/units/create',
-    update: '/units/:id'
+    update: '/units/:id',
+    delete: '/units/delete/:id'
   }
 };
 
@@ -195,6 +197,9 @@ export const Routes = () => {
           <Route path={routes.units.update} exact>
             <UnitUpdatePage />
           </Route>
+          <Route path={routes.units.delete} exact>
+            <UnitDeletePage />
+          </Route>
           <Route path={routes.shoppingLists.delete} exact>
             <ShoppingListDeletePage />
           </Route>
@@ -207,7 +212,7 @@ export const Routes = () => {
           <Route path={routes.toDos.update}exact>
             <ToDoUpdatePage />
           </Route>
-          <Route path={routes.memberRoles.listing}exact>
+          {/* <Route path={routes.memberRoles.listing}exact>
             <MemberRoleListingPage />
           </Route>
           <Route path={routes.memberRoles.create}exact>
@@ -218,7 +223,7 @@ export const Routes = () => {
           </Route>
           <Route path={routes.memberRoles.delete}exact>
             <MemberRoleDeletePage />
-          </Route>
+          </Route> */}
           {/* This should always come last.  
             If the path has no match, show page not found */}
           <Route path="*" exact>

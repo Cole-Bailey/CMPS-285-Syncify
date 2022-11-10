@@ -27,13 +27,15 @@ export const ShoppingListCreatePage = () => {
                 </Header>
             });
         } else {
-            history.push(routes.shoppingList.listing)
+            history.push(routes.shoppingLists.listing)
         }
     };
     return (
         <>
         <Formik initialValues= {initialValues} onSubmit={onSubmit}>
+                <div className="shopping-list-create-container">
             <Form>
+                <Header>Create Shopping List Item</Header>
                 <div>
                     <label htmlFor="name">Name</label>
                 </div>
@@ -47,6 +49,7 @@ export const ShoppingListCreatePage = () => {
                     </Button>
                 </div>
             </Form>
+            </div>
         </Formik>
         </>
     );

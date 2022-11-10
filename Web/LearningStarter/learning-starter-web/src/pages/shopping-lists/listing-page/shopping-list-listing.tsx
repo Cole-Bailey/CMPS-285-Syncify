@@ -34,13 +34,14 @@ export const ShoppingListListingPage = () => {
     <Header>Shopping List Items</Header>   
       {shoppingLists && (
       <>
-            <Button type="button" onClick={() => history.push(routes.shoppingList.create)}>+ Create</Button>
+            <Button type="button" onClick={() => history.push(routes.shoppingLists.create)}>+ Create</Button>
             <Table striped celled>
             <Table.Header>
                 <Table.Row>
                     <Table.HeaderCell width= {1}>Edit Item</Table.HeaderCell>
                     <Table.HeaderCell>Id</Table.HeaderCell>
                     <Table.HeaderCell>Name</Table.HeaderCell>
+                    <Table.HeaderCell>Delete Item</Table.HeaderCell>
                 </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -53,13 +54,18 @@ export const ShoppingListListingPage = () => {
                             name="pencil"
                             onClick={() =>
                             history.push(
-                                routes.shoppingList.update.replace(":id", `${shoppingList.id}`)
+                                routes.shoppingLists.update.replace(":id", `${shoppingList.id}`)
                             )
                         }
                         />
                     </Table.Cell>
                     <Table.Cell>{shoppingList.id}</Table.Cell>
                     <Table.Cell>{shoppingList.name}</Table.Cell>
+                    <Table.Cell>
+                      <Button color="red" type="Button" onClick={() => 
+                        history.push(routes.shoppingLists.delete.replace(
+                          ":id", `${shoppingList.id}`))}> Delete </Button>
+                    </Table.Cell>
                     </Table.Row>
                     );
                 })}

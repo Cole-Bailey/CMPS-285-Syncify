@@ -1,13 +1,14 @@
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
-import { Button, Input } from "semantic-ui-react";
-import { ApiResponse, ShoppingListGetDto, ShoppingListUpdateDto } from "../../../constants/types";
+import { Button, Header, Input } from "semantic-ui-react";
+import { ApiResponse, ShoppingListGetDto } from "../../../constants/types";
 import { useRouteMatch } from "react-router-dom";
 import { routes } from "../../../routes/config";
 import { useHistory } from "react-router-dom";
+import "./shopping-list-delete.css"
 
-export const ShoppingListUpdatePage = () => {
+export const ShoppingListDeletePage = () => {
     const history = useHistory();
     let match = useRouteMatch<{id: string}>();
     const id = match.params.id;
@@ -30,10 +31,10 @@ export const ShoppingListUpdatePage = () => {
         fetchShoppingList();
     }, [id]);
 
-    const onSubmit = async (values: ShoppingListUpdateDto) => {
-        const response = await axios.put<ApiResponse<ShoppingListGetDto>>(
+    const onSubmit = async () => {
+        const response = await axios.delete<ApiResponse<ShoppingListGetDto>>(
             `/api/shopping-lists/${id}`,
-            values
+            
         );
         
             if (response.data.hasErrors) {
@@ -50,17 +51,22 @@ export const ShoppingListUpdatePage = () => {
         
         {shoppingList &&   (
             <Formik initialValues={shoppingList} onSubmit={onSubmit}>
+                <div className="shopping-list-delete-container">
                 <Form>
-                    <div>
+                    <Header>Delete Item</Header>
+                    <div className="shopping-list-delete-container">
                         <label htmlFor="name">Name</label>
                     </div>
+                    <div className="shopping-list-delete-container">
                     <Field id="name" name="name">
                         {({field}) => <Input {...field} />}
                     </Field>
-                    <div>
-                    <Button type="submit">Submit</Button>
+                    </div>
+                    <div className="shopping-list-delete-container">
+                    <Button color="red" type="submit">Confirm Delete</Button>
                     </div>
                 </Form>
+                </div>
             </Formik>
         )}
         </>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React from "react";
-import { Button, Input } from "semantic-ui-react";
+import { Button, Header, Input } from "semantic-ui-react";
 import {
     ApiResponse,
     UnitCreateDto,
@@ -10,7 +10,7 @@ import {
 import { useHistory } from "react-router-dom";
 import { routes } from "../../../routes/config";
 import { BaseUrl } from "../../../constants/env-cars";
-import "./unit-create";
+import "./unit-create.css";
 
 const initialValues: UnitCreateDto = {
     name: "",
@@ -38,25 +38,30 @@ export const UnitCreatePage = () => {
     return (
     <>
         <Formik initialValues={initialValues} onSubmit={onSubmit}>
+        <div className="unit-create-container">
             <Form>
-                <div>
+                <Header>Create Unit</Header>
+                <div className="unit-create-container">
                     <label htmlFor="name">Name</label>
                 </div>
+                <div className="unit-create-container">
                 <Field id="name" name="name" >
                     {({ field }) => <Input {...field} />}
-                </Field>                
-                <div >
+                </Field>        
+                </div>        
+                <div className="unit-create-container">
                     <label htmlFor="abbreviation">Abbreviation</label>
                 </div>
-                <div >
+                <div className="unit-create-container">
                 <Field id="abbreviation" name="abbreviation" >
                     {({ field }) => <Input {...field} />}
                 </Field>
                 </div>
-                <div >
+                <div className="unit-create-container">
                     <Button type="submit">Create</Button>
                 </div>
             </Form>
+            </div>
         </Formik>
     </>
     );
