@@ -18,6 +18,7 @@ import { ShoppingListUpdatePage } from "../pages/shopping-lists/update-page/shop
 import { UnitListingPage } from "../pages/units/listing-page/units-listing";
 import { UnitCreatePage } from "../pages/units/create-page/unit-create";
 import { UnitUpdatePage } from "../pages/units/update-page/unit-update";
+import { UnitDeletePage } from "../pages/units/delete-page/unit-delete";
 import { ToDoListingPage } from "../pages/to-dos/listing-page/listing page/to-dos-listing";
 import { ToDoCreatePage } from "../pages/to-dos/listing-page/create page/to-dos-create";
 import { ToDoUpdatePage } from "../pages/to-dos/listing-page/update page/to-dos-update";
@@ -94,7 +95,8 @@ export const routes = {
   units: {
     listing: '/units',
     create: '/units/create',
-    update: '/units/:id'
+    update: '/units/:id',
+    delete: '/units/delete/:id'
   }
 };
 
@@ -195,6 +197,12 @@ export const Routes = () => {
           <Route path={routes.units.update} exact>
             <UnitUpdatePage />
           </Route>
+          <Route path={routes.units.delete} exact>
+            <UnitDeletePage />
+          </Route>
+          <Route path={routes.shoppingLists.delete} exact>
+            <ShoppingListDeletePage />
+          </Route>
           <Route path={routes.toDos.listing} exact>
             <ToDoListingPage />
           </Route>
@@ -226,3 +234,4 @@ export const Routes = () => {
     </>
   );
 };
+

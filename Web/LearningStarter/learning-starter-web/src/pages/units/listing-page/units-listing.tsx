@@ -5,6 +5,7 @@ import { BaseUrl } from "../../../constants/env-cars";
 import { ApiResponse, UnitGetDto } from "../../../constants/types";
 import {useHistory} from "react-router-dom";
 import { routes } from "../../../routes/config";
+import "./units-listing.css";
 
 export const UnitListingPage = () => {
   const [units, setUnit] = useState<UnitGetDto[]>();
@@ -40,7 +41,8 @@ export const UnitListingPage = () => {
                 <Table.HeaderCell width= {1}>Edit Unit</Table.HeaderCell>
                     <Table.HeaderCell>Id</Table.HeaderCell>
                     <Table.HeaderCell>Name</Table.HeaderCell>
-                    <Table.HeaderCell>Abbreviation</Table.HeaderCell>
+                    <Table.HeaderCell>Abbreviation</Table.HeaderCell>  
+                    <Table.HeaderCell>Delete Unit</Table.HeaderCell>
                 </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -61,6 +63,9 @@ export const UnitListingPage = () => {
                     <Table.Cell>{unit.id}</Table.Cell>
                     <Table.Cell>{unit.name}</Table.Cell>
                     <Table.Cell>{unit.abbreviation}</Table.Cell>
+                    <Table.Cell>
+                      <Button type="Button" color="red" onClick={() => history.push(routes.units.delete.replace(":id", `${unit.id}`))}> Delete </Button>
+                    </Table.Cell>
                     </Table.Row>
                     );
                 })}
