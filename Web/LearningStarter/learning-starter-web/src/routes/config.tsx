@@ -230,7 +230,7 @@ export const Routes = () => {
             <NotFoundPage />
           </Route>
         </Switch>
-      {/* </PageWrapper> */}
+      </PageWrapper>
     </>
   );
 };
