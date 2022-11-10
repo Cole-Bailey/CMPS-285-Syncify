@@ -1,32 +1,28 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import { IconContext } from 'react-icons';
-import { Dropdown, Image, Menu, Icon, SemanticICONS } from "semantic-ui-react";
-import logo from "../../assets/logo.png";
-import { UserGetDto } from "../../constants/types";
 import "../../components/LandingPageNav/landingpagenav.css"
 
-function Navbar() {
+export const Navbar = () => {
+  
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
+
   
-  type PrimaryNavigationProps = {
-    user?: UserGetDto;
-  };
   return (
     <>
-      <IconContext.Provider value={{ color: '#fff' }}>
-        <div className='navbar'>
+      <IconContext.Provider value={{}}>
+        <div className='nav-bar'>
           <Link to='#' className='menu-bars'>
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
-          <div className='Logo'>
-          Syncify
         </div>
+        <div className='Logo'>
+          Syncify
         </div>
 
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -51,6 +47,6 @@ function Navbar() {
       </IconContext.Provider>
     </>
   );
-}
+};
 
-export default Navbar;
+//export default Navbar;

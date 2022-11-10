@@ -15,6 +15,7 @@ import { IngredientDeletePage } from "../pages/ingredients/delete-page/ingredien
 import { ShoppingListListingPage } from "../pages/shopping-lists/listing-page/shopping-list-listing";
 import { ShoppingListCreatePage } from "../pages/shopping-lists/create-page/shopping-list-create";
 import { ShoppingListUpdatePage } from "../pages/shopping-lists/update-page/shopping-list-update";
+import { ShoppingListDeletePage } from "../pages/shopping-lists/delete-page/shopping-list-delete";
 import { UnitListingPage } from "../pages/units/listing-page/units-listing";
 import { UnitCreatePage } from "../pages/units/create-page/unit-create";
 import { UnitUpdatePage } from "../pages/units/update-page/unit-update";
