@@ -5,7 +5,6 @@ import { BaseUrl } from "../../../constants/env-cars";
 import { ApiResponse, MealTypeGetDto } from "../../../constants/types";
 import {useHistory} from "react-router-dom";
 import { routes } from "../../../routes/config";
-import { GroupsButton, HomeButton, IngredientsButton, MealTypesButton, RecipesButton, ShoppingListsButton } from "../../../components/buttons/navigation-buttons";
 
 export const MealTypeListingPage = () => {
     const [mealTypes, setMealTypes] = useState<MealTypeGetDto[]>();
@@ -79,12 +78,6 @@ export const MealTypeListingPage = () => {
             </Table>
                 </>
             )}            
-            <HomeButton></HomeButton>
-            <GroupsButton></GroupsButton>
-            <IngredientsButton></IngredientsButton>
-            <ShoppingListsButton></ShoppingListsButton>
-            <RecipesButton></RecipesButton>
-            <MealTypesButton></MealTypesButton>
         </Segment>
     );
 };

@@ -5,7 +5,7 @@ import { BaseUrl } from "../../../constants/env-cars";
 import { ApiResponse, RecipeGetDto } from "../../../constants/types";
 import {useHistory} from "react-router-dom";
 import { routes } from "../../../routes/config";
-import { HomeButton, MealTypesButton, GroupsButton, ShoppingListsButton, MemberRolesButton, IngredientsButton } from "../../../components/buttons/navigation-buttons";
+
 
 export const RecipeListingPage = () => {
     const [recipes, setRecipes] = useState<RecipeGetDto[]>();
@@ -89,12 +89,6 @@ export const RecipeListingPage = () => {
             </Table>
                 </>
             )}
-            <HomeButton></HomeButton>
-            <MemberRolesButton></MemberRolesButton>
-            <GroupsButton></GroupsButton>
-            <IngredientsButton></IngredientsButton>
-            <ShoppingListsButton></ShoppingListsButton>
-            <MealTypesButton></MealTypesButton>
-    </Segment>
+        </Segment>
     );
 };

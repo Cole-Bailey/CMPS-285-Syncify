@@ -1,4 +1,5 @@
-import "./navigation.css";
+import "../LandingPageNav/landingpagenav.css"
+//import "./navigation.css";
 import React, { useMemo } from "react";
 import { NavLink, NavLinkProps } from "react-router-dom";
 import { Dropdown, Image, Menu, Icon, SemanticICONS } from "semantic-ui-react";
@@ -201,7 +202,7 @@ export const PrimaryNavigation: React.FC<PrimaryNavigationProps> = ({
           <Menu.Menu position="right">
             <Dropdown
               item
-              className="user-icon"
+              className="user-logo"
               trigger={
                 <span
                   className="user-icon-initial"

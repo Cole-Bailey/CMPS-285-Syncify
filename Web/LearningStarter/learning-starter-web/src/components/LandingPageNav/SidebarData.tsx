@@ -12,32 +12,38 @@ export const SidebarData = [
   },
   {
     title: 'Calendar',
-    path: '/reports',
+    path: '/calendar',
     icon: <IoIcons.IoIosPaper />,
     cName: 'nav-text'
   },
   {
     title: 'Todos',
-    path: '/products',
+    path: '/to-dos',
     icon: <FaIcons.FaCartPlus />,
     cName: 'nav-text'
   },
   {
     title: 'Events',
-    path: '/team',
+    path: '/',
     icon: <IoIcons.IoMdPeople />,
     cName: 'nav-text'
   },
   {
-    title: 'Recipes',
-    path: '/messages',
-    icon: <FaIcons.FaEnvelopeOpenText />,
+    title: 'Shopping Lists',
+    path: '/shopping-lists',
+    icon: <IoIcons.IoMdCart />,
     cName: 'nav-text'
   },
   {
-    title: 'Other Buttons',
-    path: '/support',
-    icon: <IoIcons.IoMdHelpCircle />,
+    title: 'Recipes',
+    path: '/recipes',
+    icon: <IoIcons.IoMdNutrition />,
     cName: 'nav-text'
-  }
+  },
+  {
+    title: '...',
+    path: '/',
+    icon: <AiIcons.AiFillThunderbolt />,
+    cName: 'nav-text'
+  },
 ];

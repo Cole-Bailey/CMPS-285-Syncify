@@ -8,7 +8,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./calendar.css";
-import { HomeButton, MealTypesButton, GroupsButton, IngredientsButton, ShoppingListsButton, RecipesButton } from "../buttons/navigation-buttons";
+
 
 const locales = {
     "en-US": require("date-fns/locale/en-US"),
@@ -81,14 +81,7 @@ function App() {
                   </button>
               </div>
               <Calendar localizer={localizer} events={allEvents} startAccessor="start" endAccessor="end" style={{ height: 500, margin: "50px" }} />
-                <div>
-                    <HomeButton></HomeButton>
-                    <MealTypesButton></MealTypesButton>
-                    <GroupsButton></GroupsButton>
-                    <IngredientsButton></IngredientsButton>
-                    <ShoppingListsButton></ShoppingListsButton>
-                    <RecipesButton></RecipesButton>
-                </div>
+                
           </div>
           
       );
