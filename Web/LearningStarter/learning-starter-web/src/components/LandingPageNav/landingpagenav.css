@@ -1,8 +1,11 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Rajdhani&display=swap'); */
 @import  url(https://fonts.gstatic.com/s/sacramento/v13/buEzpo6gcdjy0EiZMBUG4C0f_Q.woff2);
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani&display=swap');
 
   .navbar {
-    background-color: transparent;
+    /* background-color: transparent; */
+    font-family: 'Rajdhani', sans-serif;
+    background-color: #1E1014;
     opacity: 0.5;
     filter: alpha(opacity=50);
     height: 80px;
@@ -14,7 +17,7 @@
     width: 100%;
     height: 90px;
     margin: 0 auto;
-    background-color: #ffffff;
+    background-color: #1E1014;;
   }
   
   /*Formatting for "Hamburger" Menu button*/
@@ -56,7 +59,7 @@
 
   /*Formatting for Background of full unsectioned NavBar*/
   .nav-menu {
-    background-image: linear-gradient( 135deg, #5495e4 10%, #ecca86 50%);
+    background-color:#F5EEEE;;
     width: 250px;
     height: 100vh;
     display: flex;
@@ -76,7 +79,7 @@
   /*Formatting for Background of NavBar Buttons Section*/
   .nav-text {
     display: flex;
-    background-color:#b49595;
+    background-color: #F5EEEE;
     justify-content: start;
     align-items: center;
     padding: 8px 0px 8px 16px;
@@ -99,7 +102,7 @@
   
   /*Formatting for Navbar Selections on hover*/
   .nav-text a:hover {
-    background-color: #d2122f9a;
+    background-color: #5F758E;
     color: #ffffff;
     font-size: 15pt;
   }
@@ -110,7 +113,7 @@
   
   /*Formatting for background of closing side bar*/
   .navbar-toggle {
-    background-color: #817475;
+    background-color: #5F758E;
     width: 100%;
     height: 2.8%;
     display: flex;
