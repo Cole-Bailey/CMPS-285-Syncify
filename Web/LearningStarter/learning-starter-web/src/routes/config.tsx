@@ -38,6 +38,9 @@ import { MemberRoleListingPage } from "../pages/member-role-page/listing-page/me
 import { MemberRoleCreatePage } from "../pages/member-role-page/create-page/member-role-create";
 import { MemberRoleUpdatePage } from "../pages/member-role-page/update-page/member-role-update";
 import { MemberRoleDeletePage } from "../pages/member-role-page/delete-page/member-role-delete";
+import { EventListingPage } from "../pages/events-page/listing-page/events-listing";
+import { EventCreatePage } from "../pages/events-page/create-page/events-create";
+import { EventUpdatePage } from "../pages/events-page/update-page/events-update";
 import App from "../components/calendar/calendar"
 
 
@@ -98,7 +101,12 @@ export const routes = {
     create: '/units/create',
     update: '/units/:id',
     delete: '/units/delete/:id'
-  }
+  },
+  events: {
+    listing: '/events',
+    create: '/events/create',
+    update: '/events/:id'
+  },
 };
 
 
@@ -224,6 +232,15 @@ export const Routes = () => {
           </Route>
           <Route path={routes.memberRoles.delete}exact>
             <MemberRoleDeletePage />
+          </Route>
+          <Route path={routes.events.listing}>
+            <EventListingPage/>
+          </Route>
+          <Route path={routes.events.create}>
+            <EventCreatePage/>
+          </Route>
+          <Route path={routes.events.update}>
+            <EventUpdatePage/>
           </Route>
           {/* This should always come last.  
             If the path has no match, show page not found */}
