@@ -2,18 +2,13 @@ import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { Button, Input } from "semantic-ui-react";
-import {
-  ApiResponse,
-  UserCreateDto,
-  UserGetDto,
-  UserUpdateDto,
-} from "../../../constants/types";
+import { ApiResponse, UserGetDto } from "../../../constants/types";
 import { useRouteMatch } from "react-router-dom";
 import { routes } from "../../../routes/config";
 import { useHistory } from "react-router-dom";
-import "./user-update.css";
+import "../delete-page/user-delete.css";
 
-export const UsersUpdatePage = () => {
+export const UsersDeletePage = () => {
   const history = useHistory();
   let match = useRouteMatch<{ id: string }>();
   const id = match.params.id;
@@ -24,11 +19,6 @@ export const UsersUpdatePage = () => {
       const response = await axios.get<ApiResponse<UserGetDto>>(
         `/api/users/${id}`
       );
-
-      // const fetchUserOptions = async() => {
-      //   const response = await axios.get<ApiResponse<UserGetDto>>(
-      //     `/api/users/${id}`
-      // };
 
       if (response.data.hasErrors) {
         console.log(response.data.errors);
@@ -41,10 +31,9 @@ export const UsersUpdatePage = () => {
     fetchUser();
   }, [id]);
 
-  const onSubmit = async (values: UserUpdateDto) => {
-    const response = await axios.put<ApiResponse<UserGetDto>>(
-      `/api/users/${id}`,
-      values
+  const onSubmit = async () => {
+    const response = await axios.delete<ApiResponse<UserGetDto>>(
+      `/api/users/${id}`
     );
 
     if (response.data.hasErrors) {
@@ -59,69 +48,58 @@ export const UsersUpdatePage = () => {
   return (
     <>
       {user && (
-        <Formik
-          initialValues={{ ...user } as unknown as UserCreateDto}
-          onSubmit={onSubmit}
-        >
+        <Formik initialValues={user} onSubmit={onSubmit}>
           <Form>
-            <div className="user-update-container">
+            <div className="user-delete-container">
               <label htmlFor="profileColorId">Profile Color</label>
             </div>
-            <div className="user-update-container">
+            <div className="user-delete-container">
               <Field id="profileColorId" name="profileColorId">
                 {({ field }) => <Input type="number" {...field} />}
               </Field>
             </div>
-            <div className="user-update-container">
+            <div className="user-delete-container">
               <label htmlFor="firstName">First Name</label>
             </div>
-            <div className="user-update-container">
+            <div className="user-delete-container">
               <Field id="firstName" name="firstName">
                 {({ field }) => <Input {...field} />}
               </Field>
             </div>
-            <div className="user-update-container">
+            <div className="user-delete-container">
               <label htmlFor="lastName">Last Name</label>
             </div>
-            <div className="user-update-container">
+            <div className="user-delete-container">
               <Field id="lastName" name="lastName">
                 {({ field }) => <Input {...field} />}
               </Field>
             </div>
-            <div className="user-update-container">
+            <div className="user-delete-container">
               <label htmlFor="username">Username</label>
             </div>
-            <div className="user-update-container">
+            <div className="user-delete-container">
               <Field id="username" name="username">
                 {({ field }) => <Input {...field} />}
               </Field>
             </div>
-            <div className="user-update-container">
-              <label htmlFor="password">Password</label>
-            </div>
-            <div className="user-update-container">
-              <Field id="password" name="password">
-                {({ field }) => <Input {...field} />}
-              </Field>
-            </div>
-            <div className="user-update-container">
+            <div className="user-delete-container">
               <label htmlFor="phoneNumber">Phone Number</label>
             </div>
-            <div className="user-update-container">
+            <div className="user-delete-container">
               <Field id="phoneNumber" name="phoneNumber">
                 {({ field }) => <Input {...field} />}
               </Field>
             </div>
-            <div className="user-update-container">
+            <div className="user-delete-container">
               <label htmlFor="email">Email</label>
             </div>
-            <div className="user-update-container">
+            <div className="user-delete-container">
               <Field id="email" name="email">
                 {({ field }) => <Input {...field} />}
               </Field>
             </div>
 
-            <div>
+            <div className="user-delete-container">
               <Button type="submit">Submit</Button>
             </div>
           </Form>

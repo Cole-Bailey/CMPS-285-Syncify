@@ -14,6 +14,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "axios": "^0.21.1",
+    "bootstrap": "^5.2.2",
     "cleave": "^1.0.2",
     "date-fns": "^2.29.3",
     "emotion": "^11.0.0",
@@ -28,11 +29,13 @@
     "react-icons": "^4.6.0",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
+    "react-status-alert": "^1.1.5",
     "react-use": "^17.3.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
     "typescript": "3.9.7",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",

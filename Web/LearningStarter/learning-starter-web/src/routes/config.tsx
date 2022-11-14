@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { LandingPage } from "../pages/landing-page/landing-page";
 import { NotFoundPage } from "../pages/not-found";
 import { useUser } from "../authentication/use-auth";
@@ -30,9 +30,9 @@ import { RecipeListingPage } from "../pages/recipes-page/listing-page/recipe-lis
 import { RecipeCreatePage } from "../pages/recipes-page/create-page/recipe-create";
 import { RecipeUpdatePage } from "../pages/recipes-page/update-page/recipe-update";
 import { RecipeDeletePage } from "../pages/recipes-page/delete-page/recipe-delete";
-import { UsersCreatePage } from "../pages/users-page/create-page/user-create";
 import { UsersListingPage } from "../pages/users-page/listing-page/user-listing";
 import { UsersUpdatePage } from "../pages/users-page/update-page/user-update";
+import { UsersDeletePage } from "../pages/users-page/delete-page/user-delete";
 import { MealTypeDeletePage } from "../pages/meal-types/delete-page/meal-type-delete";
 import { MemberRoleListingPage } from "../pages/member-role-page/listing-page/member-role-listing-page";
 import { MemberRoleCreatePage } from "../pages/member-role-page/create-page/member-role-create";
@@ -40,75 +40,76 @@ import { MemberRoleUpdatePage } from "../pages/member-role-page/update-page/memb
 import { MemberRoleDeletePage } from "../pages/member-role-page/delete-page/member-role-delete";
 import { EventListingPage } from "../pages/events-page/listing-page/events-listing";
 import { EventCreatePage } from "../pages/events-page/create-page/events-create";
-import { EventUpdatePage } from "../pages/events-page/update-page/events-update";
-import App from "../components/calendar/calendar"
-
+import App from "../components/calendar/calendar";
+import UserCreateModal from "../pages/users-page/create-page/user-create";
+import { LoginPage } from "../pages/login-page/login-page";
 
 //import { ShoppingListUpdatePage } from "../pages/shopping-lists/update-page/shopping-list-update";
 //This is where you will declare all of your routes (the ones that show up in the search bar)
 export const routes = {
   root: `/`,
   home: `/home`,
+  user: "/user",
+  register: "/register",
+  calendar: "/calendar",
   users: {
-    listing: '/users',
+    listing: "/users",
     create: "/users/create",
     update: "/users/:id",
+    delete: "/users/delete/:id",
   },
-  user: `/user`,
-  calendar: '/calendar',
   mealTypes: {
-    listing: '/meal-types',
+    listing: "/meal-types",
     create: "/meal-types/create",
     update: "/meal-types/:id",
     delete: "/meal-types/delete/:id",
   },
   ingredients: {
-    listing: '/ingredients',
+    listing: "/ingredients",
     create: "/ingredients/create",
     update: "/ingredients/:id",
     delete: "/ingredients/delete/:id",
   },
-  memberRoles:{
-    listing: '/member-roles',
+  memberRoles: {
+    listing: "/member-roles",
     create: "/member-roles/create",
     update: "/member-roles/:id",
-    delete: "/member-roles/delete/:id"
+    delete: "/member-roles/delete/:id",
   },
   recipes: {
-    listing: '/recipes',
+    listing: "/recipes",
     create: "/recipes/create",
     update: "/recipes/:id",
-    delete: "/recipes/delete/:id"
+    delete: "/recipes/delete/:id",
   },
   shoppingLists: {
-    listing: '/shopping-lists',
+    listing: "/shopping-lists",
     create: "/shopping-lists/create",
     update: "/shopping-lists/:id",
-    delete: "/shopping-lists/delete/:id"
+    delete: "/shopping-lists/delete/:id",
   },
-  group:{
-    listing: '/group',
-    create: '/group/create',
-    update: '/group/:id',
+  group: {
+    listing: "/group",
+    create: "/group/create",
+    update: "/group/:id",
   },
   toDos: {
-    listing: '/to-dos',
+    listing: "/to-dos",
     create: "/to-dos/create",
     update: "/to-dos/:id",
   },
   units: {
-    listing: '/units',
-    create: '/units/create',
-    update: '/units/:id',
-    delete: '/units/delete/:id'
+    listing: "/units",
+    create: "/units/create",
+    update: "/units/:id",
+    delete: "/units/delete/:id",
   },
   events: {
-    listing: '/events',
-    create: '/events/create',
-    update: '/events/:id'
+    listing: "/events",
+    create: "/events/create",
+    update: "/events/:id",
   },
 };
-
 
 //This is where you will tell React Router what to render when the path matches the route specified.
 export const Routes = () => {
@@ -119,6 +120,10 @@ export const Routes = () => {
       {/* The page wrapper is what shows the NavBar at the top, it is around all pages inside of here. */}
       <PageWrapper user={user}>
         <Switch>
+          {/* Going to route "localhost:5001/" will go to Login Page */}
+          <Route path={routes.root} exact>
+            <LoginPage />
+          </Route>
           {/* When path === / render LandingPage */}
           <Route path={routes.home} exact>
             <LandingPage />
@@ -127,21 +132,20 @@ export const Routes = () => {
           <Route path={routes.user} exact>
             <UserPage />
           </Route>
-          {/* Going to route "localhost:5001/" will go to homepage */}
-          <Route path={routes.root} exact>
-            <Redirect to={routes.home} />
-          </Route>
           <Route path={routes.calendar} exact>
-            <App/>
+            <App />
           </Route>
           <Route path={routes.users.create} exact>
-            <UsersCreatePage />
+            <UserCreateModal />
           </Route>
           <Route path={routes.users.listing} exact>
             <UsersListingPage />
           </Route>
           <Route path={routes.users.update} exact>
             <UsersUpdatePage />
+          </Route>
+          <Route path={routes.users.delete} exact>
+            <UsersDeletePage />
           </Route>
           <Route path={routes.mealTypes.listing} exact>
             <MealTypeListingPage />
@@ -178,7 +182,7 @@ export const Routes = () => {
           </Route>
           <Route path={routes.recipes.delete} exact>
             <RecipeDeletePage />
-          </Route>          
+          </Route>
           <Route path={routes.group.listing} exact>
             <GroupListingPage />
           </Route>
@@ -187,7 +191,7 @@ export const Routes = () => {
           </Route>
           <Route path={routes.group.update} exact>
             <GroupUpdatePage />
-          </Route>     
+          </Route>
           <Route path={routes.shoppingLists.create} exact>
             <ShoppingListCreatePage />
           </Route>
@@ -196,7 +200,7 @@ export const Routes = () => {
           </Route>
           <Route path={routes.shoppingLists.update} exact>
             <ShoppingListUpdatePage />
-          </Route> 
+          </Route>
           <Route path={routes.units.listing} exact>
             <UnitListingPage />
           </Route>
@@ -215,32 +219,29 @@ export const Routes = () => {
           <Route path={routes.toDos.listing} exact>
             <ToDoListingPage />
           </Route>
-          <Route path={routes.toDos.create}exact>
+          <Route path={routes.toDos.create} exact>
             <ToDoCreatePage />
           </Route>
-          <Route path={routes.toDos.update}exact>
+          <Route path={routes.toDos.update} exact>
             <ToDoUpdatePage />
           </Route>
-          <Route path={routes.memberRoles.listing}exact>
+          <Route path={routes.memberRoles.listing} exact>
             <MemberRoleListingPage />
           </Route>
-          <Route path={routes.memberRoles.create}exact>
+          <Route path={routes.memberRoles.create} exact>
             <MemberRoleCreatePage />
           </Route>
-          <Route path={routes.memberRoles.update}exact>
+          <Route path={routes.memberRoles.update} exact>
             <MemberRoleUpdatePage />
           </Route>
-          <Route path={routes.memberRoles.delete}exact>
+          <Route path={routes.memberRoles.delete} exact>
             <MemberRoleDeletePage />
           </Route>
           <Route path={routes.events.listing}>
-            <EventListingPage/>
+            <EventListingPage />
           </Route>
           <Route path={routes.events.create}>
-            <EventCreatePage/>
-          </Route>
-          <Route path={routes.events.update}>
-            <EventUpdatePage/>
+            <EventCreatePage />
           </Route>
           {/* This should always come last.  
             If the path has no match, show page not found */}
@@ -252,4 +253,3 @@ export const Routes = () => {
     </>
   );
 };
-

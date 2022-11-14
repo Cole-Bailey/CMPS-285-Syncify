@@ -1,4 +1,5 @@
 import "./login-page.css";
+import "../../App.css";
 import axios from "axios";
 import React, { useMemo } from "react";
 import { ApiResponse } from "../../constants/types";
@@ -7,6 +8,8 @@ import { Button, Input } from "semantic-ui-react";
 import { useAsyncFn } from "react-use";
 import { PageWrapper } from "../../components/page-wrapper/page-wrapper";
 import { loginUser } from "../../authentication/authentication-services";
+import SyncifyImg from "../../assets/Syncify.png";
+import UserCreateModal from "../../modals/user-create/user-create-modal";
 
 const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
@@ -73,11 +76,15 @@ export const LoginPage = () => {
                   <Button className="login-button" type="submit">
                     Login
                   </Button>
+                  <UserCreateModal />
                 </div>
               </div>
             </Form>
           </Formik>
         </div>
+      </div>
+      <div className="center">
+        <img src={SyncifyImg} alt="" />
       </div>
     </PageWrapper>
   );

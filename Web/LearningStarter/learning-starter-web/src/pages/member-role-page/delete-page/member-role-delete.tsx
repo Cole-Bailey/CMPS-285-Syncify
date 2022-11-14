@@ -9,63 +9,61 @@ import { useHistory } from "react-router-dom";
 import "./member-role-delete.css";
 
 export const MemberRoleDeletePage = () => {
-    const history = useHistory();
-    let match = useRouteMatch<{id: string}>();
-    const id = match.params.id;
-    const [memberRole, setMemberRole] = useState<MemberRoleGetDto>();
+	const history = useHistory();
+	let match = useRouteMatch<{ id: string }>();
+	const id = match.params.id;
+	const [memberRole, setMemberRole] = useState<MemberRoleGetDto>();
 
-    useEffect(() => {
-        const fetchMemberRole = async () => {
-        const response = await axios.get<ApiResponse<MemberRoleGetDto>>(
-            `/api/member-roles/${id}`
-        );
+	useEffect(() => {
+		const fetchMemberRole = async () => {
+			const response = await axios.get<ApiResponse<MemberRoleGetDto>>(
+				`/api/member-roles/${id}`
+			);
 
-        if (response.data.hasErrors){
-            console.log(response.data.errors);
-            return;
-        }
+			if (response.data.hasErrors) {
+				console.log(response.data.errors);
+				return;
+			}
 
-        setMemberRole(response.data.data);
-        }
-    
-        fetchMemberRole();
-    }, [id]);
+			setMemberRole(response.data.data);
+		};
 
-    const onSubmit = async () => {
-        const response = await axios.delete<ApiResponse<MemberRoleGetDto>>(
-            `/api/member-roles/${id}`,
-        );
-        
-            if (response.data.hasErrors) {
-                response.data.errors.forEach((err) => {
-                console.log(err.message);
-                });
-            } else {
-                history.push(routes.memberRoles.listing);
-            }
-    };
-    
-    return (
-        <>
-        
-        {memberRole &&   (
-            <Formik initialValues={memberRole} onSubmit={onSubmit}>
-                <Form>
-                    <div className="member-role-delete-container">
-                        <label htmlFor="name">Name</label>
-                    </div>
-                    <div className="member-role-delete-container">
-                    <Field id="name" name="name" >
-                        {({ field }) => <Input {...field} />}
-                    </Field>
-                    </div>
-                    <div className="member-role-delete-container">
-                        <Button type="submit">Delete</Button>
-                    </div>
-                </Form>
-            </Formik>
-        )}
-        </>
-        );
-    
+		fetchMemberRole();
+	}, [id]);
+
+	const onSubmit = async () => {
+		const response = await axios.delete<ApiResponse<MemberRoleGetDto>>(
+			`/api/member-roles/${id}`
+		);
+
+		if (response.data.hasErrors) {
+			response.data.errors.forEach((err) => {
+				console.log(err.message);
+			});
+		} else {
+			history.push(routes.memberRoles.listing);
+		}
+	};
+
+	return (
+		<>
+			{memberRole && (
+				<Formik initialValues={memberRole} onSubmit={onSubmit}>
+					<Form>
+						<div className="member-role-delete-container">
+							<label htmlFor="name">Name</label>
+						</div>
+						<div className="member-role-delete-container">
+							<Field id="name" name="name">
+								{({ field }) => <Input {...field} />}
+							</Field>
+						</div>
+						<div className="member-role-delete-container">
+							<Button type="submit">Delete</Button>
+						</div>
+					</Form>
+				</Formik>
+			)}
+		</>
+	);
 };

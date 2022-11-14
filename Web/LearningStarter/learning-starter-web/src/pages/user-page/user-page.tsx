@@ -11,7 +11,7 @@ export const UserPage = () => {
         <Header>User Information</Header>
         <Container textAlign="left">
           <Header size="small">Profile Color Name</Header>
-          <p>{user.profileColorId}</p>
+          <p>{user.profileColor.colors}</p>
           <Divider />
           <Header size="small">First Name</Header>
           <p>{user.firstName}</p>

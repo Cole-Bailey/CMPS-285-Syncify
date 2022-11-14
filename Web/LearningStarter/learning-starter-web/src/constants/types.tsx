@@ -25,7 +25,7 @@ export type ProfileColorGetDto = {
 
 export type UserGetDto = {
   id: number;
-  profileColorId: number;
+  profileColor: ProfileColorGetDto;
   firstName: string;
   lastName: string;
   username: string;
@@ -105,7 +105,7 @@ export type GroupMemberUpdateDto = {
 
 export type CalendarGetDto = {
   id: number;
-  groupId: number;
+  group: GroupGetDto;
 };
 
 export type CalendarCreateDto = {
@@ -118,21 +118,21 @@ export type CalendarUpdateDto = {
 
 export type ToDoGetDto = {
   id: number;
-  calendarId: number;
+  calendar: CalendarGetDto;
   title: string;
   description: string;
   date: Date;
 };
 
 export type ToDoCreateDto = {
-  calendarId: number;
+  calendarId: CalendarGetDto;
   title: string;
   description: string;
   date: Date;
 };
 
 export type ToDoUpdateDto = {
-  calendarId: number;
+  calendarId: CalendarGetDto;
   title: string;
   description: string;
   date: Date;
@@ -140,7 +140,7 @@ export type ToDoUpdateDto = {
 
 export type EventGetDto = {
   id: number;
-  calendarId: number;
+  calendarId: CalendarGetDto;
   name: string;
   eventDetails: string;
   createdDate: Date;
@@ -211,8 +211,8 @@ export type RecipeGetDto = {
   image: string;
   servings: number;
   directions: string;
-  mealTypeId: number;
-  calendarId: number;
+  mealType: MealTypeGetDto;
+  calendar: CalendarGetDto;
 };
 
 export type RecipeCreateDto = {
@@ -220,8 +220,8 @@ export type RecipeCreateDto = {
   image: string;
   servings: number;
   directions: string;
-  mealTypeId: number;
-  calendarId: number;
+  mealTypeId: MealTypeGetDto;
+  calendarId: CalendarGetDto;
 };
 
 export type RecipeUpdateDto = {
@@ -229,8 +229,8 @@ export type RecipeUpdateDto = {
   image: string;
   servings: number;
   directions: string;
-  mealTypeId: number;
-  calendarId: number;
+  mealTypeId: MealTypeGetDto;
+  calendarId: CalendarGetDto;
 };
 
 export type RecipeIngredientGetDto = {
@@ -256,19 +256,19 @@ export type RecipeIngredientUpdateDto = {
 };
 
 export type ShoppingListRecipeIngredientGetDto = {
-  recipeIngredientId: RecipeIngredientGetDto;
+  recipeIngredientId: RecipeGetDto;
   shoppingListId: ShoppingListGetDto;
   quantity: number;
 };
 
 export type ShoppingListRecipeIngredientCreateDto = {
-  recipeIngredientId: RecipeIngredientGetDto;
+  recipeIngredientId: RecipeGetDto;
   shoppingListId: ShoppingListGetDto;
   quantity: number;
 };
 
 export type ShoppingListRecipeIngredientUpdateDto = {
-  recipeIngredientId: RecipeIngredientGetDto;
+  recipeIngredientId: RecipeGetDto;
   shoppingListId: ShoppingListGetDto;
   quantity: number;
 };

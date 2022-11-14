@@ -4,6 +4,7 @@ import "./styles/global.css";
 import { Routes } from "./routes/config";
 import { GlobalStyles } from "./styles/index";
 import { AuthProvider } from "./authentication/use-auth";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 //This is almost the base level of your app.  You can also put global things here.
 function App() {
@@ -19,3 +20,10 @@ function App() {
 
 export default App;
 
+/*Contents of the original return of fucntion App()*/
+// <div className="App">
+//   <GlobalStyles />
+//   <AuthProvider>
+//     <Routes />
+//   </AuthProvider>
+// </div>
