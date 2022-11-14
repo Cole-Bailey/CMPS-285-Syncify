@@ -1,16 +1,13 @@
-import SyncifyImg from "../../../assets/Syncify.png";
+import "../../modals/modal.css";
+import SyncifyImg from "../../assets/Syncify.png";
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React from "react";
 import { Button, Header, Input, Modal } from "semantic-ui-react";
-import {
-  ApiResponse,
-  UserCreateDto,
-  UserGetDto,
-} from "../../../constants/types";
+import { ApiResponse, UserCreateDto, UserGetDto } from "../../constants/types";
 import { useHistory } from "react-router-dom";
-import { routes } from "../../../routes/config";
-import { BaseUrl } from "../../../constants/env-cars";
+import { routes } from "../../routes/config";
+import { BaseUrl } from "../../constants/env-cars";
 
 function UserCreateModal() {
   const [open, setOpen] = React.useState(false);
@@ -121,10 +118,7 @@ function UserCreateModal() {
                     {({ field }) => <Input {...field} />}
                   </Field>
                 </div>
-                <Button type="submit" onClick={() => setOpen(false)}>
-                  Register
-                </Button>
-
+                <Button type="submit">Register</Button>
                 <Button onClick={() => setOpen(false)}> Cancel</Button>
               </Form>
             </Modal.Description>
