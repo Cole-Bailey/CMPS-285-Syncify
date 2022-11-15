@@ -32,12 +32,6 @@ export const UsersListingPage = () => {
       {users && (
         <>
           <Header>Users</Header>
-          <Button
-            type="button"
-            onClick={() => history.push(routes.users.create)}
-          >
-            +Create
-          </Button>
           <Table striped celled>
             <Table.Header>
               <Table.Row>

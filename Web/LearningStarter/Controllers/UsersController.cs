@@ -241,7 +241,6 @@ namespace LearningStarter.Controllers
             userToUpdate.FirstName = userUpdateDto.FirstName;
             userToUpdate.LastName = userUpdateDto.LastName;
             userToUpdate.Username = userUpdateDto.Username;
-            userToUpdate.Password = userUpdateDto.Password;
             userToUpdate.PhoneNumber = userUpdateDto.PhoneNumber;
             userToUpdate.Email = userUpdateDto.Email;
 

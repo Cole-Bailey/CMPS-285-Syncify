@@ -6,7 +6,7 @@ import CalendarApp from "../../components/calendar/calendar";
 import { Header } from "semantic-ui-react";
 import { Button } from "semantic-ui-react";
 import { useUser } from "../../authentication/use-auth";
-import EventCreateModal from "../../modals/event-create/event-create-modal";
+import EventCreateModal from "../../modals/event-create-modal";
 
 //This is a basic Component, and since it is used inside of
 //'../../routes/config.tsx' line 31, that also makes it a page
@@ -20,10 +20,10 @@ export const LandingPage = () => {
       <div>
         <PageWrapper />
       </div>
-      {/* <div className="background-color"> */}
+
       <div className="header-title-logo">
         <b>
-          <Header>Syncify</Header>
+          <Header className="logo-txt">Syncify</Header>
         </b>
       </div>
 
@@ -37,7 +37,7 @@ export const LandingPage = () => {
             setModalOpen(true);
           }}
         >
-          Events
+          Create Event
         </Button>
         {modalOpen && <EventCreateModal setOpenModal={setModalOpen} />}
 
@@ -48,7 +48,6 @@ export const LandingPage = () => {
       <div className="calendar-component">
         <CalendarApp></CalendarApp>
       </div>
-      {/* </div>  */}
     </>
   );
 };

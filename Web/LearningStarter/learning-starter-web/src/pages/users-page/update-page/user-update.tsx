@@ -97,14 +97,6 @@ export const UsersUpdatePage = () => {
               </Field>
             </div>
             <div className="user-update-container">
-              <label htmlFor="password">Password</label>
-            </div>
-            <div className="user-update-container">
-              <Field id="password" name="password">
-                {({ field }) => <Input {...field} />}
-              </Field>
-            </div>
-            <div className="user-update-container">
               <label htmlFor="phoneNumber">Phone Number</label>
             </div>
             <div className="user-update-container">
@@ -121,7 +113,7 @@ export const UsersUpdatePage = () => {
               </Field>
             </div>
 
-            <div>
+            <div className="user-update-container">
               <Button type="submit">Submit</Button>
             </div>
           </Form>

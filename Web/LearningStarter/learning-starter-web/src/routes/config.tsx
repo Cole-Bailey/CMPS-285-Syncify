@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import { LandingPage } from "../pages/landing-page/landing-page";
 import { NotFoundPage } from "../pages/not-found";
 import { useUser } from "../authentication/use-auth";
@@ -122,7 +122,7 @@ export const Routes = () => {
         <Switch>
           {/* Going to route "localhost:5001/" will go to Login Page */}
           <Route path={routes.root} exact>
-            <LoginPage />
+            <Redirect to={routes.home} />
           </Route>
           {/* When path === / render LandingPage */}
           <Route path={routes.home} exact>

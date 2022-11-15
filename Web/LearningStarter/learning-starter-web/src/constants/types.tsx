@@ -220,8 +220,8 @@ export type RecipeCreateDto = {
   image: string;
   servings: number;
   directions: string;
-  mealTypeId: MealTypeGetDto;
-  calendarId: CalendarGetDto;
+  mealTypeId: number;
+  calendarId: number;
 };
 
 export type RecipeUpdateDto = {
@@ -229,8 +229,8 @@ export type RecipeUpdateDto = {
   image: string;
   servings: number;
   directions: string;
-  mealTypeId: MealTypeGetDto;
-  calendarId: CalendarGetDto;
+  mealType: MealTypeGetDto;
+  calendar: CalendarGetDto;
 };
 
 export type RecipeIngredientGetDto = {
