@@ -1,4 +1,4 @@
-import "../LandingPageNav/landingpagenav.css"
+import "../LandingPageNav/landingpagenav.css";
 //import "./navigation.css";
 import React, { useMemo } from "react";
 import { NavLink, NavLinkProps } from "react-router-dom";
@@ -82,7 +82,6 @@ const DesktopNavigation = () => {
               to: routes.users.create,
             },
           },
-          
         ],
       },
       {
@@ -108,26 +107,25 @@ const DesktopNavigation = () => {
       },
       {
         text: "Units",
-          children: [
-            {
-              text: "Listing",
-              icon: "list",
-              hide: false,
-              nav: {
-                to: routes.units.listing,
-              },
+        children: [
+          {
+            text: "Listing",
+            icon: "list",
+            hide: false,
+            nav: {
+              to: routes.units.listing,
             },
-            {
-              text: "Create",
-              icon: "plus",
-              hide: false,
-              nav: {
-                to: routes.units.create,
-              },
+          },
+          {
+            text: "Create",
+            icon: "plus",
+            hide: false,
+            nav: {
+              to: routes.units.create,
             },
-            
-          ],
-        },
+          },
+        ],
+      },
     ];
   }, []);
   //This is where the navigation buttons are mapped over to produce the links and such.
@@ -229,4 +227,4 @@ export const PrimaryNavigation: React.FC<PrimaryNavigationProps> = ({
       )}
     </Menu>
   );
-}; 
+};

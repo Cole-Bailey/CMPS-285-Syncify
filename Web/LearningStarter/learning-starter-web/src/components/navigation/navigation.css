@@ -36,7 +36,6 @@
 .top-navigation.ui.secondary.menu
   .ui.secondary.menu.desktop-navigation
   .item.header {
-    
   margin-top: 10px;
   margin-bottom: 0;
   padding-bottom: 5px;
@@ -105,14 +104,12 @@
 }
 
 .logo-container .terms {
-  
   display: block;
   text-align: center;
   padding: 10px 0;
 }
 
 .user-icon.ui.item {
-  
   height: 30px;
   width: 30px;
   display: flex;
@@ -128,14 +125,12 @@
 }
 
 .top-navigation.ui.secondary.menu .logo-menu-item {
-  
   padding: 0px;
   background-color: #fff !important;
   margin-right: 20px;
 }
 
 .user-icon-initial {
-  
   display: block;
   color: #7d7b7b;
   text-align: center;

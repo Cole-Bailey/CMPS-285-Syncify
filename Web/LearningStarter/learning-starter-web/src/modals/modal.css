@@ -56,12 +56,12 @@
   align-items: center;
 }
 
-/* This class is used to change the "create type" title at the top */
-.create-type-field {
+/* This class is used to change the "create event" title at the top /
+.create-event-field{
   font: 25;
 }
 
-/* This class is used to format the input fields */
+/ This class is used to format the input fields */
 .input-fields {
   align-items: center;
 }

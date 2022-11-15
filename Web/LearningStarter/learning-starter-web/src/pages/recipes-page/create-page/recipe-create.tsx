@@ -12,7 +12,6 @@ import { routes } from "../../../routes/config";
 import { BaseUrl } from "../../../constants/env-cars";
 import "./recipe-create.css";
 
-
 const initialValues: RecipeCreateDto = {
   name: "",
   image: "",
@@ -20,7 +19,6 @@ const initialValues: RecipeCreateDto = {
   directions: "",
   mealTypeId: 0,
   calendarId: 0,
-  
 };
 
 export const RecipeCreatePage = () => {
@@ -45,60 +43,59 @@ export const RecipeCreatePage = () => {
     <>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         <Form>
-            <div className="recipe-create-container">
-              <label htmlFor="name">Name</label>
-            </div>
-            <div className="recipe-create-container">
-            <Field id="name" name="name" >
+          <div className="recipe-create-container">
+            <label htmlFor="name">Name</label>
+          </div>
+          <div className="recipe-create-container">
+            <Field id="name" name="name">
               {({ field }) => <Input {...field} />}
             </Field>
-            </div>
-            <div className="recipe-create-container">
-              <label htmlFor="image">Image</label>
-            </div>
-            <div className="recipe-create-container">
-            <Field id="image" name="image" >
+          </div>
+          <div className="recipe-create-container">
+            <label htmlFor="image">Image</label>
+          </div>
+          <div className="recipe-create-container">
+            <Field id="image" name="image">
               {({ field }) => <Input {...field} />}
             </Field>
-            </div>
-            <div className="recipe-create-container">
-              <label htmlFor="servings">Servings</label>
-            </div>
-            <div className="recipe-create-container">
-            <Field id="servings" name="servings" >
-              {({ field }) => <Input type = "number" {...field} />}
-            </Field>
-            </div>
-            <div className="recipe-create-container">
-              <label htmlFor="directions">Directions</label>
-            </div>
-            <div className="recipe-create-container">
-            <Field id="directions" name="directions" >
-              {({ field }) => <Input {...field} />}
-            </Field>
-            </div>
-            <div className="recipe-create-container">
-              <label htmlFor="mealTypeId">MealTypeId</label>
-            </div>
-            <div className="recipe-create-container">
-            <Field id="mealTypeId" name="mealTypeId" >
+          </div>
+          <div className="recipe-create-container">
+            <label htmlFor="servings">Servings</label>
+          </div>
+          <div className="recipe-create-container">
+            <Field id="servings" name="servings">
               {({ field }) => <Input type="number" {...field} />}
             </Field>
-            </div>
-            <div className="recipe-create-container">
-              <label htmlFor="calendarId">CalendarId</label>
-            </div>
-            <div className="recipe-create-container">
-            <Field id="calendarId" name="calendarId" >
+          </div>
+          <div className="recipe-create-container">
+            <label htmlFor="directions">Directions</label>
+          </div>
+          <div className="recipe-create-container">
+            <Field id="directions" name="directions">
+              {({ field }) => <Input {...field} />}
+            </Field>
+          </div>
+          <div className="recipe-create-container">
+            <label htmlFor="mealTypeId">MealTypeId</label>
+          </div>
+          <div className="recipe-create-container">
+            <Field id="mealTypeId" name="mealTypeId">
               {({ field }) => <Input type="number" {...field} />}
             </Field>
-            </div>
-            <div className="recipe-create-container">
-              <Button type="submit">Create</Button>
-            </div>
+          </div>
+          <div className="recipe-create-container">
+            <label htmlFor="calendarId">CalendarId</label>
+          </div>
+          <div className="recipe-create-container">
+            <Field id="calendarId" name="calendarId">
+              {({ field }) => <Input type="number" {...field} />}
+            </Field>
+          </div>
+          <div className="recipe-create-container">
+            <Button type="submit">Create</Button>
+          </div>
         </Form>
       </Formik>
     </>
   );
 };
-
