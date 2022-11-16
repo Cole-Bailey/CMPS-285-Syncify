@@ -1,7 +1,7 @@
 import "../LandingPageNav/landingpagenav.css";
 //import "./navigation.css";
 import React, { useMemo } from "react";
-import { NavLink, NavLinkProps } from "react-router-dom";
+import { NavLink, NavLinkProps, useHistory } from "react-router-dom";
 import { Dropdown, Image, Menu, Icon, SemanticICONS } from "semantic-ui-react";
 import logo from "../../assets/logo.png";
 import { UserGetDto } from "../../constants/types";
@@ -128,6 +128,7 @@ const DesktopNavigation = () => {
       },
     ];
   }, []);
+
   //This is where the navigation buttons are mapped over to produce the links and such.
   return (
     <Menu

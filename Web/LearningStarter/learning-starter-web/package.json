@@ -14,7 +14,6 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "axios": "^0.21.1",
-    "bootstrap": "^5.2.2",
     "cleave": "^1.0.2",
     "date-fns": "^2.29.3",
     "emotion": "^11.0.0",

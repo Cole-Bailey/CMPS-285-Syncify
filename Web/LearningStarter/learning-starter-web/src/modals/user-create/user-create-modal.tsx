@@ -2,15 +2,22 @@ import "../../modals/modal.css";
 import SyncifyImg from "../../assets/Syncify.png";
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
-import React from "react";
-import { Button, Header, Input, Modal } from "semantic-ui-react";
-import { ApiResponse, UserCreateDto, UserGetDto } from "../../constants/types";
+import React, { useEffect, useState } from "react";
+import { Button, Dropdown, Header, Input, Modal } from "semantic-ui-react";
+import {
+  ApiResponse,
+  OptionDto,
+  UserCreateDto,
+  UserGetDto,
+} from "../../constants/types";
 import { useHistory } from "react-router-dom";
 import { routes } from "../../routes/config";
 import { BaseUrl } from "../../constants/env-cars";
 
 function UserCreateModal() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [colorOptions, setColorOptions] = useState<OptionDto[]>();
+  console.log("debug", colorOptions);
   const initialValues: UserCreateDto = {
     profileColorId: 0,
     firstName: "",
@@ -21,6 +28,18 @@ function UserCreateModal() {
     email: "",
     birthday: "",
   };
+
+  useEffect(() => {
+    async function getColorOptions() {
+      const response = await axios.get<ApiResponse<OptionDto[]>>(
+        "/api/profile-colors/options"
+      );
+
+      setColorOptions(response.data.data);
+    }
+
+    getColorOptions();
+  }, []);
 
   const history = useHistory();
 
@@ -58,9 +77,14 @@ function UserCreateModal() {
                   <label htmlFor="profileColorId">Profile Color</label>
                 </div>
                 <div className="field-title">
-                  <Field id="profileColorId" name="profileColorId">
+                  {/* <Field id="profileColorId" name="profileColorId">
                     {({ field }) => <Input type="number" {...field} />}
-                  </Field>
+                  </Field> */}
+                  <Dropdown
+                    selection
+                    options={colorOptions}
+                    onChange={(_, { value }) => console.log("debug", value)}
+                  />
                 </div>
                 <div className="field-title">
                   <label htmlFor="firstName">First Name</label>

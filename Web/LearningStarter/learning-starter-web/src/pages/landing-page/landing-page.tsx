@@ -6,7 +6,7 @@ import CalendarApp from "../../components/calendar/calendar";
 import { Header } from "semantic-ui-react";
 import { Button } from "semantic-ui-react";
 import { useUser } from "../../authentication/use-auth";
-import EventCreateModal from "../../modals/event-create-modal";
+import EventCreateModal from "../../modals/event-create/event-create-modal";
 
 //This is a basic Component, and since it is used inside of
 //'../../routes/config.tsx' line 31, that also makes it a page
