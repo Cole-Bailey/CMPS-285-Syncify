@@ -285,3 +285,8 @@ export type ShoppingListCreateDto = {
 export type ShoppingListUpdateDto = {
   name: string;
 };
+
+export type OptionDto = {
+  text: string;
+  value: number;
+};

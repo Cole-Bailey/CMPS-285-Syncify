@@ -40,6 +40,10 @@ import { MemberRoleUpdatePage } from "../pages/member-role-page/update-page/memb
 import { MemberRoleDeletePage } from "../pages/member-role-page/delete-page/member-role-delete";
 import { EventListingPage } from "../pages/events-page/listing-page/events-listing";
 import { EventCreatePage } from "../pages/events-page/create-page/events-create";
+import { GroupMembersListingPage } from "../pages/Group-Members-page/listing-page/group-members-listing";
+import { GroupMembersUpdatePage } from "../pages/Group-Members-page/update-page/group-members-update";
+import { GroupMembersCreatePage } from "../pages/Group-Members-page/create-page/group-members-create";
+import { GroupMembersDeletePage } from "../pages/Group-Members-page/delete-page/group-members-delete";
 import App from "../components/calendar/calendar";
 import UserCreateModal from "../pages/users-page/create-page/user-create";
 import { LoginPage } from "../pages/login-page/login-page";
@@ -108,6 +112,12 @@ export const routes = {
     listing: "/events",
     create: "/events/create",
     update: "/events/:id",
+  },
+  groupMembers: {
+    listing: "/group-members",
+    create: "/group-members/create",
+    update: "/group-members/:id",
+    delete: "/group-members/delete/:id",
   },
 };
 
@@ -242,6 +252,18 @@ export const Routes = () => {
           </Route>
           <Route path={routes.events.create}>
             <EventCreatePage />
+          </Route>
+          <Route path={routes.groupMembers.listing} exact>
+            <GroupMembersListingPage />
+          </Route>
+          <Route path={routes.groupMembers.update} exact>
+            <GroupMembersUpdatePage />
+          </Route>
+          <Route path={routes.groupMembers.create} exact>
+            <GroupMembersCreatePage />
+          </Route>
+          <Route path={routes.groupMembers.delete} exact>
+            <GroupMembersDeletePage />
           </Route>
           {/* This should always come last.  
             If the path has no match, show page not found */}
