@@ -46,10 +46,10 @@ export const PrimaryNavigation: React.FC<PrimaryNavigationProps> = ({
                 </Dropdown.Item>
                 <Dropdown.Item
                   onClick={() => {
-                    history.push(routes.users.create);
+                    history.push(routes.users.profile);
                   }}
                 >
-                  Create
+                  Profile
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>

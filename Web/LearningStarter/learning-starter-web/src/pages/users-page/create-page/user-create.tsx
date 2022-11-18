@@ -53,7 +53,7 @@ function UserCreateModal() {
         >
           <Modal.Header>Register For Membership</Modal.Header>
           <Modal.Content image>
-            <img sizes="medium" src={SyncifyImg} />
+            <img sizes="medium" src={SyncifyImg} alt="Syncify" />
             <Modal.Description>
               <Header>Sign Up</Header>
               <Form>

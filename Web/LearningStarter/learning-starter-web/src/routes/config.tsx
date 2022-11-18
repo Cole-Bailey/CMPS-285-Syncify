@@ -3,7 +3,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import { LandingPage } from "../pages/landing-page/landing-page";
 import { NotFoundPage } from "../pages/not-found";
 import { useUser } from "../authentication/use-auth";
-import { UserPage } from "../pages/user-page/user-page";
+
 import { PageWrapper } from "../components/page-wrapper/page-wrapper";
 import { MealTypeListingPage } from "../pages/meal-types/listing-page/meal-type-listing";
 import { MealTypeCreatePage } from "../pages/meal-types/create-page/meal-type-create";
@@ -31,6 +31,7 @@ import { RecipeCreatePage } from "../pages/recipes-page/create-page/recipe-creat
 import { RecipeUpdatePage } from "../pages/recipes-page/update-page/recipe-update";
 import { RecipeDeletePage } from "../pages/recipes-page/delete-page/recipe-delete";
 import { UsersListingPage } from "../pages/users-page/listing-page/user-listing";
+import { UsersProfilePage } from "../pages/users-page/profile-page/users-profile";
 import { UsersUpdatePage } from "../pages/users-page/update-page/user-update";
 import { UsersDeletePage } from "../pages/users-page/delete-page/user-delete";
 import { MealTypeDeletePage } from "../pages/meal-types/delete-page/meal-type-delete";
@@ -46,7 +47,8 @@ import { GroupMembersCreatePage } from "../pages/Group-Members-page/create-page/
 import { GroupMembersDeletePage } from "../pages/Group-Members-page/delete-page/group-members-delete";
 import App from "../components/calendar/calendar";
 import UserCreateModal from "../pages/users-page/create-page/user-create";
-import { LoginPage } from "../pages/login-page/login-page";
+
+//import { LoginPage } from "../pages/login-page/login-page";
 
 //import { ShoppingListUpdatePage } from "../pages/shopping-lists/update-page/shopping-list-update";
 //This is where you will declare all of your routes (the ones that show up in the search bar)
@@ -58,6 +60,7 @@ export const routes = {
   calendar: "/calendar",
   users: {
     listing: "/users",
+    profile: "/users/profile",
     create: "/users/create",
     update: "/users/:id",
     delete: "/users/delete/:id",
@@ -139,9 +142,6 @@ export const Routes = () => {
             <LandingPage />
           </Route>
           {/* When path === /iser render UserPage */}
-          <Route path={routes.user} exact>
-            <UserPage />
-          </Route>
           <Route path={routes.calendar} exact>
             <App />
           </Route>
@@ -150,6 +150,9 @@ export const Routes = () => {
           </Route>
           <Route path={routes.users.listing} exact>
             <UsersListingPage />
+          </Route>
+          <Route path={routes.users.profile} exact>
+            <UsersProfilePage />
           </Route>
           <Route path={routes.users.update} exact>
             <UsersUpdatePage />

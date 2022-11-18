@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
+import { useUser } from "../../../authentication/use-auth";
 import React, { useEffect, useState } from "react";
 import { Button, Input } from "semantic-ui-react";
 import { ApiResponse, UserGetDto } from "../../../constants/types";
@@ -10,9 +11,10 @@ import "../delete-page/user-delete.css";
 
 export const UsersDeletePage = () => {
   const history = useHistory();
+  const userDelete = useUser();
   let match = useRouteMatch<{ id: string }>();
   const id = match.params.id;
-  const [user, setUser] = useState<UserGetDto>();
+  const [user, setUser] = useState<UserGetDto>(userDelete);
 
   useEffect(() => {
     const fetchUser = async () => {

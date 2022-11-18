@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Header, Icon, Segment, Table } from "semantic-ui-react";
+import { Header, Icon, Segment, Table } from "semantic-ui-react";
 import { BaseUrl } from "../../../constants/env-cars";
 import { ApiResponse, UserGetDto } from "../../../constants/types";
 import { useHistory } from "react-router-dom";
