@@ -136,7 +136,7 @@ export function useUser(): UserGetDto {
 //This is used to map an object (any type) to a User entity.
 export const mapUser = (user: any): UserGetDto => ({
   id: user.id,
-  profileColorId: user.profileColorId,
+  profileColor: user.ProfileColorGetDto,
   firstName: user.firstName,
   lastName: user.lastName,
   username: user.userName,

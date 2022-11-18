@@ -5,7 +5,7 @@ import startOfWeek from "date-fns/startOfWeek";
 import React, { useState } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import DatePicker from "react-datepicker";
+//import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./calendar.css";
 

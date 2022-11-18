@@ -92,15 +92,15 @@ export type GroupMemberGetDto = {
 };
 
 export type GroupMemberCreateDto = {
-  memberRoleId: MemberRoleGetDto;
-  userId: UserGetDto;
-  groupId: GroupGetDto;
+  memberRoleId: number;
+  userId: number;
+  groupId: number;
 };
 
 export type GroupMemberUpdateDto = {
-  memberRoleId: MemberRoleGetDto;
-  userId: UserGetDto;
-  groupId: GroupGetDto;
+  memberRoleId: number;
+  userId: number;
+  groupId: number;
 };
 
 export type CalendarGetDto = {
