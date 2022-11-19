@@ -5,6 +5,7 @@ import { BaseUrl } from "../../../constants/env-cars";
 import { ApiResponse, RecipeGetDto } from "../../../constants/types";
 import { useHistory } from "react-router-dom";
 import { routes } from "../../../routes/config";
+import "./recipe-listing.css";
 
 export const RecipeListingPage = () => {
   const [recipes, setRecipes] = useState<RecipeGetDto[]>();
@@ -29,7 +30,7 @@ export const RecipeListingPage = () => {
   }, []);
 
   return (
-    <Segment>
+    <Segment className="indexing">
       {recipes && (
         <>
           <Header>Recipes</Header>

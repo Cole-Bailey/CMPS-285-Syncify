@@ -3,14 +3,13 @@ import React, { useEffect, useState } from "react";
 import { Button, Header, Icon, Segment, Table } from "semantic-ui-react";
 import { BaseUrl } from "../../../constants/env-cars";
 import { ApiResponse, UnitGetDto } from "../../../constants/types";
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { routes } from "../../../routes/config";
 import "./units-listing.css";
 
 export const UnitListingPage = () => {
   const [units, setUnit] = useState<UnitGetDto[]>();
   const history = useHistory();
-
 
   useEffect(() => {
     const fetchUnit = async () => {
@@ -30,49 +29,65 @@ export const UnitListingPage = () => {
   }, []);
 
   return (
-    <Segment>
+    <Segment className="indexing">
       {units && (
-      <>
-      <Header>Units</Header>
-            <Button type="button" onClick={() => history.push(routes.units.create)}>+ Create</Button>
-            <Table striped celled>
+        <>
+          <Header>Units</Header>
+          <Button
+            type="button"
+            onClick={() => history.push(routes.units.create)}
+          >
+            + Create
+          </Button>
+          <Table striped celled>
             <Table.Header>
-                <Table.Row>
-                <Table.HeaderCell width= {1}>Edit Unit</Table.HeaderCell>
-                    <Table.HeaderCell>Id</Table.HeaderCell>
-                    <Table.HeaderCell>Name</Table.HeaderCell>
-                    <Table.HeaderCell>Abbreviation</Table.HeaderCell>  
-                    <Table.HeaderCell>Delete Unit</Table.HeaderCell>
-                </Table.Row>
+              <Table.Row>
+                <Table.HeaderCell width={1}>Edit Unit</Table.HeaderCell>
+                <Table.HeaderCell>Id</Table.HeaderCell>
+                <Table.HeaderCell>Name</Table.HeaderCell>
+                <Table.HeaderCell>Abbreviation</Table.HeaderCell>
+                <Table.HeaderCell>Delete Unit</Table.HeaderCell>
+              </Table.Row>
             </Table.Header>
             <Table.Body>
-                {units.map((unit) => {
-                    return (
-                    <Table.Row key={unit.id}>
+              {units.map((unit) => {
+                return (
+                  <Table.Row key={unit.id}>
                     <Table.Cell>
-                        <Icon
-                            link
-                            name="pencil"
-                            onClick={() =>
-                            history.push(
-                                routes.units.update.replace(":id", `${unit.id}`)
-                            )
+                      <Icon
+                        link
+                        name="pencil"
+                        onClick={() =>
+                          history.push(
+                            routes.units.update.replace(":id", `${unit.id}`)
+                          )
                         }
-                        />
+                      />
                     </Table.Cell>
                     <Table.Cell>{unit.id}</Table.Cell>
                     <Table.Cell>{unit.name}</Table.Cell>
                     <Table.Cell>{unit.abbreviation}</Table.Cell>
                     <Table.Cell>
-                      <Button type="Button" color="red" onClick={() => history.push(routes.units.delete.replace(":id", `${unit.id}`))}> Delete </Button>
+                      <Button
+                        type="Button"
+                        color="red"
+                        onClick={() =>
+                          history.push(
+                            routes.units.delete.replace(":id", `${unit.id}`)
+                          )
+                        }
+                      >
+                        {" "}
+                        Delete{" "}
+                      </Button>
                     </Table.Cell>
-                    </Table.Row>
-                    );
-                })}
+                  </Table.Row>
+                );
+              })}
             </Table.Body>
-            </Table>
-                </>
-            )}
+          </Table>
+        </>
+      )}
     </Segment>
-);
+  );
 };

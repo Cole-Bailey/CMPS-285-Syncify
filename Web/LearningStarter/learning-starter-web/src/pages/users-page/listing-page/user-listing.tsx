@@ -5,6 +5,7 @@ import { BaseUrl } from "../../../constants/env-cars";
 import { ApiResponse, UserGetDto } from "../../../constants/types";
 import { useHistory } from "react-router-dom";
 import { routes } from "../../../routes/config";
+import "./user-listing.css";
 
 export const UsersListingPage = () => {
   const [users, setUsers] = useState<UserGetDto[]>();
@@ -28,7 +29,7 @@ export const UsersListingPage = () => {
   }, []);
 
   return (
-    <Segment>
+    <Segment className="indexing">
       {users && (
         <>
           <Header>Users</Header>
