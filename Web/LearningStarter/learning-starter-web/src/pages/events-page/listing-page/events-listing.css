@@ -1,6 +1,5 @@
-.Ingredient-listing-container {
+.events-listing-container {
   display: flex;
-  padding: 0.1% 2%;
   /*justify-content: space-between;*/
 }
 

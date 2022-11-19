@@ -86,9 +86,9 @@ export type MemberRoleUpdateDto = {
 
 export type GroupMemberGetDto = {
   id: number;
-  memberRoleId: MemberRoleGetDto;
-  userId: UserGetDto;
-  groupId: GroupGetDto;
+  memberRole: MemberRoleGetDto;
+  user: UserGetDto;
+  group: GroupGetDto;
 };
 
 export type GroupMemberCreateDto = {

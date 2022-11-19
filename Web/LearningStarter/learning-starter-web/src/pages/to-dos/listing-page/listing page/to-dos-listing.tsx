@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ApiResponse, ToDoGetDto } from "../../../../constants/types";
 import { BaseUrl } from "../../../../constants/env-cars";
 import { Segment } from "semantic-ui-react";
+import "./todos-listing.css";
 
 export const ToDoListingPage = () => {
   const [todos, setToDos] = useState<ToDoGetDto[]>();
@@ -29,7 +30,7 @@ export const ToDoListingPage = () => {
         {todos ? (
           todos.map((todos) => {
             return (
-              <Segment>
+              <Segment className="indexing">
                 <div>Calender: {todos.calendar.group.name}</div>
                 <div>Id: {todos.id}</div>
                 <div>Title: {todos.title}</div>

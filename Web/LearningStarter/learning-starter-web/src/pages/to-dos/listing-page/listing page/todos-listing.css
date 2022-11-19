@@ -1,6 +1,6 @@
-.Ingredient-listing-container {
+.todos-listing-container {
   display: flex;
-  padding: 0.1% 2%;
+
   /*justify-content: space-between;*/
 }
 
