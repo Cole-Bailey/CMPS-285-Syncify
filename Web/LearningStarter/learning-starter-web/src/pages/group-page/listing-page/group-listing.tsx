@@ -33,7 +33,7 @@ export const GroupListingPage = () => {
   }, []);
 
   return (
-    <Segment className="indexing">
+    <Segment>
       {groups && (
         <>
           <Header>Groups</Header>

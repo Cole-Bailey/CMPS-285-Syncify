@@ -34,7 +34,10 @@ function UserCreateModal() {
   const onSubmit = async (values: UserCreateDto) => {
     const response = await axios.post<ApiResponse<UserGetDto>>(
       `${BaseUrl}/api/users`,
-      values
+      values,
+      {
+        validateStatus: () => true,
+      }
     );
 
     if (response.data.hasErrors) {
@@ -42,7 +45,7 @@ function UserCreateModal() {
         console.log(err.message);
       });
     } else {
-      history.push(routes.root);
+      setSecondOpen(true);
     }
   };
 
@@ -171,7 +174,6 @@ function UserCreateModal() {
               labelPosition="right"
               icon="thumbs up outline"
               positive
-              onClick={() => setSecondOpen(true)}
             />
           </Modal.Actions>
           <Modal

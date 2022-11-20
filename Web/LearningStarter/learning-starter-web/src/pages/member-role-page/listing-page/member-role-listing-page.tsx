@@ -34,7 +34,7 @@ export const MemberRoleListingPage = () => {
   }, []);
 
   return (
-    <Segment className="indexing">
+    <Segment>
       {memberRoles && (
         <>
           <Header>Member Roles</Header>

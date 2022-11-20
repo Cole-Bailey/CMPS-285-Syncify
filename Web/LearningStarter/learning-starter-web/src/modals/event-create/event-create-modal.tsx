@@ -1,7 +1,7 @@
-import "../../modals/modal.css";
+// import "../../modals/modal.css";
 import { Field, Form, Formik } from "formik";
-import React from "react";
-import { Input, Header } from "semantic-ui-react";
+import React, { useState } from "react";
+import { Input, Modal, Button } from "semantic-ui-react";
 import {
   ApiResponse,
   EventCreateDto,
@@ -12,7 +12,9 @@ import axios from "axios";
 import { BaseUrl } from "../../constants/env-cars";
 import { routes } from "../../routes/config";
 
-function EventCreateModal({ setOpenModal }) {
+function EventCreateModal() {
+  const [firstOpen, setFirstOpen] = useState(false);
+  const [secondOpen, setSecondOpen] = useState(false);
   const initialValues: EventCreateDto = {
     calendarId: 0,
     name: "",
@@ -20,10 +22,14 @@ function EventCreateModal({ setOpenModal }) {
     createdDate: new Date(),
   };
   const history = useHistory();
+
   const onSubmit = async (values: EventCreateDto) => {
     const response = await axios.post<ApiResponse<EventGetDto>>(
       `${BaseUrl}/api/events`,
-      values
+      values,
+      {
+        validateStatus: () => true,
+      }
     );
 
     if (response.data.hasErrors) {
@@ -31,35 +37,28 @@ function EventCreateModal({ setOpenModal }) {
         console.log(err.message);
       });
     } else {
-      history.push(routes.events.listing);
+      setSecondOpen(true);
     }
   };
+
   return (
-    <div className="modalBackground">
-      <div className="modalContainer">
-        <div className="titleCloseBtn">
-          <button
-            onClick={() => {
-              setOpenModal(false);
-            }}
-          >
-            X
-          </button>
-        </div>
-        <div className="title">
-          <Header className="create-type-field">Create Event</Header>
-        </div>
-        <div>
-          <Formik initialValues={initialValues} onSubmit={onSubmit}>
-            <Form className="input-fields">
-              <div>
-                <label htmlFor="calendarId" className="field-title">
-                  Calendar
-                </label>
-              </div>
-              <Field id="calendarId" name="calendarId">
-                {({ field }) => <Input {...field} />}
-              </Field>
+    <>
+      <Formik initialValues={initialValues} onSubmit={onSubmit}>
+        <Modal
+          as={Form}
+          onClose={() => setFirstOpen(false)}
+          onOpen={() => setFirstOpen(true)}
+          open={firstOpen}
+          trigger={
+            <Button onClick={() => setFirstOpen(true)}>Create Event</Button>
+          }
+        >
+          <Modal.Header className="create-type-field">
+            Create Event
+          </Modal.Header>
+
+          <Modal.Content>
+            <Modal.Description>
               <div>
                 <label htmlFor="name" className="field-title">
                   Event Title
@@ -82,25 +81,51 @@ function EventCreateModal({ setOpenModal }) {
                 </label>
               </div>
               <Field id="createdDate" name="createdDate">
-                {({ field }) => <Input {...field} />}
+                {({ field }) => <Input type="date" {...field} />}
               </Field>
-
-              <div className="footer">
-                <button
-                  onClick={() => {
-                    setOpenModal(false);
-                  }}
-                  id="cancelBtn"
-                >
-                  Cancel
-                </button>
-                <button type="submit">Create</button>
+              <div>
+                <label htmlFor="calendarId" className="field-title">
+                  Calendar
+                </label>
               </div>
-            </Form>
-          </Formik>
-        </div>
-      </div>
-    </div>
+              <Field id="calendarId" name="calendarId">
+                {({ field }) => <Input type="number" {...field} />}
+              </Field>
+            </Modal.Description>
+          </Modal.Content>
+
+          <Modal.Actions className="footer">
+            <Button
+              type="button"
+              content="Cancel"
+              onClick={() => setFirstOpen(false)}
+              negative
+            />
+            <Button type="submit" content="Create" positive />
+          </Modal.Actions>
+          <Modal
+            onClose={() => setSecondOpen(false)}
+            open={secondOpen}
+            size="small"
+          >
+            <Modal.Header>Success!!!</Modal.Header>
+            <Modal.Content>
+              <p>You have successfully created an event in Syncify!!!</p>
+            </Modal.Content>
+            <Modal.Actions>
+              <Button
+                type="button"
+                icon="home"
+                content="Home"
+                labelPosition="right"
+                positive
+                onClick={() => setFirstOpen(false)}
+              />
+            </Modal.Actions>
+          </Modal>
+        </Modal>
+      </Formik>
+    </>
   );
 }
 

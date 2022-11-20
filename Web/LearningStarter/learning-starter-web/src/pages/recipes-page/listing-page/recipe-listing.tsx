@@ -30,7 +30,7 @@ export const RecipeListingPage = () => {
   }, []);
 
   return (
-    <Segment className="indexing">
+    <Segment>
       {recipes && (
         <>
           <Header>Recipes</Header>

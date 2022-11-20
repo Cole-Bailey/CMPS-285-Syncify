@@ -13,7 +13,6 @@ import EventCreateModal from "../../modals/event-create/event-create-modal";
 
 //This is where the modals go, just add to button
 export const LandingPage = () => {
-  const [modalOpen, setModalOpen] = useState(false);
   const user = useUser();
   return (
     <>
@@ -32,15 +31,7 @@ export const LandingPage = () => {
       </div>
 
       <div className="btn-group">
-        <Button
-          onClick={() => {
-            setModalOpen(true);
-          }}
-        >
-          Create Event
-        </Button>
-        {modalOpen && <EventCreateModal setOpenModal={setModalOpen} />}
-
+        <EventCreateModal />
         <Button>Create Todo</Button>
         <Button>Shopping Lists ▼</Button>
         <Button>Recipes ▼</Button>

@@ -11,25 +11,25 @@ export const UsersListingPage = () => {
   const [users, setUsers] = useState<UserGetDto[]>();
   const history = useHistory();
 
-  const fetchUsers = async () => {
-    const response = await axios.get<ApiResponse<UserGetDto[]>>(
-      `${BaseUrl}/api/users`
-    );
-    if (response.data.hasErrors) {
-      response.data.errors.forEach((err) => {
-        console.log(err.message);
-      });
-    } else {
-      setUsers(response.data.data);
-    }
-  };
-
   useEffect(() => {
+    const fetchUsers = async () => {
+      const response = await axios.get<ApiResponse<UserGetDto[]>>(
+        `${BaseUrl}/api/users`
+      );
+      if (response.data.hasErrors) {
+        response.data.errors.forEach((err) => {
+          console.log(err.message);
+        });
+      } else {
+        setUsers(response.data.data);
+      }
+    };
+
     fetchUsers();
   }, []);
 
   return (
-    <Segment className="indexing">
+    <Segment>
       {users && (
         <>
           <Header>Users</Header>

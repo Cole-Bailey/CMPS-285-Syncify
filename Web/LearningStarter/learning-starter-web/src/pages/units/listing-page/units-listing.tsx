@@ -29,7 +29,7 @@ export const UnitListingPage = () => {
   }, []);
 
   return (
-    <Segment className="indexing">
+    <Segment>
       {units && (
         <>
           <Header>Units</Header>

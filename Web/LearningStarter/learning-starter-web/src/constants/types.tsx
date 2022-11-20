@@ -140,7 +140,7 @@ export type ToDoUpdateDto = {
 
 export type EventGetDto = {
   id: number;
-  calendarId: CalendarGetDto;
+  calendar: CalendarGetDto;
   name: string;
   eventDetails: string;
   createdDate: Date;
