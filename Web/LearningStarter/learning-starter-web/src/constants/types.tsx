@@ -125,7 +125,7 @@ export type ToDoGetDto = {
 };
 
 export type ToDoCreateDto = {
-  calendarId: CalendarGetDto;
+  calendarId: number;
   title: string;
   description: string;
   date: Date;
