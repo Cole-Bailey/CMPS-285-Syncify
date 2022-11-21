@@ -29,7 +29,7 @@ export const ShoppingListListingPage = () => {
   }, []);
 
   return (
-    <Segment className="indexing">
+    <Segment>
       <Header>Shopping List Items</Header>
       {shoppingLists && (
         <>

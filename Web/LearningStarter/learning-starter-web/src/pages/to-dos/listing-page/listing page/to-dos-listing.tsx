@@ -30,7 +30,7 @@ export const ToDoListingPage = () => {
         {todos ? (
           todos.map((todos) => {
             return (
-              <Segment className="indexing">
+              <Segment>
                 <div>Calender: {todos.calendar.group.name}</div>
                 <div>Id: {todos.id}</div>
                 <div>Title: {todos.title}</div>
