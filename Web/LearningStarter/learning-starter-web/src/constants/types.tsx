@@ -143,21 +143,24 @@ export type EventGetDto = {
   calendar: CalendarGetDto;
   name: string;
   eventDetails: string;
-  createdDate: Date;
+  StartDate: Date;
+  EndDate: Date;
 };
 
 export type EventCreateDto = {
   calendarId: number;
   name: string;
   eventDetails: string;
-  createdDate: Date;
+  StartDate: Date;
+  EndDate: Date;
 };
 
 export type EventUpdateDto = {
   calendarId: number;
   name: string;
   eventDetails: string;
-  createdDate: Date;
+  StartDate: Date;
+  EndDate: Date;
 };
 
 export type MealTypeGetDto = {

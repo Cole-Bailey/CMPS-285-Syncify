@@ -1,7 +1,13 @@
-// import "../../modals/modal.css";
 import { Field, Form, Formik } from "formik";
 import React, { useState } from "react";
-import { Input, Modal, Button } from "semantic-ui-react";
+import {
+  Input,
+  Modal,
+  Button,
+  Table,
+  Icon,
+  TableCell,
+} from "semantic-ui-react";
 import {
   ApiResponse,
   EventCreateDto,
@@ -10,14 +16,35 @@ import {
 import axios from "axios";
 import { BaseUrl } from "../../constants/env-cars";
 
+const events = [
+  {
+    title: "My Big Day!!",
+    start: new Date(2022, 12, 30),
+    end: new Date(2022, 12, 30),
+  },
+  {
+    title: "I need a a vacation, and a beer",
+    start: new Date(2021, 11, 7),
+    end: new Date(2021, 11, 10),
+  },
+  {
+    title: "Math test",
+    start: new Date(2021, 11, 20),
+    end: new Date(2021, 11, 20),
+  },
+];
+
 function EventCreateModal() {
   const [firstOpen, setFirstOpen] = useState(false);
   const [secondOpen, setSecondOpen] = useState(false);
+  const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
+  const [allEvents, setAllEvents] = useState(events);
   const initialValues: EventCreateDto = {
     calendarId: 0,
     name: "",
     eventDetails: "",
-    createdDate: new Date(),
+    StartDate: new Date(),
+    EndDate: new Date(),
   };
 
   const onSubmit = async (values: EventCreateDto) => {
@@ -37,7 +64,21 @@ function EventCreateModal() {
       setSecondOpen(true);
     }
   };
+  function handleAddEvent() {
+    for (let i = 0; i < allEvents.length; i++) {
+      const d1 = new Date(allEvents[i].start);
+      const d2 = new Date(newEvent.start);
+      const d3 = new Date(allEvents[i].end);
+      const d4 = new Date(newEvent.end);
+      if ((d1 <= d2 && d2 <= d3) || (d1 <= d4 && d4 <= d3)) {
+        alert("CLASH");
+        break;
+      }
+    }
 
+    // @ts-ignore
+    setAllEvents([...allEvents, newEvent]);
+  }
   return (
     <>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
@@ -61,7 +102,14 @@ function EventCreateModal() {
                   Event Title
                 </label>
               </div>
-              <Field id="name" name="name">
+              <Field
+                id="name"
+                name="name"
+                value={newEvent.title}
+                onChange={(e) =>
+                  setNewEvent({ ...newEvent, title: e.target.value })
+                }
+              >
                 {({ field }) => <Input {...field} />}
               </Field>
               <div>
@@ -73,11 +121,30 @@ function EventCreateModal() {
                 {({ field }) => <Input {...field} />}
               </Field>
               <div>
-                <label htmlFor="createdDate" className="field-title">
-                  Date
+                <label htmlFor="startDate" className="field-title">
+                  StartDate
                 </label>
               </div>
-              <Field id="createdDate" name="createdDate">
+              <Field
+                id="startDate"
+                name="startDate"
+                selected={newEvent.start}
+                onChange={(start) => setNewEvent({ ...newEvent, start })}
+              >
+                {({ field }) => <Input type="date" {...field} />}
+              </Field>
+
+              <div>
+                <label htmlFor="endDate" className="field-title">
+                  EndDate
+                </label>
+              </div>
+              <Field
+                id="endDate"
+                name="endDate"
+                selected={newEvent.end}
+                onChange={(end) => setNewEvent({ ...newEvent, end })}
+              >
                 {({ field }) => <Input type="date" {...field} />}
               </Field>
               <div>
@@ -105,9 +172,9 @@ function EventCreateModal() {
             open={secondOpen}
             size="small"
           >
-            <Modal.Header>Success!!!</Modal.Header>
+            <Modal.Header>Success!</Modal.Header>
             <Modal.Content>
-              <p>You have successfully created an event in Syncify!!!</p>
+              <p>You have successfully created an event in Syncify!</p>
             </Modal.Content>
             <Modal.Actions>
               <Button
