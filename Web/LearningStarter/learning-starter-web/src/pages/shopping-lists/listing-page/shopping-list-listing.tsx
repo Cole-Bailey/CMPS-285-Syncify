@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Header, Icon, Segment, Table } from "semantic-ui-react";
+import { Button, Header, Table } from "semantic-ui-react";
 import { BaseUrl } from "../../../constants/env-cars";
 import { ApiResponse, ShoppingListGetDto } from "../../../constants/types";
 import { useHistory } from "react-router-dom";
@@ -33,18 +33,12 @@ export const ShoppingListListingPage = () => {
       <Header>Shopping List Items</Header>
       {shoppingLists && (
         <>
-          <Button
-            type="button"
-            onClick={() => history.push(routes.shoppingLists.create)}
-          >
-            + Create
-          </Button>
           <Table striped celled>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell width={1}>Edit Item</Table.HeaderCell>
                 <Table.HeaderCell>Id</Table.HeaderCell>
                 <Table.HeaderCell>Name</Table.HeaderCell>
+                <Table.HeaderCell>Edit Item</Table.HeaderCell>
                 <Table.HeaderCell>Delete Item</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
@@ -52,10 +46,14 @@ export const ShoppingListListingPage = () => {
               {shoppingLists.map((shoppingList) => {
                 return (
                   <Table.Row key={shoppingList.id}>
+                    <Table.Cell>{shoppingList.id}</Table.Cell>
+                    <Table.Cell>{shoppingList.name}</Table.Cell>
                     <Table.Cell>
-                      <Icon
-                        link
-                        name="pencil"
+                      <Button
+                        positive
+                        type="button"
+                        content="Edit Item"
+                        icon="pencil"
                         onClick={() =>
                           history.push(
                             routes.shoppingLists.update.replace(
@@ -66,12 +64,12 @@ export const ShoppingListListingPage = () => {
                         }
                       />
                     </Table.Cell>
-                    <Table.Cell>{shoppingList.id}</Table.Cell>
-                    <Table.Cell>{shoppingList.name}</Table.Cell>
                     <Table.Cell>
                       <Button
-                        color="red"
-                        type="Button"
+                        negative
+                        type="button"
+                        content="Delete Item"
+                        icon="trash"
                         onClick={() =>
                           history.push(
                             routes.shoppingLists.delete.replace(
@@ -80,10 +78,7 @@ export const ShoppingListListingPage = () => {
                             )
                           )
                         }
-                      >
-                        {" "}
-                        Delete{" "}
-                      </Button>
+                      />
                     </Table.Cell>
                   </Table.Row>
                 );

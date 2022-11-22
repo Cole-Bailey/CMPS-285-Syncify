@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Header, Icon, Segment, Table } from "semantic-ui-react";
+import { Button, Header, Table } from "semantic-ui-react";
 import { BaseUrl } from "../../../constants/env-cars";
 import { ApiResponse, UnitGetDto } from "../../../constants/types";
 import { useHistory } from "react-router-dom";
@@ -42,10 +42,10 @@ export const UnitListingPage = () => {
           <Table striped celled>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell width={1}>Edit Unit</Table.HeaderCell>
                 <Table.HeaderCell>Id</Table.HeaderCell>
                 <Table.HeaderCell>Name</Table.HeaderCell>
                 <Table.HeaderCell>Abbreviation</Table.HeaderCell>
+                <Table.HeaderCell>Edit Unit</Table.HeaderCell>
                 <Table.HeaderCell>Delete Unit</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
@@ -53,10 +53,15 @@ export const UnitListingPage = () => {
               {units.map((unit) => {
                 return (
                   <Table.Row key={unit.id}>
+                    <Table.Cell>{unit.id}</Table.Cell>
+                    <Table.Cell>{unit.name}</Table.Cell>
+                    <Table.Cell>{unit.abbreviation}</Table.Cell>
                     <Table.Cell>
-                      <Icon
-                        link
-                        name="pencil"
+                      <Button
+                        positive
+                        type="button"
+                        content="Edit Unit"
+                        icon="pencil"
                         onClick={() =>
                           history.push(
                             routes.units.update.replace(":id", `${unit.id}`)
@@ -64,22 +69,18 @@ export const UnitListingPage = () => {
                         }
                       />
                     </Table.Cell>
-                    <Table.Cell>{unit.id}</Table.Cell>
-                    <Table.Cell>{unit.name}</Table.Cell>
-                    <Table.Cell>{unit.abbreviation}</Table.Cell>
                     <Table.Cell>
                       <Button
-                        type="Button"
-                        color="red"
+                        negative
+                        type="button"
+                        content="Delete"
+                        icon="trash"
                         onClick={() =>
                           history.push(
                             routes.units.delete.replace(":id", `${unit.id}`)
                           )
                         }
-                      >
-                        {" "}
-                        Delete{" "}
-                      </Button>
+                      />
                     </Table.Cell>
                   </Table.Row>
                 );

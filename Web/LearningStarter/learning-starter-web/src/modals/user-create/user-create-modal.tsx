@@ -10,8 +10,6 @@ import {
   UserCreateDto,
   UserGetDto,
 } from "../../constants/types";
-import { useHistory } from "react-router-dom";
-import { routes } from "../../routes/config";
 import { BaseUrl } from "../../constants/env-cars";
 
 function UserCreateModal() {
@@ -29,7 +27,6 @@ function UserCreateModal() {
     email: "",
     birthday: "",
   };
-  const history = useHistory();
 
   const onSubmit = async (values: UserCreateDto) => {
     const response = await axios.post<ApiResponse<UserGetDto>>(

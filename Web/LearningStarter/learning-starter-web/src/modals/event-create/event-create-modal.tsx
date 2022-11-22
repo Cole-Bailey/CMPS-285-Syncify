@@ -13,11 +13,8 @@ import {
   EventCreateDto,
   EventGetDto,
 } from "../../constants/types";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { BaseUrl } from "../../constants/env-cars";
-import { title } from "process";
-import { routes } from "../../routes/config";
 
 const events = [
   {
@@ -49,7 +46,6 @@ function EventCreateModal() {
     StartDate: new Date(),
     EndDate: new Date(),
   };
-  const history = useHistory();
 
   const onSubmit = async (values: EventCreateDto) => {
     const response = await axios.post<ApiResponse<EventGetDto>>(

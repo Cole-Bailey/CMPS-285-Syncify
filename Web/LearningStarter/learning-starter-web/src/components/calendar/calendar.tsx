@@ -93,7 +93,6 @@ function App() {
         endAccessor="end"
         style={{ height: 500, margin: "50px" }}
       />
-      //{" "}
     </div>
   );
 }
