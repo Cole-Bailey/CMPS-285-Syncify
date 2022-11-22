@@ -29,7 +29,7 @@ export const UnitListingPage = () => {
   }, []);
 
   return (
-    <Segment>
+    <>
       {units && (
         <>
           <Header>Units</Header>
@@ -88,6 +88,6 @@ export const UnitListingPage = () => {
           </Table>
         </>
       )}
-    </Segment>
+    </>
   );
 };

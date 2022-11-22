@@ -29,7 +29,7 @@ export const UsersListingPage = () => {
   }, []);
 
   return (
-    <Segment>
+    <>
       {users && (
         <>
           <Header>Users</Header>
@@ -89,6 +89,6 @@ export const UsersListingPage = () => {
           </Table>
         </>
       )}
-    </Segment>
+    </>
   );
 };

@@ -33,7 +33,7 @@ export const GroupListingPage = () => {
   }, []);
 
   return (
-    <Segment>
+    <>
       {groups && (
         <>
           <Header>Groups</Header>
@@ -81,6 +81,6 @@ export const GroupListingPage = () => {
         </>
       )}
       <Button onClick={goHome}>Home</Button>
-    </Segment>
+    </>
   );
 };

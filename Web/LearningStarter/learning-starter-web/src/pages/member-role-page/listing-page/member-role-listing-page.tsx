@@ -34,7 +34,7 @@ export const MemberRoleListingPage = () => {
   }, []);
 
   return (
-    <Segment>
+    <>
       {memberRoles && (
         <>
           <Header>Member Roles</Header>
@@ -94,6 +94,6 @@ export const MemberRoleListingPage = () => {
         </>
       )}
       <Button onClick={goHome}>Home</Button>
-    </Segment>
+    </>
   );
 };

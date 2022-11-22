@@ -29,7 +29,7 @@ export const GroupMembersListingPage = () => {
   }, []);
 
   return (
-    <Segment>
+    <>
       {groupMembers && (
         <>
           <Header>Group Members</Header>
@@ -97,6 +97,6 @@ export const GroupMembersListingPage = () => {
           </Table>
         </>
       )}
-    </Segment>
+    </>
   );
 };

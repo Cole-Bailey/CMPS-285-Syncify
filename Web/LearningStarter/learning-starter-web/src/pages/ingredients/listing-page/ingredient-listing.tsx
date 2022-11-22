@@ -30,7 +30,7 @@ export const IngredientListingPage = () => {
   }, []);
 
   return (
-    <Segment>
+    <>
       {ingredients && (
         <>
           <Header>Ingredients</Header>
@@ -92,6 +92,6 @@ export const IngredientListingPage = () => {
           </Table>
         </>
       )}
-    </Segment>
+    </>
   );
 };

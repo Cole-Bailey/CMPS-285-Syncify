@@ -125,7 +125,7 @@ export type ToDoGetDto = {
 };
 
 export type ToDoCreateDto = {
-  calendarId: CalendarGetDto;
+  calendarId: number;
   title: string;
   description: string;
   date: Date;
@@ -235,10 +235,10 @@ export type RecipeUpdateDto = {
 
 export type RecipeIngredientGetDto = {
   id: number;
-  recipeId: RecipeGetDto;
-  ingredientId: IngredientGetDto;
+  recipe: RecipeGetDto;
+  ingredient: IngredientGetDto;
   quantity: number;
-  unitId: UnitGetDto;
+  unit: UnitGetDto;
 };
 
 export type RecipeIngredientCreateDto = {
