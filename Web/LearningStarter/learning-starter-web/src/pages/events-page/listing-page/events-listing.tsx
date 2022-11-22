@@ -6,6 +6,7 @@ import { BaseUrl } from "../../../constants/env-cars";
 import { useHistory } from "react-router-dom";
 import { routes } from "../../../routes/config";
 import "./events-listing.css";
+import { PageWrapper } from "../../../components/page-wrapper/page-wrapper";
 
 export const EventListingPage = () => {
   const [events, setEvents] = useState<EventGetDto[]>();
@@ -30,7 +31,7 @@ export const EventListingPage = () => {
   }, []);
 
   return (
-    <Segment>
+    <>
       {events && (
         <>
           <Header>Events</Header>
@@ -78,7 +79,7 @@ export const EventListingPage = () => {
           </Table>
         </>
       )}
-    </Segment>
+    </>
   );
 };
 

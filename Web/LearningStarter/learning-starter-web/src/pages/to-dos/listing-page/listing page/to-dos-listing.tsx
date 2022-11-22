@@ -30,12 +30,12 @@ export const ToDoListingPage = () => {
         {todos ? (
           todos.map((todos) => {
             return (
-              <Segment>
+              <>
                 <div>Calender: {todos.calendar.group.name}</div>
                 <div>Id: {todos.id}</div>
                 <div>Title: {todos.title}</div>
                 <div>Description: {todos.description}</div>
-              </Segment>
+              </>
             );
           })
         ) : (

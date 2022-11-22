@@ -29,7 +29,7 @@ export const ShoppingListListingPage = () => {
   }, []);
 
   return (
-    <Segment>
+    <>
       <Header>Shopping List Items</Header>
       {shoppingLists && (
         <>
@@ -92,6 +92,6 @@ export const ShoppingListListingPage = () => {
           </Table>
         </>
       )}
-    </Segment>
+    </>
   );
 };

@@ -43,7 +43,7 @@ import { EventListingPage } from "../pages/events-page/listing-page/events-listi
 import { EventCreatePage } from "../pages/events-page/create-page/events-create";
 import { GroupMembersListingPage } from "../pages/Group-Members-page/listing-page/group-members-listing";
 import { GroupMembersUpdatePage } from "../pages/Group-Members-page/update-page/group-members-update";
-import { GroupMembersCreatePage } from "../pages/Group-Members-page/create-page/group-members-create";
+import { GroupMemberCreatePage } from "../pages/Group-Members-page/create-page/group-members-create";
 import { GroupMembersDeletePage } from "../pages/Group-Members-page/delete-page/group-members-delete";
 import App from "../components/calendar/calendar";
 import UserCreateModal from "../pages/users-page/create-page/user-create";
@@ -121,6 +121,12 @@ export const routes = {
     create: "/group-members/create",
     update: "/group-members/:id",
     delete: "/group-members/delete/:id",
+  },
+  recipeIngredients: {
+    listing: "/recipe-ingredients",
+    create: "recipe-ingredients/create",
+    update: "recipe-ingredients/:id",
+    delete: "recipe-ingredients/delete/:id",
   },
 };
 
@@ -263,7 +269,7 @@ export const Routes = () => {
             <GroupMembersUpdatePage />
           </Route>
           <Route path={routes.groupMembers.create} exact>
-            <GroupMembersCreatePage />
+            <GroupMemberCreatePage />
           </Route>
           <Route path={routes.groupMembers.delete} exact>
             <GroupMembersDeletePage />
