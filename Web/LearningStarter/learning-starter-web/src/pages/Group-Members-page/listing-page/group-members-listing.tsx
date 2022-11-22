@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { ApiResponse, GroupMemberGetDto } from "../../../constants/types";
 import { BaseUrl } from "../../../constants/env-cars";
-import { Button, Header, Icon, Segment, Table } from "semantic-ui-react";
+import { Button, Header, Table } from "semantic-ui-react";
 import { routes } from "../../../routes/config";
 import { useHistory } from "react-router-dom";
 import "./group-members-listing.css";
@@ -43,22 +43,28 @@ export const GroupMembersListingPage = () => {
           <Table striped celled>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell width={1}>Edit Name</Table.HeaderCell>
                 <Table.HeaderCell>Id</Table.HeaderCell>
                 <Table.HeaderCell>Member Role</Table.HeaderCell>
                 <Table.HeaderCell>User</Table.HeaderCell>
                 <Table.HeaderCell>Group</Table.HeaderCell>
-                <Table.HeaderCell>Delete</Table.HeaderCell>
+                <Table.HeaderCell>Edit Member</Table.HeaderCell>
+                <Table.HeaderCell>Delete Member</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
               {groupMembers.map((groupMembers) => {
                 return (
                   <Table.Row key={groupMembers.id}>
+                    <Table.Cell>{groupMembers.id}</Table.Cell>
+                    <Table.Cell>{groupMembers.memberRole.name}</Table.Cell>
+                    <Table.Cell>{groupMembers.user.username}</Table.Cell>
+                    <Table.Cell>{groupMembers.group.name}</Table.Cell>
                     <Table.Cell>
-                      <Icon
-                        link
-                        name="pencil"
+                      <Button
+                        positive
+                        type="button"
+                        content="Edit Member"
+                        icon="pencil"
                         onClick={() =>
                           history.push(
                             routes.groupMembers.update.replace(
@@ -69,14 +75,12 @@ export const GroupMembersListingPage = () => {
                         }
                       />
                     </Table.Cell>
-                    <Table.Cell>{groupMembers.id}</Table.Cell>
-                    <Table.Cell>{groupMembers.memberRole.name}</Table.Cell>
-                    <Table.Cell>{groupMembers.user.username}</Table.Cell>
-                    <Table.Cell>{groupMembers.group.name}</Table.Cell>
                     <Table.Cell>
                       <Button
-                        color="red"
+                        negative
                         type="Button"
+                        content="Delete Member"
+                        icon="trash"
                         onClick={() =>
                           history.push(
                             routes.groupMembers.delete.replace(
@@ -85,10 +89,7 @@ export const GroupMembersListingPage = () => {
                             )
                           )
                         }
-                      >
-                        {" "}
-                        Delete{" "}
-                      </Button>
+                      />
                     </Table.Cell>
                   </Table.Row>
                 );

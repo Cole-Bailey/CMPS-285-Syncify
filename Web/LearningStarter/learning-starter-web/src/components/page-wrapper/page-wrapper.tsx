@@ -2,7 +2,6 @@ import "./page-wrapper.css";
 import React from "react";
 import { UserGetDto } from "../../constants/types";
 import { PrimaryNavigation } from "../../components/buttons/navigation-buttons";
-import SyncifyImg from "../../assets/Syncify.png";
 
 type PageWrapperProps = {
   user?: UserGetDto;
