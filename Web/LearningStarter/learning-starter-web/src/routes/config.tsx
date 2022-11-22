@@ -3,11 +3,8 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import { LandingPage } from "../pages/landing-page/landing-page";
 import { NotFoundPage } from "../pages/not-found";
 import { useUser } from "../authentication/use-auth";
-
 import { PageWrapper } from "../components/page-wrapper/page-wrapper";
 import { MealTypeListingPage } from "../pages/meal-types/listing-page/meal-type-listing";
-import { MealTypeCreatePage } from "../pages/meal-types/create-page/meal-type-create";
-import { MealTypeUpdatePage } from "../pages/meal-types/update-page/meal-type-update";
 import { IngredientListingPage } from "../pages/ingredients/listing-page/ingredient-listing";
 import { IngredientCreatePage } from "../pages/ingredients/create-page/ingredient-create";
 import { IngredientUpdatePage } from "../pages/ingredients/update-page/ingredient-update";
@@ -34,11 +31,7 @@ import { UsersListingPage } from "../pages/users-page/listing-page/user-listing"
 import { UsersProfilePage } from "../pages/users-page/profile-page/users-profile";
 import { UsersUpdatePage } from "../pages/users-page/update-page/user-update";
 import { UsersDeletePage } from "../pages/users-page/delete-page/user-delete";
-import { MealTypeDeletePage } from "../pages/meal-types/delete-page/meal-type-delete";
 import { MemberRoleListingPage } from "../pages/member-role-page/listing-page/member-role-listing-page";
-import { MemberRoleCreatePage } from "../pages/member-role-page/create-page/member-role-create";
-import { MemberRoleUpdatePage } from "../pages/member-role-page/update-page/member-role-update";
-import { MemberRoleDeletePage } from "../pages/member-role-page/delete-page/member-role-delete";
 import { EventListingPage } from "../pages/events-page/listing-page/events-listing";
 import { EventCreatePage } from "../pages/events-page/create-page/events-create";
 import { GroupMembersListingPage } from "../pages/Group-Members-page/listing-page/group-members-listing";
@@ -67,9 +60,6 @@ export const routes = {
   },
   mealTypes: {
     listing: "/meal-types",
-    create: "/meal-types/create",
-    update: "/meal-types/:id",
-    delete: "/meal-types/delete/:id",
   },
   ingredients: {
     listing: "/ingredients",
@@ -79,9 +69,6 @@ export const routes = {
   },
   memberRoles: {
     listing: "/member-roles",
-    create: "/member-roles/create",
-    update: "/member-roles/:id",
-    delete: "/member-roles/delete/:id",
   },
   recipes: {
     listing: "/recipes",
@@ -95,10 +82,10 @@ export const routes = {
     update: "/shopping-lists/:id",
     delete: "/shopping-lists/delete/:id",
   },
-  group: {
-    listing: "/group",
-    create: "/group/create",
-    update: "/group/:id",
+  groups: {
+    listing: "/groups",
+    create: "/groups/create",
+    update: "/groups/:id",
   },
   toDos: {
     listing: "/to-dos",
@@ -169,15 +156,6 @@ export const Routes = () => {
           <Route path={routes.mealTypes.listing} exact>
             <MealTypeListingPage />
           </Route>
-          <Route path={routes.mealTypes.create} exact>
-            <MealTypeCreatePage />
-          </Route>
-          <Route path={routes.mealTypes.update} exact>
-            <MealTypeUpdatePage />
-          </Route>
-          <Route path={routes.mealTypes.delete} exact>
-            <MealTypeDeletePage />
-          </Route>
           <Route path={routes.ingredients.listing} exact>
             <IngredientListingPage />
           </Route>
@@ -202,13 +180,13 @@ export const Routes = () => {
           <Route path={routes.recipes.delete} exact>
             <RecipeDeletePage />
           </Route>
-          <Route path={routes.group.listing} exact>
+          <Route path={routes.groups.listing} exact>
             <GroupListingPage />
           </Route>
-          <Route path={routes.group.create} exact>
+          <Route path={routes.groups.create} exact>
             <GroupCreatePage />
           </Route>
-          <Route path={routes.group.update} exact>
+          <Route path={routes.groups.update} exact>
             <GroupUpdatePage />
           </Route>
           <Route path={routes.shoppingLists.create} exact>
@@ -246,15 +224,6 @@ export const Routes = () => {
           </Route>
           <Route path={routes.memberRoles.listing} exact>
             <MemberRoleListingPage />
-          </Route>
-          <Route path={routes.memberRoles.create} exact>
-            <MemberRoleCreatePage />
-          </Route>
-          <Route path={routes.memberRoles.update} exact>
-            <MemberRoleUpdatePage />
-          </Route>
-          <Route path={routes.memberRoles.delete} exact>
-            <MemberRoleDeletePage />
           </Route>
           <Route path={routes.events.listing}>
             <EventListingPage />

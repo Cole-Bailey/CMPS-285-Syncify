@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Header, Icon, Segment, Table } from "semantic-ui-react";
+import { Button, Header, Table } from "semantic-ui-react";
 import { BaseUrl } from "../../../constants/env-cars";
 import { ApiResponse, UserGetDto } from "../../../constants/types";
 import { useHistory } from "react-router-dom";
@@ -36,7 +36,6 @@ export const UsersListingPage = () => {
           <Table striped celled>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell width={1}>Edit</Table.HeaderCell>
                 <Table.HeaderCell>Id</Table.HeaderCell>
                 <Table.HeaderCell>Profile Color</Table.HeaderCell>
                 <Table.HeaderCell>First Name</Table.HeaderCell>
@@ -45,24 +44,14 @@ export const UsersListingPage = () => {
                 <Table.HeaderCell>Phone Number</Table.HeaderCell>
                 <Table.HeaderCell>Email</Table.HeaderCell>
                 <Table.HeaderCell>Birthday</Table.HeaderCell>
-                <Table.HeaderCell>Delete</Table.HeaderCell>
+                <Table.HeaderCell>Edit User</Table.HeaderCell>
+                <Table.HeaderCell>Delete User</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
               {users.map((users) => {
                 return (
                   <Table.Row key={users.id}>
-                    <Table.Cell>
-                      <Icon
-                        link
-                        name="pencil"
-                        onClick={() =>
-                          history.push(
-                            routes.users.update.replace(":id", `${users.id}`)
-                          )
-                        }
-                      />
-                    </Table.Cell>
                     <Table.Cell>{users.id}</Table.Cell>
                     <Table.Cell>{users.profileColor.colors}</Table.Cell>
                     <Table.Cell>{users.firstName}</Table.Cell>
@@ -72,9 +61,24 @@ export const UsersListingPage = () => {
                     <Table.Cell>{users.email}</Table.Cell>
                     <Table.Cell>{users.birthday}</Table.Cell>
                     <Table.Cell>
-                      <Icon
-                        link
-                        name="trash"
+                      <Button
+                        positive
+                        type="button"
+                        content="Edit User"
+                        icon="pencil"
+                        onClick={() =>
+                          history.push(
+                            routes.users.update.replace(":id", `${users.id}`)
+                          )
+                        }
+                      />
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Button
+                        negative
+                        type="button"
+                        content="Delete User"
+                        icon="pencil"
                         onClick={() =>
                           history.push(
                             routes.users.delete.replace(":id", `${users.id}`)

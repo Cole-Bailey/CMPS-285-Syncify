@@ -3,10 +3,8 @@ import { Field, Form, Formik } from "formik";
 import React, { useState } from "react";
 import { Input, Modal, Button } from "semantic-ui-react";
 import { ApiResponse, ToDoCreateDto, ToDoGetDto } from "../../constants/types";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { BaseUrl } from "../../constants/env-cars";
-import { routes } from "../../routes/config";
 
 function ToDoCreateModal() {
   const [firstOpen, setFirstOpen] = useState(false);
@@ -17,7 +15,6 @@ function ToDoCreateModal() {
     description: "",
     date: new Date(),
   };
-  const history = useHistory();
 
   const onSubmit = async (values: ToDoCreateDto) => {
     const response = await axios.post<ApiResponse<ToDoGetDto>>(
