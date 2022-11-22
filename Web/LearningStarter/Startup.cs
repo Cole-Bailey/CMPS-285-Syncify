@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
 using LearningStarter.Common;
 using LearningStarter.Data;
 using LearningStarter.Entities;
@@ -17,6 +12,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace LearningStarter
 {
@@ -213,7 +212,7 @@ namespace LearningStarter
         }
 
         private void SeedGroupMembers(DataContext dataContext)
-            {
+        {
             if (!dataContext.GroupMembers.Any())
             {
                 var memberRoles = dataContext.MemberRoles.ToList();
@@ -673,7 +672,8 @@ namespace LearningStarter
                     Calendar = calendar,
                     Name = "Cole's Birthday Bash!",
                     EventDetails = "Chillin at the Blue Moon, 10:00pm",
-                    CreatedDate = DateTime.Now,
+                    StartDate = DateTime.Now,
+                    EndDate = DateTime.Now,
                 };
 
                 dataContext.Events.AddRange(seededEvents);
@@ -704,4 +704,4 @@ namespace LearningStarter
 
 
 
-    
+
