@@ -1,13 +1,6 @@
 import { Field, Form, Formik } from "formik";
 import React, { useState } from "react";
-import {
-  Input,
-  Modal,
-  Button,
-  Table,
-  Icon,
-  TableCell,
-} from "semantic-ui-react";
+import { Input, Modal, Button } from "semantic-ui-react";
 import {
   ApiResponse,
   EventCreateDto,
@@ -16,29 +9,9 @@ import {
 import axios from "axios";
 import { BaseUrl } from "../../constants/env-cars";
 
-const events = [
-  {
-    title: "My Big Day!!",
-    start: new Date(2022, 12, 30),
-    end: new Date(2022, 12, 30),
-  },
-  {
-    title: "I need a a vacation, and a beer",
-    start: new Date(2021, 11, 7),
-    end: new Date(2021, 11, 10),
-  },
-  {
-    title: "Math test",
-    start: new Date(2021, 11, 20),
-    end: new Date(2021, 11, 20),
-  },
-];
-
-function EventCreateModal() {
+const EventCreateModal = ({ refetchEvents }: { refetchEvents: () => {} }) => {
   const [firstOpen, setFirstOpen] = useState(false);
   const [secondOpen, setSecondOpen] = useState(false);
-  const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
-  const [allEvents, setAllEvents] = useState(events);
   const initialValues: EventCreateDto = {
     calendarId: 0,
     name: "",
@@ -62,29 +35,18 @@ function EventCreateModal() {
       });
     } else {
       setSecondOpen(true);
+      refetchEvents();
     }
   };
-  function handleAddEvent() {
-    for (let i = 0; i < allEvents.length; i++) {
-      const d1 = new Date(allEvents[i].start);
-      const d2 = new Date(newEvent.start);
-      const d3 = new Date(allEvents[i].end);
-      const d4 = new Date(newEvent.end);
-      if ((d1 <= d2 && d2 <= d3) || (d1 <= d4 && d4 <= d3)) {
-        alert("CLASH");
-        break;
-      }
-    }
 
-    // @ts-ignore
-    setAllEvents([...allEvents, newEvent]);
-  }
   return (
     <>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         <Modal
           as={Form}
-          onClose={() => setFirstOpen(false)}
+          onClose={() => {
+            setFirstOpen(false);
+          }}
           onOpen={() => setFirstOpen(true)}
           open={firstOpen}
           trigger={
@@ -102,14 +64,7 @@ function EventCreateModal() {
                   Event Title
                 </label>
               </div>
-              <Field
-                id="name"
-                name="name"
-                value={newEvent.title}
-                onChange={(e) =>
-                  setNewEvent({ ...newEvent, title: e.target.value })
-                }
-              >
+              <Field id="name" name="name">
                 {({ field }) => <Input {...field} />}
               </Field>
               <div>
@@ -125,12 +80,7 @@ function EventCreateModal() {
                   StartDate
                 </label>
               </div>
-              <Field
-                id="startDate"
-                name="startDate"
-                selected={newEvent.start}
-                onChange={(start) => setNewEvent({ ...newEvent, start })}
-              >
+              <Field id="startDate" name="startDate">
                 {({ field }) => <Input type="date" {...field} />}
               </Field>
 
@@ -139,12 +89,7 @@ function EventCreateModal() {
                   EndDate
                 </label>
               </div>
-              <Field
-                id="endDate"
-                name="endDate"
-                selected={newEvent.end}
-                onChange={(end) => setNewEvent({ ...newEvent, end })}
-              >
+              <Field id="endDate" name="endDate">
                 {({ field }) => <Input type="date" {...field} />}
               </Field>
               <div>
@@ -183,7 +128,9 @@ function EventCreateModal() {
                 content="Home"
                 labelPosition="right"
                 positive
-                onClick={() => setFirstOpen(false)}
+                onClick={() => {
+                  setFirstOpen(false);
+                }}
               />
             </Modal.Actions>
           </Modal>
@@ -191,6 +138,6 @@ function EventCreateModal() {
       </Formik>
     </>
   );
-}
+};
 
 export default EventCreateModal;
