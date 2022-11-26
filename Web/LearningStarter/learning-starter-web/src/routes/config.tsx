@@ -40,8 +40,11 @@ import { GroupMemberCreatePage } from "../pages/Group-Members-page/create-page/g
 import { GroupMembersDeletePage } from "../pages/Group-Members-page/delete-page/group-members-delete";
 import App from "../components/calendar/calendar";
 import UserCreateModal from "../pages/users-page/create-page/user-create";
-
-//import { LoginPage } from "../pages/login-page/login-page";
+import { LoginPage } from "../pages/login-page/login-page";
+import { RecipeIngredientCreatePage } from "../pages/recipe-ingredients-page/create-page/recipe-ingredient-create";
+import { RecipeIngredientListingPage } from "../pages/recipe-ingredients-page/listing-page/recipe-ingredient-listing";
+import { RecipeIngredientUpdatePage } from "../pages/recipe-ingredients-page/update-page/recipe-ingredient-update";
+import { RecipeIngredientDeletePage } from "../pages/recipe-ingredients-page/delete-page/recipe-ingredient-delete";
 
 //import { ShoppingListUpdatePage } from "../pages/shopping-lists/update-page/shopping-list-update";
 //This is where you will declare all of your routes (the ones that show up in the search bar)
@@ -242,6 +245,18 @@ export const Routes = () => {
           </Route>
           <Route path={routes.groupMembers.delete} exact>
             <GroupMembersDeletePage />
+          </Route>
+          <Route path={routes.recipeIngredients.listing} exact>
+            <RecipeIngredientListingPage />
+          </Route>
+          <Route path={routes.recipeIngredients.create} exact>
+            <RecipeIngredientCreatePage />
+          </Route>
+          <Route path={routes.recipeIngredients.update} exact>
+            <RecipeIngredientUpdatePage />
+          </Route>
+          <Route path={routes.recipeIngredients.delete} exact>
+            <RecipeIngredientDeletePage />
           </Route>
           {/* This should always come last.  
             If the path has no match, show page not found */}

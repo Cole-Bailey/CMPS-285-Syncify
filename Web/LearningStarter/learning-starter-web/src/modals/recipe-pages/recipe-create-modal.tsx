@@ -10,6 +10,7 @@ import {
   RecipeGetDto,
 } from "../../constants/types";
 import { BaseUrl } from "../../constants/env-cars";
+import toast from "react-hot-toast";
 
 function RecipeCreateModal() {
   const [firstOpen, setFirstOpen] = useState(false);
@@ -35,11 +36,25 @@ function RecipeCreateModal() {
     );
 
     if (response.data.hasErrors) {
+      toast.error("Error Occured, please try again", {
+        position: "top-center",
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
       response.data.errors.forEach((err) => {
         console.log(err.message);
       });
     } else {
       setSecondOpen(true);
+      toast.success("Recipe successfully created", {
+        position: "top-center",
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
     }
   };
 

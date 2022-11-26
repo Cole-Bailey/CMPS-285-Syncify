@@ -245,17 +245,17 @@ export type RecipeIngredientGetDto = {
 };
 
 export type RecipeIngredientCreateDto = {
-  recipeId: RecipeGetDto;
-  ingredientId: IngredientGetDto;
+  recipe: string;
+  ingredient: string;
   quantity: number;
-  unitId: UnitGetDto;
+  unit: string;
 };
 
 export type RecipeIngredientUpdateDto = {
-  recipeId: RecipeGetDto;
-  ingredientId: IngredientGetDto;
+  recipe: RecipeGetDto;
+  ingredient: IngredientGetDto;
   quantity: number;
-  unitId: UnitGetDto;
+  unit: UnitGetDto;
 };
 
 export type ShoppingListRecipeIngredientGetDto = {

@@ -11,6 +11,7 @@ import { useRouteMatch } from "react-router-dom";
 import { routes } from "../../../routes/config";
 import { useHistory } from "react-router-dom";
 import "./unit-update.css";
+import toast from "react-hot-toast";
 export const UnitUpdatePage = () => {
   const history = useHistory();
   let match = useRouteMatch<{ id: string }>();
@@ -46,6 +47,13 @@ export const UnitUpdatePage = () => {
       });
     } else {
       history.push(routes.units.listing);
+      toast.success("Unit updated", {
+        position: "top-center",
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
     }
   };
   return (

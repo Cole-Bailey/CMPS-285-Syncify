@@ -5,6 +5,7 @@ import { Input, Modal, Button } from "semantic-ui-react";
 import { ApiResponse, ToDoCreateDto, ToDoGetDto } from "../../constants/types";
 import axios from "axios";
 import { BaseUrl } from "../../constants/env-cars";
+import toast from "react-hot-toast";
 
 function ToDoCreateModal() {
   const [firstOpen, setFirstOpen] = useState(false);
@@ -28,9 +29,23 @@ function ToDoCreateModal() {
     if (response.data.hasErrors) {
       response.data.errors.forEach((err) => {
         console.log(err.message);
+        toast.error("Error Occured", {
+          position: "top-center",
+          style: {
+            background: "#333",
+            color: "#fff",
+          },
+        });
       });
     } else {
       setSecondOpen(true);
+      toast.success("To-Do created", {
+        position: "top-center",
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
     }
   };
 

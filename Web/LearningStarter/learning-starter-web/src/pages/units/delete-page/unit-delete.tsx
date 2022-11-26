@@ -7,6 +7,7 @@ import { useRouteMatch } from "react-router-dom";
 import { routes } from "../../../routes/config";
 import { useHistory } from "react-router-dom";
 import "./unit-delete.css";
+import toast from "react-hot-toast";
 
 export const UnitDeletePage = () => {
   const history = useHistory();
@@ -42,6 +43,13 @@ export const UnitDeletePage = () => {
       });
     } else {
       history.push(routes.units.listing);
+      toast.success("Unit deleted", {
+        position: "top-center",
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
     }
   };
   return (
