@@ -14,7 +14,7 @@ export const UsersDeletePage = () => {
   const userDelete = useUser();
   let match = useRouteMatch<{ id: string }>();
   const id = match.params.id;
-  const [user, setUser] = useState<UserGetDto>(userDelete);
+  const [user, setUser] = useState<UserGetDto>();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -53,11 +53,11 @@ export const UsersDeletePage = () => {
         <Formik initialValues={user} onSubmit={onSubmit}>
           <Form>
             <div className="user-delete-container">
-              <label htmlFor="profileColorId">Profile Color</label>
+              <label htmlFor="profileColor.colors">Profile Color</label>
             </div>
             <div className="user-delete-container">
-              <Field id="profileColorId" name="profileColorId">
-                {({ field }) => <Input type="number" {...field} />}
+              <Field id="profileColor.colors" name="profileColor.colors">
+                {({ field }) => <Input {...field} />}
               </Field>
             </div>
             <div className="user-delete-container">
@@ -102,7 +102,13 @@ export const UsersDeletePage = () => {
             </div>
 
             <div className="user-delete-container">
-              <Button type="submit">Submit</Button>
+              <Button
+                negative
+                icon="trash"
+                content="Delete"
+                labelPosition="left"
+                type="submit"
+              />
             </div>
           </Form>
         </Formik>

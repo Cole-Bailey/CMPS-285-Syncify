@@ -65,11 +65,11 @@ export const UsersUpdatePage = () => {
         >
           <Form>
             <div className="user-update-container">
-              <label htmlFor="profileColorId">Profile Color</label>
+              <label htmlFor="profileColor.colors">Profile Color</label>
             </div>
             <div className="user-update-container">
-              <Field id="profileColorId" name="profileColorId">
-                {({ field }) => <Input type="number" {...field} />}
+              <Field id="profileColor.colors" name="profileColor.colors">
+                {({ field }) => <Input {...field} />}
               </Field>
             </div>
             <div className="user-update-container">
