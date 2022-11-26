@@ -63,7 +63,6 @@ export const UsersListingPage = () => {
                     <Table.Cell>
                       <Button
                         positive
-                        type="button"
                         content="Edit User"
                         icon="pencil"
                         onClick={() =>
@@ -76,9 +75,8 @@ export const UsersListingPage = () => {
                     <Table.Cell>
                       <Button
                         negative
-                        type="button"
                         content="Delete User"
-                        icon="pencil"
+                        icon="trash"
                         onClick={() =>
                           history.push(
                             routes.users.delete.replace(":id", `${users.id}`)

@@ -121,21 +121,24 @@ export type ToDoGetDto = {
   calendar: CalendarGetDto;
   title: string;
   description: string;
-  date: Date;
+  startDate: Date;
+  endDate: Date;
 };
 
 export type ToDoCreateDto = {
   calendarId: number;
   title: string;
   description: string;
-  date: Date;
+  startDate: Date;
+  endDate: Date;
 };
 
 export type ToDoUpdateDto = {
-  calendarId: CalendarGetDto;
+  calendar: CalendarGetDto;
   title: string;
   description: string;
-  date: Date;
+  startDate: Date;
+  endDate: Date;
 };
 
 export type EventGetDto = {
@@ -151,16 +154,16 @@ export type EventCreateDto = {
   calendarId: number;
   name: string;
   eventDetails: string;
-  StartDate: Date;
-  EndDate: Date;
+  startDate: Date;
+  endDate: Date;
 };
 
 export type EventUpdateDto = {
-  calendarId: number;
+  calendar: CalendarGetDto;
   name: string;
   eventDetails: string;
-  StartDate: Date;
-  EndDate: Date;
+  startDate: Date;
+  endDate: Date;
 };
 
 export type MealTypeGetDto = {
@@ -245,10 +248,10 @@ export type RecipeIngredientGetDto = {
 };
 
 export type RecipeIngredientCreateDto = {
-  recipe: string;
-  ingredient: string;
+  recipeId: number;
+  ingredientId: number;
   quantity: number;
-  unit: string;
+  unitId: number;
 };
 
 export type RecipeIngredientUpdateDto = {
@@ -259,20 +262,20 @@ export type RecipeIngredientUpdateDto = {
 };
 
 export type ShoppingListRecipeIngredientGetDto = {
-  recipeIngredientId: RecipeGetDto;
-  shoppingListId: ShoppingListGetDto;
+  recipeIngredient: RecipeGetDto;
+  shoppingList: ShoppingListGetDto;
   quantity: number;
 };
 
 export type ShoppingListRecipeIngredientCreateDto = {
-  recipeIngredientId: RecipeGetDto;
-  shoppingListId: ShoppingListGetDto;
+  recipeIngredientId: number;
+  shoppingListId: number;
   quantity: number;
 };
 
 export type ShoppingListRecipeIngredientUpdateDto = {
-  recipeIngredientId: RecipeGetDto;
-  shoppingListId: ShoppingListGetDto;
+  recipeIngredient: RecipeGetDto;
+  shoppingList: ShoppingListGetDto;
   quantity: number;
 };
 

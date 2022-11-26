@@ -73,9 +73,13 @@ export const LoginPage = () => {
                   </Field>
                 </div>
                 <div className="button-container-login-page">
-                  <Button className="login-button" type="submit">
-                    Login
-                  </Button>
+                  <Button
+                    color="blue"
+                    icon="user"
+                    content="Login"
+                    labelPosition="left"
+                    type="submit"
+                  />
                   <UserCreateModal />
                 </div>
               </div>

@@ -1,7 +1,8 @@
+import "../update-page/shopping-list-update.css";
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
-import { Button, Input } from "semantic-ui-react";
+import { Button, Header, Input, TextArea } from "semantic-ui-react";
 import {
   ApiResponse,
   ShoppingListGetDto,
@@ -62,14 +63,25 @@ export const ShoppingListUpdatePage = () => {
       {shoppingList && (
         <Formik initialValues={shoppingList} onSubmit={onSubmit}>
           <Form>
-            <div>
+            <div className="shopping-list-update-container">
+              <Header>Update Shopping List Item</Header>
+            </div>
+            <div className="shopping-list-update-container">
               <label htmlFor="name">Name</label>
             </div>
-            <Field id="name" name="name">
-              {({ field }) => <Input {...field} />}
-            </Field>
-            <div>
-              <Button type="submit">Submit</Button>
+            <div className="shopping-list-update-container">
+              <Field id="name" name="name">
+                {({ field }) => <Input {...field} />}
+              </Field>
+            </div>
+            <div className="shopping-list-update-container">
+              <Button
+                positive
+                icon="check"
+                content="Update"
+                labelPosition="left"
+                type="submit"
+              />
             </div>
           </Form>
         </Formik>

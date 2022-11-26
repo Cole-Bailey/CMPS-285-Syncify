@@ -58,8 +58,9 @@ export const UnitDeletePage = () => {
         <Formik initialValues={unit} onSubmit={onSubmit}>
           <div className="unit-delete-container">
             <Form>
-              <Header>Delete Unit</Header>
-
+              <div className="unit-delete-container">
+                <Header>Delete Unit</Header>
+              </div>
               <div className="unit-delete-container">
                 <label htmlFor="name">Name</label>
               </div>
@@ -77,9 +78,13 @@ export const UnitDeletePage = () => {
                 </Field>
               </div>
               <div className="unit-delete-container">
-                <Button color="red" type="submit">
-                  Delete
-                </Button>
+                <Button
+                  negative
+                  icon="trash"
+                  content="Delete"
+                  labelPosition="left"
+                  type="submit"
+                />
               </div>
             </Form>
           </div>

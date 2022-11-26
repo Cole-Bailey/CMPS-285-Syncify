@@ -7,7 +7,6 @@
 
 .login-form {
   margin-top: 10px;
-  
 }
 
 .button-container-login-page {
@@ -16,7 +15,15 @@
   justify-content: center;
 }
 
-.center{
+.btn-login-color {
+  color: #0080ff;
+}
+
+.btn-register-color {
+  color: #00ffbf;
+}
+
+.center {
   display: flex;
   margin-top: 10px;
   justify-content: center;

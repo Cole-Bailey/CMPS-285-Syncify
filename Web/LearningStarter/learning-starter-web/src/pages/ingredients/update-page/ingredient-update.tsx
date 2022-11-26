@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
-import { Button, Input } from "semantic-ui-react";
+import { Button, Header, Input } from "semantic-ui-react";
 import {
   ApiResponse,
   IngredientGetDto,
@@ -56,6 +56,9 @@ export const IngredientUpdatePage = () => {
         <Formik initialValues={ingredient} onSubmit={onSubmit}>
           <Form>
             <div className="ingredient-update-container">
+              <Header>Update Ingredient</Header>
+            </div>
+            <div className="ingredient-update-container">
               <label htmlFor="name">Name</label>
             </div>
             <div className="ingredient-update-container">
@@ -72,7 +75,13 @@ export const IngredientUpdatePage = () => {
               </Field>
             </div>
             <div className="ingredient-update-container">
-              <Button type="submit">Submit</Button>
+              <Button
+                positive
+                icon="check"
+                content="Update"
+                labelPosition="left"
+                type="submit"
+              />
             </div>
           </Form>
         </Formik>

@@ -81,7 +81,15 @@ function UserCreateModal() {
           onClose={() => setFirstOpen(false)}
           onOpen={() => setFirstOpen(true)}
           open={firstOpen}
-          trigger={<Button onClick={() => setFirstOpen(true)}>Register</Button>}
+          trigger={
+            <Button
+              positive
+              icon="signup"
+              content="Register"
+              labelPosition="left"
+              onClick={() => setFirstOpen(true)}
+            />
+          }
         >
           <Modal.Header>Register For Membership</Modal.Header>
           <Modal.Content image>
@@ -173,18 +181,17 @@ function UserCreateModal() {
 
           <Modal.Actions>
             <Button
-              type="button"
-              content="Don't Sign Me Up!"
-              labelPosition="right"
-              icon="thumbs down outline"
+              icon="cancel"
+              content="Cancel"
+              labelPosition="left"
               negative
               onClick={() => setFirstOpen(false)}
             />
             <Button
               type="submit"
+              icon="thumbs up"
               content="Sign Me Up!"
-              labelPosition="right"
-              icon="thumbs up outline"
+              labelPosition="left"
               positive
             />
           </Modal.Actions>
@@ -202,9 +209,9 @@ function UserCreateModal() {
             <Modal.Actions>
               <Button
                 type="button"
-                icon="hand rock outline"
-                content="Welcome!!!"
-                labelPosition="right"
+                icon="user"
+                content="Login"
+                labelPosition="left"
                 positive
                 onClick={() => setFirstOpen(false)}
               />

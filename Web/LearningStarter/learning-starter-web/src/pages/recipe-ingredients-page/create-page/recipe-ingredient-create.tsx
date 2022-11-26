@@ -1,13 +1,15 @@
+import "../recipe-ingredient.css";
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { Button, Input } from "semantic-ui-react";
+import { Button, Header, Input } from "semantic-ui-react";
 import { routes } from "../../../routes/config";
 import { BaseUrl } from "../../../constants/env-cars";
 import {
   ApiResponse,
   RecipeIngredientCreateDto,
+  RecipeIngredientGetDto,
 } from "../../../constants/types";
 
 const initialValues: RecipeIngredientCreateDto = {
@@ -17,11 +19,11 @@ const initialValues: RecipeIngredientCreateDto = {
   unitId: 0,
 };
 
-export const RecipeIngredientCreatePage = () => {
+export const RecipeIngredientsCreatePage = () => {
   const history = useHistory();
 
   const onSubmit = async (values: RecipeIngredientCreateDto) => {
-    const response = await axios.post<ApiResponse<RecipeIngredientCreateDto>>(
+    const response = await axios.post<ApiResponse<RecipeIngredientGetDto>>(
       `${BaseUrl}/api/recipe-ingredients`,
       values
     );
@@ -39,32 +41,49 @@ export const RecipeIngredientCreatePage = () => {
     <>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         <Form>
-          <div>
-            <label htmlFor="recipe">Recipe</label>
+          <div className="recipe-ingredient">
+            <Header>Create Recipe Ingredients</Header>
           </div>
-          <Field id="recipe" name="recipe.name">
-            {({ field }) => <Input {...field} />}
-          </Field>{" "}
-          <div>
-            <label htmlFor="ingredient">Ingredient</label>
+          <div className="recipe-ingredient">
+            <label htmlFor="recipe.name">Recipe</label>
           </div>
-          <Field id="ingredient" name="ingredient.name">
-            {({ field }) => <Input {...field} />}
-          </Field>{" "}
-          <div>
+          <div className="recipe-ingredient">
+            <Field id="recipe.name" name="recipe.name">
+              {({ field }) => <Input {...field} />}
+            </Field>
+          </div>
+          <div className="recipe-ingredient">
+            <label htmlFor="ingredient.name">Ingredient</label>
+          </div>
+          <div className="recipe-ingredient">
+            <Field id="ingredient.name" name="ingredient.name">
+              {({ field }) => <Input {...field} />}
+            </Field>
+          </div>
+          <div className="recipe-ingredient">
             <label htmlFor="quantity">Quantity</label>
           </div>
-          <Field id="quantity" name="quantity">
-            {({ field }) => <Input type="number" {...field} />}
-          </Field>{" "}
-          <div>
-            <label htmlFor="unit">Unit</label>
+          <div className="recipe-ingredient">
+            <Field id="quantity" name="quantity">
+              {({ field }) => <Input type="number" {...field} />}
+            </Field>
           </div>
-          <Field id="unit" name="unit.abbreviation">
-            {({ field }) => <Input {...field} />}
-          </Field>{" "}
-          <div>
-            <Button type="submit">Create</Button>
+          <div className="recipe-ingredient">
+            <label htmlFor="unit.abbreviation">Unit</label>
+          </div>
+          <div className="recipe-ingredient">
+            <Field id="unit.abbreviation" name="unit.abbreviation">
+              {({ field }) => <Input {...field} />}
+            </Field>
+          </div>
+          <div className="recipe-ingredient">
+            <Button
+              positive
+              icon="check"
+              content="Create"
+              labelPosition="left"
+              type="submit"
+            />
           </div>
         </Form>
       </Formik>

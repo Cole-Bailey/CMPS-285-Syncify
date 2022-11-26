@@ -38,10 +38,11 @@ export const ToDoListingPage = () => {
                 <Table.HeaderCell>Id</Table.HeaderCell>
                 <Table.HeaderCell>Title</Table.HeaderCell>
                 <Table.HeaderCell>Description</Table.HeaderCell>
-                <Table.HeaderCell>Date</Table.HeaderCell>
+                <Table.HeaderCell>Start Date</Table.HeaderCell>
+                <Table.HeaderCell>End Date</Table.HeaderCell>
                 <Table.HeaderCell>Group Calendar</Table.HeaderCell>
-                <Table.HeaderCell>Edit Event</Table.HeaderCell>
-                <Table.HeaderCell>Delete Event</Table.HeaderCell>
+                <Table.HeaderCell>Edit To-Do</Table.HeaderCell>
+                <Table.HeaderCell>Delete To-Do</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -51,11 +52,13 @@ export const ToDoListingPage = () => {
                     <Table.Cell>{todo.id}</Table.Cell>
                     <Table.Cell>{todo.title}</Table.Cell>
                     <Table.Cell>{todo.description}</Table.Cell>
-                    <Table.Cell>{todo.date}</Table.Cell>
+                    <Table.Cell>{todo.startDate}</Table.Cell>
+                    <Table.Cell>{todo.endDate}</Table.Cell>
                     <Table.Cell>{todo.calendar.group.name}</Table.Cell>
                     <Table.Cell>
                       <Button
                         positive
+                        labelPosition="left"
                         type="button"
                         content="Edit To-Do"
                         icon="pencil"
@@ -69,14 +72,15 @@ export const ToDoListingPage = () => {
                     <Table.Cell>
                       <Button
                         negative
+                        labelPosition="left"
                         type="button"
-                        content="Delete Event"
+                        content="Delete To-Do"
                         icon="trash"
-                        // onClick={() =>
-                        //   history.push(
-                        //     routes.events.delete.replace(":id", `${event.id}`)
-                        //   )
-                        // }
+                        onClick={() =>
+                          history.push(
+                            routes.toDos.delete.replace(":id", `${todo.id}`)
+                          )
+                        }
                       />
                     </Table.Cell>
                   </Table.Row>

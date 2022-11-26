@@ -2,7 +2,7 @@ import "../../modals/modal.css";
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React, { useState } from "react";
-import { Button, Header, Input, Modal } from "semantic-ui-react";
+import { Button, Header, Input, Modal, TextArea } from "semantic-ui-react";
 import {
   ApiResponse,
   ShoppingListCreateDto,
@@ -59,15 +59,19 @@ function ShoppingListCreateModal() {
           onOpen={() => setFirstOpen(true)}
           open={firstOpen}
           trigger={
-            <Button onClick={() => setFirstOpen(true)}>
-              Create Shopping List Item
-            </Button>
+            <Button
+              icon="circle plus"
+              labelPosition="left"
+              content="List Item"
+              positive
+              onClick={() => setFirstOpen(true)}
+            />
           }
         >
           <Modal.Header>Add An Item To Your Shopping List!</Modal.Header>
           <Modal.Content>
             <Modal.Description>
-              <Header>Shopping List</Header>
+              <Header>Shopping List Item</Header>
               <div className="field-title">
                 <label htmlFor="name">Item Name</label>
               </div>
@@ -82,17 +86,17 @@ function ShoppingListCreateModal() {
           <Modal.Actions>
             <Button
               type="button"
-              content="Don't Add to List!"
-              labelPosition="right"
-              icon="thumbs down outline"
+              icon="cancel"
+              content="Cancel"
+              labelPosition="left"
               negative
               onClick={() => setFirstOpen(false)}
             />
             <Button
               type="submit"
+              icon="clipboard check"
               content="Add to List!"
-              labelPosition="right"
-              icon="thumbs up outline"
+              labelPosition="left"
               positive
             />
           </Modal.Actions>
@@ -111,9 +115,9 @@ function ShoppingListCreateModal() {
             <Modal.Actions>
               <Button
                 type="button"
-                icon="hand rock outline"
-                content="Shopping List Item Created"
-                labelPosition="right"
+                icon="home"
+                content="Home"
+                labelPosition="left"
                 positive
                 onClick={() => setFirstOpen(false)}
               />

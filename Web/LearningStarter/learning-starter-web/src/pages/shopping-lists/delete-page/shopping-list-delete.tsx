@@ -57,24 +57,28 @@ export const ShoppingListDeletePage = () => {
     <>
       {shoppingList && (
         <Formik initialValues={shoppingList} onSubmit={onSubmit}>
-          <div className="shopping-list-delete-container">
-            <Form>
-              <Header>Delete Item</Header>
-              <div className="shopping-list-delete-container">
-                <label htmlFor="name">Name</label>
-              </div>
-              <div className="shopping-list-delete-container">
-                <Field id="name" name="name">
-                  {({ field }) => <Input {...field} />}
-                </Field>
-              </div>
-              <div className="shopping-list-delete-container">
-                <Button color="red" type="submit">
-                  Confirm Delete
-                </Button>
-              </div>
-            </Form>
-          </div>
+          <Form>
+            <div className="shopping-list-delete-container">
+              <Header>Delete Shopping List Item</Header>
+            </div>
+            <div className="shopping-list-delete-container">
+              <label htmlFor="name">Name</label>
+            </div>
+            <div className="shopping-list-delete-container">
+              <Field id="name" name="name">
+                {({ field }) => <Input {...field} />}
+              </Field>
+            </div>
+            <div className="shopping-list-delete-container">
+              <Button
+                negative
+                icon="trash"
+                content="Delete"
+                labelPosition="left"
+                type="submit"
+              />
+            </div>
+          </Form>
         </Formik>
       )}
     </>

@@ -65,6 +65,7 @@ export const RecipeListingPage = () => {
                         type="button"
                         content="Edit Recipe"
                         icon="pencil"
+                        labelPosition="left"
                         onClick={() =>
                           history.push(
                             routes.recipes.update.replace(":id", `${recipe.id}`)
@@ -78,6 +79,7 @@ export const RecipeListingPage = () => {
                         type="button"
                         content="Delete Recipe"
                         icon="trash"
+                        labelPosition="left"
                         onClick={() =>
                           history.push(
                             routes.recipes.delete.replace(":id", `${recipe.id}`)

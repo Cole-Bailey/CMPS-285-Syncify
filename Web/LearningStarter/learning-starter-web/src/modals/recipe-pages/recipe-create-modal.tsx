@@ -2,7 +2,14 @@ import "../../modals/modal.css";
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
-import { Button, Dropdown, Header, Input, Modal } from "semantic-ui-react";
+import {
+  Button,
+  Dropdown,
+  Header,
+  Input,
+  Modal,
+  TextArea,
+} from "semantic-ui-react";
 import {
   ApiResponse,
   OptionDto,
@@ -17,6 +24,8 @@ function RecipeCreateModal() {
   const [secondOpen, setSecondOpen] = useState(false);
   const [mealTypeOptions, setMealTypeOptions] = useState<OptionDto[]>();
   console.log("debug", mealTypeOptions);
+  const [calendarOptions, setCalendarOptions] = useState<OptionDto[]>();
+  console.log("debug", calendarOptions);
   const initialValues: RecipeCreateDto = {
     name: "",
     image: "",
@@ -70,6 +79,18 @@ function RecipeCreateModal() {
     getMealTypeOptions();
   }, []);
 
+  useEffect(() => {
+    async function getCalendarOptions() {
+      const response = await axios.get<ApiResponse<OptionDto[]>>(
+        "/api/calendars/options"
+      );
+
+      setCalendarOptions(response.data.data);
+    }
+
+    getCalendarOptions();
+  }, []);
+
   return (
     <>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
@@ -79,7 +100,13 @@ function RecipeCreateModal() {
           onOpen={() => setFirstOpen(true)}
           open={firstOpen}
           trigger={
-            <Button onClick={() => setFirstOpen(true)}>Create Recipe</Button>
+            <Button
+              icon="plus circle"
+              labelPosition="left"
+              content="Recipe"
+              positive
+              onClick={() => setFirstOpen(true)}
+            />
           }
         >
           <Modal.Header>Create Your Recipe</Modal.Header>
@@ -115,7 +142,7 @@ function RecipeCreateModal() {
               </div>
               <div className="field-title">
                 <Field id="directions" name="directions">
-                  {({ field }) => <Input type="textbox" {...field} />}
+                  {({ field }) => <TextArea {...field} />}
                 </Field>
               </div>
               <div className="input-fields">
@@ -138,31 +165,41 @@ function RecipeCreateModal() {
                   )}
                 </Field>
               </div>
-              <div className="field-title">
+              <div>
                 <label htmlFor="calendarId">Calendar</label>
               </div>
-              <div className="field-title">
-                <Field id="calendarId" name="calendarId">
-                  {({ field }) => <Input type="number" {...field} />}
-                </Field>
-              </div>
+              <Field name="calendarId" id="calendarId" className="field">
+                {({ field, form }) => (
+                  <Dropdown
+                    selection
+                    options={calendarOptions}
+                    {...field}
+                    onChange={(_, { name, value }) =>
+                      form.setFieldValue(name, value)
+                    }
+                    onBlur={(_, { name, value }) =>
+                      form.setFieldValue(name, value)
+                    }
+                  />
+                )}
+              </Field>
             </Modal.Description>
           </Modal.Content>
 
           <Modal.Actions>
             <Button
               type="button"
-              content="Oops Don't Create!"
-              labelPosition="right"
-              icon="thumbs down outline"
+              icon="cancel"
+              content="Cancel"
+              labelPosition="left"
               negative
               onClick={() => setFirstOpen(false)}
             />
             <Button
               type="submit"
+              icon="food"
               content="Create Recipe!"
-              labelPosition="right"
-              icon="thumbs up outline"
+              labelPosition="left"
               positive
             />
           </Modal.Actions>
@@ -181,9 +218,9 @@ function RecipeCreateModal() {
             <Modal.Actions>
               <Button
                 type="button"
-                icon="hand rock outline"
-                content="Recipe Created!!!"
-                labelPosition="right"
+                icon="home"
+                content="Home"
+                labelPosition="left"
                 positive
                 onClick={() => setFirstOpen(false)}
               />

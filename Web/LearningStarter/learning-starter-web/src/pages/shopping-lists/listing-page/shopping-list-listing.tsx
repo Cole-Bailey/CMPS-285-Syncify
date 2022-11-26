@@ -54,6 +54,7 @@ export const ShoppingListListingPage = () => {
                         type="button"
                         content="Edit Item"
                         icon="pencil"
+                        labelPosition="left"
                         onClick={() =>
                           history.push(
                             routes.shoppingLists.update.replace(
@@ -70,6 +71,7 @@ export const ShoppingListListingPage = () => {
                         type="button"
                         content="Delete Item"
                         icon="trash"
+                        labelPosition="left"
                         onClick={() =>
                           history.push(
                             routes.shoppingLists.delete.replace(

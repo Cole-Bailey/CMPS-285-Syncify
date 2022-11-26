@@ -1,10 +1,11 @@
 import { Field, Form, Formik } from "formik";
-import React, { useState } from "react";
-import { Input, Modal, Button } from "semantic-ui-react";
+import React, { useEffect, useState } from "react";
+import { Input, Modal, Button, Dropdown } from "semantic-ui-react";
 import {
   ApiResponse,
   EventCreateDto,
   EventGetDto,
+  OptionDto,
 } from "../../constants/types";
 import axios from "axios";
 import { BaseUrl } from "../../constants/env-cars";
@@ -13,12 +14,14 @@ import toast from "react-hot-toast";
 const EventCreateModal = ({ refetchEvents }: { refetchEvents: () => {} }) => {
   const [firstOpen, setFirstOpen] = useState(false);
   const [secondOpen, setSecondOpen] = useState(false);
+  const [calendarOptions, setCalendarOptions] = useState<OptionDto[]>();
+  console.log("debug", calendarOptions);
   const initialValues: EventCreateDto = {
     calendarId: 0,
     name: "",
     eventDetails: "",
-    StartDate: new Date(),
-    EndDate: new Date(),
+    startDate: new Date(),
+    endDate: new Date(),
   };
 
   const onSubmit = async (values: EventCreateDto) => {
@@ -54,6 +57,18 @@ const EventCreateModal = ({ refetchEvents }: { refetchEvents: () => {} }) => {
     }
   };
 
+  useEffect(() => {
+    async function getCalendarOptions() {
+      const response = await axios.get<ApiResponse<OptionDto[]>>(
+        "/api/calendars/options"
+      );
+
+      setCalendarOptions(response.data.data);
+    }
+
+    getCalendarOptions();
+  }, []);
+
   return (
     <>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
@@ -65,7 +80,13 @@ const EventCreateModal = ({ refetchEvents }: { refetchEvents: () => {} }) => {
           onOpen={() => setFirstOpen(true)}
           open={firstOpen}
           trigger={
-            <Button onClick={() => setFirstOpen(true)}>Create Event</Button>
+            <Button
+              icon="circle plus"
+              labelPosition="left"
+              content="Event"
+              positive
+              onClick={() => setFirstOpen(true)}
+            />
           }
         >
           <Modal.Header className="create-type-field">
@@ -108,12 +129,22 @@ const EventCreateModal = ({ refetchEvents }: { refetchEvents: () => {} }) => {
                 {({ field }) => <Input type="date" {...field} />}
               </Field>
               <div>
-                <label htmlFor="calendarId" className="field-title">
-                  Calendar
-                </label>
+                <label htmlFor="calendar">Calendar</label>
               </div>
-              <Field id="calendarId" name="calendarId">
-                {({ field }) => <Input type="number" {...field} />}
+              <Field name="calendarId" id="calendarId" className="field">
+                {({ field, form }) => (
+                  <Dropdown
+                    selection
+                    options={calendarOptions}
+                    {...field}
+                    onChange={(_, { name, value }) =>
+                      form.setFieldValue(name, value)
+                    }
+                    onBlur={(_, { name, value }) =>
+                      form.setFieldValue(name, value)
+                    }
+                  />
+                )}
               </Field>
             </Modal.Description>
           </Modal.Content>
@@ -121,11 +152,19 @@ const EventCreateModal = ({ refetchEvents }: { refetchEvents: () => {} }) => {
           <Modal.Actions className="footer">
             <Button
               type="button"
+              icon="cancel"
               content="Cancel"
+              labelPosition="left"
               onClick={() => setFirstOpen(false)}
               negative
             />
-            <Button type="submit" content="Create" positive />
+            <Button
+              type="submit"
+              icon="calendar check"
+              content="Create"
+              labelPosition="left"
+              positive
+            />
           </Modal.Actions>
           <Modal
             onClose={() => setSecondOpen(false)}
@@ -138,7 +177,7 @@ const EventCreateModal = ({ refetchEvents }: { refetchEvents: () => {} }) => {
             </Modal.Content>
             <Modal.Actions>
               <Button
-                type="button"
+                type="reset"
                 icon="home"
                 content="Home"
                 labelPosition="right"

@@ -34,19 +34,14 @@ export const EventListingPage = () => {
       {events && (
         <>
           <Header>Events</Header>
-          <Button
-            type="button"
-            onClick={() => history.push(routes.events.create)}
-          >
-            + Create
-          </Button>
           <Table striped celled>
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Id</Table.HeaderCell>
                 <Table.HeaderCell>Name</Table.HeaderCell>
                 <Table.HeaderCell>Event Details</Table.HeaderCell>
-                <Table.HeaderCell>Date</Table.HeaderCell>
+                <Table.HeaderCell>Start Date</Table.HeaderCell>
+                <Table.HeaderCell>End Date</Table.HeaderCell>
                 <Table.HeaderCell>Group Calendar</Table.HeaderCell>
                 <Table.HeaderCell>Edit Event</Table.HeaderCell>
                 <Table.HeaderCell>Delete Event</Table.HeaderCell>
@@ -59,7 +54,8 @@ export const EventListingPage = () => {
                     <Table.Cell>{event.id}</Table.Cell>
                     <Table.Cell>{event.name}</Table.Cell>
                     <Table.Cell>{event.eventDetails}</Table.Cell>
-                    <Table.Cell>{event.createdDate}</Table.Cell>
+                    <Table.Cell>{event.startDate}</Table.Cell>
+                    <Table.Cell>{event.endDate}</Table.Cell>
                     <Table.Cell>{event.calendar.group.name}</Table.Cell>
                     <Table.Cell>
                       <Button
@@ -67,6 +63,7 @@ export const EventListingPage = () => {
                         type="button"
                         content="Edit Event"
                         icon="pencil"
+                        labelPosition="left"
                         onClick={() =>
                           history.push(
                             routes.events.update.replace(":id", `${event.id}`)
@@ -80,11 +77,12 @@ export const EventListingPage = () => {
                         type="button"
                         content="Delete Event"
                         icon="trash"
-                        // onClick={() =>
-                        //   history.push(
-                        //     routes.events.delete.replace(":id", `${event.id}`)
-                        //   )
-                        // }
+                        labelPosition="left"
+                        onClick={() =>
+                          history.push(
+                            routes.events.delete.replace(":id", `${event.id}`)
+                          )
+                        }
                       />
                     </Table.Cell>
                   </Table.Row>

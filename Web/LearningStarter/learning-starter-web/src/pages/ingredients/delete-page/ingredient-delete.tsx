@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
-import { Button, Input } from "semantic-ui-react";
+import { Button, Header, Input } from "semantic-ui-react";
 import { ApiResponse, IngredientGetDto } from "../../../constants/types";
 import { useRouteMatch } from "react-router-dom";
 import { routes } from "../../../routes/config";
@@ -51,6 +51,9 @@ export const IngredientDeletePage = () => {
         <Formik initialValues={ingredient} onSubmit={onSubmit}>
           <Form>
             <div className="ingredient-delete-container">
+              <Header>Delete Ingredient</Header>
+            </div>
+            <div className="ingredient-delete-container">
               <label htmlFor="name">Name</label>
             </div>
             <div className="ingredient-delete-container">
@@ -67,7 +70,13 @@ export const IngredientDeletePage = () => {
               </Field>
             </div>
             <div className="ingredient-delete-container">
-              <Button type="submit">Submit</Button>
+              <Button
+                negative
+                icon="trash"
+                content="Delete"
+                labelPosition="left"
+                type="submit"
+              />
             </div>
           </Form>
         </Formik>

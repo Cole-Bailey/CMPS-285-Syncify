@@ -5,16 +5,17 @@ import "./users-profle.css";
 
 export const UsersProfilePage = () => {
   const user = useUser();
+  const color = user.profileColor.colors;
   return (
     <div>
-      <div>
-        <Container className="users-profile-page-container" textAlign="left">
-          <Header textAlign="center">User Information</Header>
+      <div color={color}>
+        <Container textAlign="left">
+          <Container textAlign="center">
+            <Header size="huge">User Information</Header>
+          </Container>
 
           <Header size="small">Profile Color Name</Header>
-          <p background-color="user.profileColor.colors">
-            {user.profileColor.colors}
-          </p>
+          <p>{user.profileColor.colors}</p>
           <Divider />
           <Header size="small">First Name</Header>
           <p>{user.firstName}</p>

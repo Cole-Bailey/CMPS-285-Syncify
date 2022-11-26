@@ -80,7 +80,7 @@ export const GroupsButton = () => {
   const history = useHistory();
 
   return (
-    <Button onClick={() => history.push(routes.group.listing)}>Groups</Button>
+    <Button onClick={() => history.push(routes.groups.listing)}>Groups</Button>
   );
 };
 
