@@ -15,6 +15,7 @@ import {
 } from "../../constants/types";
 import axios from "axios";
 import { BaseUrl } from "../../constants/env-cars";
+import toast from "react-hot-toast";
 
 const events = [
   {
@@ -57,11 +58,25 @@ function EventCreateModal() {
     );
 
     if (response.data.hasErrors) {
+      toast.error("Error Occured, please try again", {
+        position: "top-center",
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
       response.data.errors.forEach((err) => {
         console.log(err.message);
       });
     } else {
       setSecondOpen(true);
+      toast.success("Event successfully created", {
+        position: "top-center",
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
     }
   };
   function handleAddEvent() {

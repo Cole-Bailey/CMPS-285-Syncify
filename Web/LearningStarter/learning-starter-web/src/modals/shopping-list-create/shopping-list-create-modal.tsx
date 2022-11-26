@@ -9,6 +9,7 @@ import {
   ShoppingListGetDto,
 } from "../../constants/types";
 import { BaseUrl } from "../../constants/env-cars";
+import toast from "react-hot-toast";
 
 function ShoppingListCreateModal() {
   const [firstOpen, setFirstOpen] = useState(false);
@@ -29,9 +30,23 @@ function ShoppingListCreateModal() {
     if (response.data.hasErrors) {
       response.data.errors.forEach((err) => {
         console.log(err.message);
+        toast.error("Error has occured, please try again", {
+          position: "top-center",
+          style: {
+            background: "#333",
+            color: "#fff",
+          },
+        });
       });
     } else {
       setSecondOpen(true);
+      toast.success("Shopping List item created", {
+        position: "top-center",
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
     }
   };
 
@@ -45,11 +60,11 @@ function ShoppingListCreateModal() {
           open={firstOpen}
           trigger={
             <Button onClick={() => setFirstOpen(true)}>
-              Create Shopping List
+              Create Shopping List Item
             </Button>
           }
         >
-          <Modal.Header>Create Your Shopping List!</Modal.Header>
+          <Modal.Header>Add An Item To Your Shopping List!</Modal.Header>
           <Modal.Content>
             <Modal.Description>
               <Header>Shopping List</Header>
@@ -67,7 +82,7 @@ function ShoppingListCreateModal() {
           <Modal.Actions>
             <Button
               type="button"
-              content="Don't Create List!"
+              content="Don't Add to List!"
               labelPosition="right"
               icon="thumbs down outline"
               negative
@@ -75,7 +90,7 @@ function ShoppingListCreateModal() {
             />
             <Button
               type="submit"
-              content="Create My List!"
+              content="Add to List!"
               labelPosition="right"
               icon="thumbs up outline"
               positive
@@ -89,15 +104,15 @@ function ShoppingListCreateModal() {
             <Modal.Header>Success!!!</Modal.Header>
             <Modal.Content>
               <p>
-                You have successfully created a shopping list withing Syncify.
-                Please enjoy!!!
+                You have successfully added an Item to your Shoppng List with
+                Syncify. Please enjoy!!!
               </p>
             </Modal.Content>
             <Modal.Actions>
               <Button
                 type="button"
                 icon="hand rock outline"
-                content="Shopping List Created"
+                content="Shopping List Item Created"
                 labelPosition="right"
                 positive
                 onClick={() => setFirstOpen(false)}

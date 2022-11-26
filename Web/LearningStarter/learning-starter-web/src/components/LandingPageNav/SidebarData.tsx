@@ -1,55 +1,67 @@
-import React from 'react';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
-import * as IoIcons from 'react-icons/io';
-
+import React from "react";
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
+import * as IoIcons from "react-icons/io";
+import * as GiIcons from "react-icons/gi";
 export const SidebarData = [
   {
-    title: 'Home',
-    path: '/',
+    title: "Home",
+    path: "/",
     icon: <AiIcons.AiFillHome />,
-    cName: 'nav-text'
+    cName: "nav-text",
   },
   {
-    title: 'User',
-    path: '/users',
+    title: "User",
+    path: "/users",
     icon: <IoIcons.IoMdPerson />,
-    cName: 'nav-text'
+    cName: "nav-text",
   },
   {
-    title: 'Calendar',
-    path: '/calendar',
+    title: "Calendar",
+    path: "/calendar",
     icon: <IoIcons.IoIosPaper />,
-    cName: 'nav-text'
+    cName: "nav-text",
   },
   {
-    title: 'Todos',
-    path: '/to-dos',
+    title: "Todos",
+    path: "/to-dos",
     icon: <FaIcons.FaCartPlus />,
-    cName: 'nav-text'
+    cName: "nav-text",
   },
   {
-    title: 'Events',
-    path: '/events',
+    title: "Events",
+    path: "/events",
     icon: <IoIcons.IoMdPeople />,
-    cName: 'nav-text'
+    cName: "nav-text",
   },
   {
-    title: 'Shopping Lists',
-    path: '/shopping-lists',
+    title: "Shopping Lists",
+    path: "/shopping-lists",
     icon: <IoIcons.IoMdCart />,
-    cName: 'nav-text'
+    cName: "nav-text",
   },
   {
-    title: 'Recipes',
-    path: '/recipes',
+    title: "Recipes",
+    path: "/recipes",
     icon: <IoIcons.IoMdNutrition />,
-    cName: 'nav-text'
+    cName: "nav-text",
   },
   {
-    title: '...',
-    path: '/',
+    title: "Units",
+    path: "/units",
+    icon: <GiIcons.GiWeight />,
+    cName: "nav-text",
+  },
+  {
+    title: "Recipe Ingredients",
+    path: "/recipe-ingredients",
+    icon: <AiIcons.AiTwotoneReconciliation />,
+    cName: "nav-text",
+  },
+  {
+    title: "...",
+    path: "/",
     icon: <AiIcons.AiFillThunderbolt />,
-    cName: 'nav-text'
+    cName: "nav-text",
   },
 ];

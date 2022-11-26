@@ -11,6 +11,7 @@ import {
   UserGetDto,
 } from "../../constants/types";
 import { BaseUrl } from "../../constants/env-cars";
+import toast from "react-hot-toast";
 
 function UserCreateModal() {
   const [firstOpen, setFirstOpen] = useState(false);
@@ -40,9 +41,23 @@ function UserCreateModal() {
     if (response.data.hasErrors) {
       response.data.errors.forEach((err) => {
         console.log(err.message);
+        toast.error("Error Occured", {
+          position: "top-center",
+          style: {
+            background: "#333",
+            color: "#fff",
+          },
+        });
       });
     } else {
       setSecondOpen(true);
+      toast.success("User successfully created", {
+        position: "top-center",
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
     }
   };
 
