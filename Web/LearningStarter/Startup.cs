@@ -692,7 +692,8 @@ namespace LearningStarter
                     Calendar = calendar,
                     Title = "Trash day",
                     Description = "Take out the trash!",
-                    Date = DateTime.Now,
+                    StartDate = DateTime.Now,
+                    EndDate = DateTime.Now,
                 };
 
                 dataContext.ToDos.AddRange(seededToDos);

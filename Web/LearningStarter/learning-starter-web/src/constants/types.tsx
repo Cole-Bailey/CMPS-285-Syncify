@@ -143,8 +143,8 @@ export type EventGetDto = {
   calendar: CalendarGetDto;
   name: string;
   eventDetails: string;
-  StartDate: Date;
-  EndDate: Date;
+  startDate: Date;
+  endDate: Date;
 };
 
 export type EventCreateDto = {
