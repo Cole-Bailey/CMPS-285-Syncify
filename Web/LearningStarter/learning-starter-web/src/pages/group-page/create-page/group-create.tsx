@@ -11,6 +11,7 @@ import { useHistory } from "react-router-dom";
 import { routes } from "../../../routes/config";
 import { BaseUrl } from "../../../constants/env-cars";
 import "./group-create.css";
+import toast from "react-hot-toast";
 
 const initialValues: GroupCreateDto = {
   name: "",
@@ -27,6 +28,13 @@ export const GroupCreatePage = () => {
     );
 
     if (response.data.hasErrors) {
+      toast.error("Error Occured, please try again", {
+        position: "top-center",
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
       response.data.errors.forEach((err) => {
         console.log(err.message);
       });

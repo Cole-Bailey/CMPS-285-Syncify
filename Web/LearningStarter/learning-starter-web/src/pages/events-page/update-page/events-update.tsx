@@ -12,6 +12,7 @@ import {
   EventUpdateDto,
   OptionDto,
 } from "../../../constants/types";
+import toast from "react-hot-toast";
 
 export const EventUpdatePage = () => {
   const history = useHistory();
@@ -57,11 +58,25 @@ export const EventUpdatePage = () => {
     );
 
     if (response.data.hasErrors) {
+      toast.error("Error Occured, please try again", {
+        position: "top-center",
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
       response.data.errors.forEach((err) => {
         console.log(err.message);
       });
     } else {
       history.push(routes.events.listing);
+      toast.success("Event successfully updated", {
+        position: "top-center",
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
     }
   };
 

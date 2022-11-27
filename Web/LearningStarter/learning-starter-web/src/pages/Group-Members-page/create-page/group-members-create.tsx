@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React from "react";
+import toast from "react-hot-toast";
 import { useHistory } from "react-router-dom";
 import { Button, Header, Input } from "semantic-ui-react";
 import { BaseUrl } from "../../../constants/env-cars";
@@ -27,6 +28,13 @@ export const GroupMemberCreatePage = () => {
     );
 
     if (response.data.hasErrors) {
+      toast.error("Error Occured, please try again", {
+        position: "top-center",
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
       response.data.errors.forEach((err) => {
         console.log(err.message);
       });

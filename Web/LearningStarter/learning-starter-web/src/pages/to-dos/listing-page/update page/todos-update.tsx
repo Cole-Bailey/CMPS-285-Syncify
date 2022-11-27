@@ -12,6 +12,7 @@ import {
   ToDoGetDto,
   ToDoUpdateDto,
 } from "../../../../constants/types";
+import toast from "react-hot-toast";
 
 export const ToDoUpdatePage = () => {
   const history = useHistory();
@@ -62,6 +63,13 @@ export const ToDoUpdatePage = () => {
       });
     } else {
       history.push(routes.toDos.listing);
+      toast.success("To-Do successfully updated", {
+        position: "top-center",
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
     }
   };
 

@@ -7,6 +7,7 @@ import { useRouteMatch } from "react-router-dom";
 import { routes } from "../../../routes/config";
 import { useHistory } from "react-router-dom";
 import "./ingredient-delete.css";
+import toast from "react-hot-toast";
 
 export const IngredientDeletePage = () => {
   const history = useHistory();
@@ -37,11 +38,25 @@ export const IngredientDeletePage = () => {
     );
 
     if (response.data.hasErrors) {
+      toast.error("Error Occured", {
+        position: "top-center",
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
       response.data.errors.forEach((err) => {
         console.log(err.message);
       });
     } else {
       history.push(routes.ingredients.listing);
+      toast.success("Ingredient successfully deleted", {
+        position: "top-center",
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
     }
   };
 
