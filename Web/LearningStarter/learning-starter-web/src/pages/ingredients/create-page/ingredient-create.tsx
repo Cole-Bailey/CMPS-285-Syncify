@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React from "react";
-import { Button, Input } from "semantic-ui-react";
+import { Button, Header, Input } from "semantic-ui-react";
 import {
   ApiResponse,
   IngredientCreateDto,
@@ -40,6 +40,9 @@ export const IngredientCreatePage = () => {
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         <Form>
           <div className="ingredient-create-container">
+            <Header>Create New Ingredient</Header>
+          </div>
+          <div className="ingredient-create-container">
             <label htmlFor="name">Name</label>
           </div>
           <div className="ingredient-create-container">
@@ -56,7 +59,13 @@ export const IngredientCreatePage = () => {
             </Field>
           </div>
           <div className="ingredient-create-container">
-            <Button type="submit">Create</Button>
+            <Button
+              positive
+              icon="check"
+              content="Create"
+              labelPosition="left"
+              type="submit"
+            />
           </div>
         </Form>
       </Formik>

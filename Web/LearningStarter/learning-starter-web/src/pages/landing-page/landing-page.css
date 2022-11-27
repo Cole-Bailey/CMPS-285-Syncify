@@ -36,11 +36,10 @@
   color: rgb(255, 255, 255); /* White text */
   cursor: pointer; /* Pointer/hand icon */
   border: px 2 px 2 #172121;
-  display: inline-block;
   padding-left: 25px;
   padding-bottom: 15px;
   padding-top: 35px;
-  justify-content: center;
+  text-align: center;
 }
 .calendar-component {
   padding-top: 30px;

@@ -144,11 +144,11 @@ namespace LearningStarter
             SeedUsers(dataContext);
             SeedGroups(dataContext);
             SeedCalendars(dataContext);
+            SeedToDos(dataContext);
             SeedEvents(dataContext);
             SeedIngredients(dataContext);
             SeedRecipes(dataContext);
             SeedGroupMembers(dataContext);
-            SeedToDos(dataContext);
             SeedRecipeIngredients(dataContext);
             //SeedShoppingListRecipeIngredients(dataContext);
         }
@@ -568,7 +568,6 @@ namespace LearningStarter
 
                 var mealTypes = dataContext.MealTypes.ToList();
                 var calendar = dataContext.Calendars.ToList();
-                //var group = dataContext.Groups.First();
 
                 var seededRecipes = new List<Recipe>
                 {
@@ -665,15 +664,34 @@ namespace LearningStarter
         {
             if (!dataContext.Events.Any())
             {
-                var calendar = dataContext.Calendars.First();
+                var calendar = dataContext.Calendars.ToList();
 
-                var seededEvents = new Event
+                var seededEvents = new List<Event>
                 {
-                    Calendar = calendar,
+                    new Event
+                    {
+                    Calendar = calendar.First(x => x.Group.Name == StringEnums.GroupNames.GroupD),
                     Name = "Cole's Birthday Bash!",
                     EventDetails = "Chillin at the Blue Moon, 10:00pm",
-                    StartDate = DateTime.Now,
-                    EndDate = DateTime.Now,
+                    StartDate = new DateTime(2022, 11, 1, 22, 0, 0),
+                    EndDate = new DateTime(2022, 11, 2, 2, 30, 0),
+                    },
+                    new Event
+                    {
+                    Calendar = calendar.First(x => x.Group.Name == StringEnums.GroupNames.GroupA),
+                    Name = "Final Presentations!",
+                    EventDetails = "Presenting our final presentation, 5:00pm",
+                    StartDate = new DateTime(2022, 11, 29, 17, 0, 0),
+                    EndDate = new DateTime(2022, 11, 29, 20, 0, 0),
+                    },
+                    new Event
+                    {
+                    Calendar = calendar.First(x => x.Group.Name == StringEnums.GroupNames.GroupC),
+                    Name = "Final Trip!",
+                    EventDetails = "Drive Home, 8:00pm",
+                    StartDate = new DateTime(2022, 11, 28, 8, 0, 0),
+                    EndDate = new DateTime(2022, 12, 02, 17, 0, 0)
+                    }
                 };
 
                 dataContext.Events.AddRange(seededEvents);
@@ -685,23 +703,45 @@ namespace LearningStarter
         {
             if (!dataContext.ToDos.Any())
             {
-                var calendar = dataContext.Calendars.First();
+                var calendar = dataContext.Calendars.ToList();
 
-                var seededToDos = new ToDo
+
+                var seededToDos = new List<ToDo>
                 {
-                    Calendar = calendar,
+                    new ToDo
+                    {
+                    Calendar = calendar.First(x => x.Group.Name == StringEnums.GroupNames.GroupA),
                     Title = "Trash day",
                     Description = "Take out the trash!",
-                    StartDate = DateTime.Now,
-                    EndDate = DateTime.Now,
+                    StartDate = new DateTime(2022, 11, 10, 20, 0, 0),
+                    EndDate = new DateTime(2022, 11, 10, 21, 0, 0),
+                    },
+                    new ToDo
+                    {
+                    Calendar = calendar.First(x => x.Group.Name == StringEnums.GroupNames.GroupB),
+                    Title = "Dishes",
+                    Description = "Wash the dishes!",
+                    StartDate = new DateTime(2022, 11, 17, 08, 0, 0),
+                    EndDate = new DateTime(2022, 11, 17, 08, 0, 0),
+                    },
+                    new ToDo
+                    {
+                    Calendar = calendar.First(x => x.Group.Name == StringEnums.GroupNames.GroupC),
+                    Title = "Cook",
+                    Description = "My day to cook!",
+                    StartDate = new DateTime(2022, 11, 24, 10, 0, 0),
+                    EndDate = new DateTime(2022, 11, 24, 10, 0, 0),
+                    }
                 };
 
                 dataContext.ToDos.AddRange(seededToDos);
                 dataContext.SaveChanges();
             }
+
         }
     }
 }
+
 
 
 

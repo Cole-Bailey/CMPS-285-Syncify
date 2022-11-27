@@ -46,30 +46,36 @@ export const UnitCreatePage = () => {
   return (
     <>
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        <div className="unit-create-container">
-          <Form>
-            <Header>Create Unit</Header>
-            <div className="unit-create-container">
-              <label htmlFor="name">Name</label>
-            </div>
-            <div className="unit-create-container">
-              <Field id="name" name="name">
-                {({ field }) => <Input {...field} />}
-              </Field>
-            </div>
-            <div className="unit-create-container">
-              <label htmlFor="abbreviation">Abbreviation</label>
-            </div>
-            <div className="unit-create-container">
-              <Field id="abbreviation" name="abbreviation">
-                {({ field }) => <Input {...field} />}
-              </Field>
-            </div>
-            <div className="unit-create-container">
-              <Button type="submit">Create</Button>
-            </div>
-          </Form>
-        </div>
+        <Form>
+          <div className="unit-create-container">
+            <Header>Create New Unit</Header>
+          </div>
+          <div className="unit-create-container">
+            <label htmlFor="name">Name</label>
+          </div>
+          <div className="unit-create-container">
+            <Field id="name" name="name">
+              {({ field }) => <Input {...field} />}
+            </Field>
+          </div>
+          <div className="unit-create-container">
+            <label htmlFor="abbreviation">Abbreviation</label>
+          </div>
+          <div className="unit-create-container">
+            <Field id="abbreviation" name="abbreviation">
+              {({ field }) => <Input {...field} />}
+            </Field>
+          </div>
+          <div className="unit-create-container">
+            <Button
+              positive
+              icon="check"
+              content="Create"
+              labelPosition="left"
+              type="submit"
+            />
+          </div>
+        </Form>
       </Formik>
     </>
   );

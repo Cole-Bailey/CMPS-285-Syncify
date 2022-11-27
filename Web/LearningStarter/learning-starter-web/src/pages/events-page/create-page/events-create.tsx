@@ -15,7 +15,8 @@ const initialValues: EventCreateDto = {
   calendarId: 0,
   name: "",
   eventDetails: "",
-  createdDate: new Date(),
+  startDate: new Date(),
+  endDate: new Date(),
 };
 
 export const EventCreatePage = () => {

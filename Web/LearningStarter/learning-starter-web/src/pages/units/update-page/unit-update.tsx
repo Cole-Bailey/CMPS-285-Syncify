@@ -61,8 +61,9 @@ export const UnitUpdatePage = () => {
       {unit && (
         <Formik initialValues={unit} onSubmit={onSubmit}>
           <Form>
-            <Header>Units</Header>
-
+            <div className="unit-update-container">
+              <Header>Update Unit</Header>
+            </div>
             <div className="unit-update-container">
               <label htmlFor="name">Name</label>
             </div>
@@ -80,7 +81,13 @@ export const UnitUpdatePage = () => {
               </Field>
             </div>
             <div className="unit-update-container">
-              <Button type="submit">Submit</Button>
+              <Button
+                positive
+                icon="check"
+                content="Update"
+                labelPosition="left"
+                type="submit"
+              />
             </div>
           </Form>
         </Formik>

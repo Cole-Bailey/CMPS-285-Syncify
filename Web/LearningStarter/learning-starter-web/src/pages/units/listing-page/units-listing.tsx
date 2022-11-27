@@ -34,11 +34,12 @@ export const UnitListingPage = () => {
         <>
           <Header>Units</Header>
           <Button
-            type="button"
+            positive
+            icon="circle plus"
+            content="Create"
+            labelPosition="left"
             onClick={() => history.push(routes.units.create)}
-          >
-            + Create
-          </Button>
+          />
           <Table striped celled>
             <Table.Header>
               <Table.Row>
@@ -62,6 +63,7 @@ export const UnitListingPage = () => {
                         type="button"
                         content="Edit Unit"
                         icon="pencil"
+                        labelPosition="left"
                         onClick={() =>
                           history.push(
                             routes.units.update.replace(":id", `${unit.id}`)
@@ -75,6 +77,7 @@ export const UnitListingPage = () => {
                         type="button"
                         content="Delete"
                         icon="trash"
+                        labelPosition="left"
                         onClick={() =>
                           history.push(
                             routes.units.delete.replace(":id", `${unit.id}`)

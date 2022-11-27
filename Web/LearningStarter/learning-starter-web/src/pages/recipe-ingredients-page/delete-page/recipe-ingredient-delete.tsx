@@ -7,7 +7,7 @@ import { useRouteMatch } from "react-router-dom";
 import { routes } from "../../../routes/config";
 import { useHistory } from "react-router-dom";
 
-export const RecipeIngredientDeletePage = () => {
+export const RecipeIngredientsDeletePage = () => {
   const history = useHistory();
   let match = useRouteMatch<{ id: string }>();
   const id = match.params.id;

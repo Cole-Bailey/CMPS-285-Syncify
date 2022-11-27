@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 import { routes } from "../../../routes/config";
 //import "./ingredient-listing.css";
 
-export const RecipeIngredientListingPage = () => {
+export const RecipeIngredientsListingPage = () => {
   const [recipeIngredients, setRecipeIngredients] =
     useState<RecipeIngredientGetDto[]>();
   const history = useHistory();
@@ -36,11 +36,12 @@ export const RecipeIngredientListingPage = () => {
         <>
           <Header>Recipe Ingredients</Header>
           <Button
-            type="button"
+            positive
+            icon="circle plus"
+            content="Create"
+            labelPosition="left"
             onClick={() => history.push(routes.recipeIngredients.create)}
-          >
-            + Create
-          </Button>
+          />
           <Table striped celled>
             <Table.Header>
               <Table.Row>
@@ -49,8 +50,8 @@ export const RecipeIngredientListingPage = () => {
                 <Table.HeaderCell>Ingredient Name</Table.HeaderCell>
                 <Table.HeaderCell>Quantity</Table.HeaderCell>
                 <Table.HeaderCell>Unit Name</Table.HeaderCell>
-                <Table.HeaderCell>Edit</Table.HeaderCell>
-                <Table.HeaderCell>Delete Recipe Ingredient</Table.HeaderCell>
+                <Table.HeaderCell>Edit Recipe Ingredients</Table.HeaderCell>
+                <Table.HeaderCell>Delete Recipe Ingredients</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -66,8 +67,9 @@ export const RecipeIngredientListingPage = () => {
                       <Button
                         positive
                         type="button"
-                        content="Edit Ingredient"
+                        content="Edit Ingredients"
                         icon="pencil"
+                        labelPosition="left"
                         onClick={() =>
                           history.push(
                             routes.recipeIngredients.update.replace(
@@ -82,8 +84,9 @@ export const RecipeIngredientListingPage = () => {
                       <Button
                         negative
                         type="button"
-                        content="Delete Ingredient"
+                        content="Delete Ingredients"
                         icon="trash"
+                        labelPosition="left"
                         onClick={() =>
                           history.push(
                             routes.recipeIngredients.delete.replace(

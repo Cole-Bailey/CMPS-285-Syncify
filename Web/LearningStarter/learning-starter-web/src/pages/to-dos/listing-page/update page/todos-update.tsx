@@ -1,30 +1,30 @@
-import "../update-page/events-update.css";
+import "../update page/todos-update.css";
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
-import { Button, Dropdown, Header, Input } from "semantic-ui-react";
+import { Button, Dropdown, Input } from "semantic-ui-react";
 import React, { useState, useEffect } from "react";
 import { useRouteMatch } from "react-router-dom";
-import { routes } from "../../../routes/config";
+import { routes } from "../../../../routes/config";
 import { useHistory } from "react-router-dom";
 import {
   ApiResponse,
-  EventGetDto,
-  EventUpdateDto,
   OptionDto,
-} from "../../../constants/types";
+  ToDoGetDto,
+  ToDoUpdateDto,
+} from "../../../../constants/types";
 
-export const EventUpdatePage = () => {
+export const ToDoUpdatePage = () => {
   const history = useHistory();
   let match = useRouteMatch<{ id: string }>();
   const id = match.params.id;
-  const [event, setEvent] = useState<EventGetDto>();
+  const [todo, setToDos] = useState<ToDoGetDto>();
   const [calendarOptions, setCalendarOptions] = useState<OptionDto[]>();
   console.log("debug", calendarOptions);
 
   useEffect(() => {
-    const fetchEvent = async () => {
-      const response = await axios.get<ApiResponse<EventGetDto>>(
-        `/api/events/${id}`
+    const fetchToDos = async () => {
+      const response = await axios.get<ApiResponse<ToDoGetDto>>(
+        `/api/to-dos/${id}`
       );
 
       if (response.data.hasErrors) {
@@ -32,10 +32,10 @@ export const EventUpdatePage = () => {
         return;
       }
 
-      setEvent(response.data.data);
+      setToDos(response.data.data);
     };
 
-    fetchEvent();
+    fetchToDos();
   }, [id]);
 
   useEffect(() => {
@@ -50,9 +50,9 @@ export const EventUpdatePage = () => {
     getCalendarOptions();
   }, []);
 
-  const onSubmit = async (values: EventUpdateDto) => {
-    const response = await axios.put<ApiResponse<EventGetDto>>(
-      `/api/events/${id}`,
+  const onSubmit = async (values: ToDoUpdateDto) => {
+    const response = await axios.put<ApiResponse<ToDoGetDto>>(
+      `/api/to-dos/${id}`,
       values
     );
 
@@ -61,54 +61,51 @@ export const EventUpdatePage = () => {
         console.log(err.message);
       });
     } else {
-      history.push(routes.events.listing);
+      history.push(routes.toDos.listing);
     }
   };
 
   return (
     <>
-      {event && (
-        <Formik initialValues={event} onSubmit={onSubmit}>
+      {todo && (
+        <Formik initialValues={todo} onSubmit={onSubmit}>
           <Form>
-            <div className="events-update-container">
-              <Header>Update Event</Header>
+            <div className="todos-update-container">
+              <label htmlFor="title">Title</label>
             </div>
-            <div className="events-update-container">
-              <label htmlFor="name">Name</label>
-            </div>
-            <div className="events-update-container">
-              <Field id="name" name="name">
+            <div className="todos-update-container">
+              <Field id="title" name="title">
                 {({ field }) => <Input {...field} />}
               </Field>
             </div>
-            <div className="events-update-container">
-              <label htmlFor="eventDetails">Event Details</label>
+            <div className="todos-update-container">
+              <label htmlFor="description">Description</label>
             </div>
-            <div className="events-update-container">
-              <Field id="eventDetails" name="eventDetails">
+            <div className="todos-update-container">
+              <Field id="description" name="description">
                 {({ field }) => <Input {...field} />}
               </Field>
             </div>
-            <div className="events-update-container">
+            <div className="todos-update-container">
               <label htmlFor="startDate">Start Date</label>
             </div>
-            <div className="events-update-container">
+            <div className="todos-update-container">
               <Field id="startDate" name="startDate">
                 {({ field }) => <Input type="date" {...field} />}
               </Field>
             </div>
-            <div className="events-update-container">
+            <div className="todos-update-container">
               <label htmlFor="endDate">End Date</label>
             </div>
-            <div className="events-update-container">
+            <div className="todos-update-container">
               <Field id="endDate" name="endDate">
                 {({ field }) => <Input type="date" {...field} />}
               </Field>
             </div>
-            <div className="events-update-container">
+            <div className="todos-update-container">
               <label htmlFor="calendar">Calendar</label>
             </div>
-            <div className="events-update-container">
+            <div className="todos-update-container">
               <Field name="calendarId" id="calendarId" className="field">
                 {({ field, form }) => (
                   <Dropdown
@@ -125,10 +122,10 @@ export const EventUpdatePage = () => {
                 )}
               </Field>
             </div>
-            <div className="events-update-container">
+            <div className="todos-update-container">
               <Button
                 positive
-                icon="check"
+                icon="pencil"
                 content="Update"
                 labelPosition="left"
                 type="submit"

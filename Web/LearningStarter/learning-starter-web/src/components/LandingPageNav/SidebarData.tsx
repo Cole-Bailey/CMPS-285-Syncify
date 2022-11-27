@@ -17,9 +17,9 @@ export const SidebarData = [
     cName: "nav-text",
   },
   {
-    title: "Calendar",
-    path: "/calendar",
-    icon: <IoIcons.IoIosPaper />,
+    title: "Events",
+    path: "/events",
+    icon: <IoIcons.IoMdPeople />,
     cName: "nav-text",
   },
   {
@@ -29,9 +29,9 @@ export const SidebarData = [
     cName: "nav-text",
   },
   {
-    title: "Events",
-    path: "/events",
-    icon: <IoIcons.IoMdPeople />,
+    title: "Recipes",
+    path: "/recipes",
+    icon: <IoIcons.IoMdNutrition />,
     cName: "nav-text",
   },
   {
@@ -41,8 +41,8 @@ export const SidebarData = [
     cName: "nav-text",
   },
   {
-    title: "Recipes",
-    path: "/recipes",
+    title: "Ingredients",
+    path: "/ingredients",
     icon: <IoIcons.IoMdNutrition />,
     cName: "nav-text",
   },

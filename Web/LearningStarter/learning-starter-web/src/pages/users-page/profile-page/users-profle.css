@@ -1,6 +1,4 @@
 .users-profile-page-container {
   display: flex;
   /* justify-content: center; */
-  background-color: #fff;
-  z-index: -1;
 }

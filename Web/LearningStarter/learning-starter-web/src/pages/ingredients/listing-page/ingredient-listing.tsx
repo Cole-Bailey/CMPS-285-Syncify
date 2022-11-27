@@ -35,18 +35,19 @@ export const IngredientListingPage = () => {
         <>
           <Header>Ingredients</Header>
           <Button
-            type="button"
+            positive
+            icon="circle plus"
+            content="Create"
+            labelPosition="left"
             onClick={() => history.push(routes.ingredients.create)}
-          >
-            + Create
-          </Button>
+          />
           <Table striped celled>
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Id</Table.HeaderCell>
                 <Table.HeaderCell>Name</Table.HeaderCell>
                 <Table.HeaderCell>Image</Table.HeaderCell>
-                <Table.HeaderCell>Delete</Table.HeaderCell>
+                <Table.HeaderCell>Delete Ingredients</Table.HeaderCell>
                 <Table.HeaderCell>Edit Ingredients</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
@@ -63,6 +64,7 @@ export const IngredientListingPage = () => {
                         type="button"
                         content="Edit Ingredient"
                         icon="pencil"
+                        labelPosition="left"
                         onClick={() =>
                           history.push(
                             routes.ingredients.update.replace(
@@ -79,6 +81,7 @@ export const IngredientListingPage = () => {
                         type="button"
                         content="Delete Ingredient"
                         icon="trash"
+                        labelPosition="left"
                         onClick={() =>
                           history.push(
                             routes.ingredients.delete.replace(
