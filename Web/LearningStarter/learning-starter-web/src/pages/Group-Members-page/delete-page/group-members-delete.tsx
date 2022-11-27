@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import { Button, Input } from "semantic-ui-react";
 import { ApiResponse, GroupMemberGetDto } from "../../../constants/types";
@@ -35,6 +36,13 @@ export const GroupMembersDeletePage = () => {
     );
 
     if (response.data.hasErrors) {
+      toast.error("Error Occured, please try again", {
+        position: "top-center",
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
       response.data.errors.forEach((err) => {
         console.log(err.message);
       });

@@ -7,6 +7,7 @@ import { useRouteMatch } from "react-router-dom";
 import { routes } from "../../../routes/config";
 import { useHistory } from "react-router-dom";
 import "./recipe-delete.css";
+import toast from "react-hot-toast";
 
 export const RecipeDeletePage = () => {
   const history = useHistory();
@@ -42,6 +43,13 @@ export const RecipeDeletePage = () => {
       });
     } else {
       history.push(routes.recipes.listing);
+      toast.success("Recipe successfully deleted", {
+        position: "top-center",
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
     }
   };
 

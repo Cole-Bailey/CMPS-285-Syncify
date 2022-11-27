@@ -12,6 +12,7 @@ import { useRouteMatch } from "react-router-dom";
 import { routes } from "../../../routes/config";
 import { useHistory } from "react-router-dom";
 import "./recipe-update.css";
+import toast from "react-hot-toast";
 
 export const RecipeUpdatePage = () => {
   const history = useHistory();
@@ -76,6 +77,13 @@ export const RecipeUpdatePage = () => {
       });
     } else {
       history.push(routes.recipes.listing);
+      toast.success("Recipe successfully updated", {
+        position: "top-center",
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
     }
   };
 

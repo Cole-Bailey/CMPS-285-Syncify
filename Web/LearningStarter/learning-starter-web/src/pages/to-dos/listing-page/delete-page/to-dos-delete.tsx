@@ -7,6 +7,7 @@ import { useRouteMatch } from "react-router-dom";
 import { routes } from "../../../../routes/config";
 import { useHistory } from "react-router-dom";
 import { ApiResponse, ToDoGetDto } from "../../../../constants/types";
+import toast from "react-hot-toast";
 
 export const ToDoDeletePage = () => {
   const history = useHistory();
@@ -42,6 +43,13 @@ export const ToDoDeletePage = () => {
       });
     } else {
       history.push(routes.toDos.listing);
+      toast.success("To-Do successfully deleted", {
+        position: "top-center",
+        style: {
+          background: "#333",
+          color: "#fff",
+        },
+      });
     }
   };
 
