@@ -200,11 +200,9 @@ function UserCreateModal() {
             open={secondOpen}
             size="small"
           >
-            <Modal.Header>Success!!!</Modal.Header>
+            <Modal.Header>Success!</Modal.Header>
             <Modal.Content>
-              <p>
-                You have successfully registered for Syncify. Please enjoy!!!
-              </p>
+              <p>You have successfully registered for Syncify. Please enjoy!</p>
             </Modal.Content>
             <Modal.Actions>
               <Button

@@ -168,9 +168,9 @@ function ToDoCreateModal() {
             open={secondOpen}
             size="small"
           >
-            <Modal.Header>Success!!!</Modal.Header>
+            <Modal.Header>Success!</Modal.Header>
             <Modal.Content>
-              <p>You have successfully created a to-do in Syncify!!!</p>
+              <p>You have successfully created a to-do in Syncify!</p>
             </Modal.Content>
             <Modal.Actions>
               <Button

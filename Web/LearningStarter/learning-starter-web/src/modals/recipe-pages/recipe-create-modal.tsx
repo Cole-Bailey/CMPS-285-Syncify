@@ -208,11 +208,11 @@ function RecipeCreateModal() {
             open={secondOpen}
             size="small"
           >
-            <Modal.Header>Success!!!</Modal.Header>
+            <Modal.Header>Success!</Modal.Header>
             <Modal.Content>
               <p>
                 You have successfully created a recipe within Syncify. Please
-                enjoy!!!
+                enjoy!
               </p>
             </Modal.Content>
             <Modal.Actions>
