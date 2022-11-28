@@ -105,11 +105,11 @@ function ShoppingListCreateModal() {
             open={secondOpen}
             size="small"
           >
-            <Modal.Header>Success!!!</Modal.Header>
+            <Modal.Header>Success!</Modal.Header>
             <Modal.Content>
               <p>
                 You have successfully added an Item to your Shoppng List with
-                Syncify. Please enjoy!!!
+                Syncify. Please enjoy!
               </p>
             </Modal.Content>
             <Modal.Actions>

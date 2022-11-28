@@ -52,16 +52,4 @@ export const SidebarData = [
     icon: <GiIcons.GiWeight />,
     cName: "nav-text",
   },
-  {
-    title: "Recipe Ingredients",
-    path: "/recipe-ingredients",
-    icon: <AiIcons.AiTwotoneReconciliation />,
-    cName: "nav-text",
-  },
-  {
-    title: "...",
-    path: "/",
-    icon: <AiIcons.AiFillThunderbolt />,
-    cName: "nav-text",
-  },
 ];
