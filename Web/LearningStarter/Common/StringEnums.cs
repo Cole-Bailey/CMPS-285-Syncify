@@ -53,25 +53,31 @@ namespace LearningStarter.Common
         public static class RecipeDirections
         {
             //Future Hamburger Instructions
-            //"Step 1: Follow your users manual to light and preheat your charcoal/gas grill.\n "  +
-            //"Step 2: Remove ground meat from packaging and place in a bowl and add package of Ranch seasoning mix.\n " +
-            //"Step 3: Mix meat and seasoning together and make 1/4 lb patties.\n " +
-            //"Step 4: Place hamburger patties an inche apart on your preheated grill and cook to an internal temperature of 145 degrees Fahrenheit.\n " +
-            //"Step 5: Assembly your hamburger on a bun with your choice of toppings and ENJOY!"
-            public const string Hamburger = "Hamburger Instructions";
+            public const string Hamburger = "Step 1: Follow your users manual to light and preheat your charcoal/gas grill.\n "  +
+            "Step 2: Remove ground meat from packaging and place in a bowl and add package of Ranch seasoning mix.\n " +
+            "Step 3: Mix meat and seasoning together and make 1/4 lb patties.\n " +
+            "Step 4: Place hamburger patties an inche apart on your preheated grill and cook to an internal temperature of 145 degrees Fahrenheit.\n " +
+            "Step 5: Assembly your hamburger on a bun with your choice of toppings and ENJOY!";
+            
             //Future Burrito Instructions
-            //"Step 1: In a skillet brown your ground meat and drain the grease.\n " +
-            //"Step 2: Add your seasonings and mix well with browned meat for 10 seconds and then add water.\n " +
-            //"Step 3: Bring mixture up to a simmer and let cook for 5 to 10 minutes.\n " +
-            //"Step 4: Place mixture in a warmed tortilla and add your favorite toppings. ENJOY!"
-            public const string Burritos = "Burrito Instructions";
+            public const string Burritos = "Step 1: In a skillet brown your ground meat and drain the grease.\n " +
+            "Step 2: Add your seasonings and mix well with browned meat for 10 seconds and then add water.\n " +
+            "Step 3: Bring mixture up to a simmer and let cook for 5 to 10 minutes.\n " +
+            "Step 4: Place mixture in a warmed tortilla and add your favorite toppings. ENJOY!";
+            
             //Future Sloppy Joe Instructions
-            //"Step 1: In a skillet, brown your ground meat and drain the grease.\n " +
-            //"Step 2: Add your Sloppy Joe seasoning mix and one 12oz can of tomatoe sauce.\n " +
-            //"Step 3: Simmer on low for 15 mins, while stirring mixture every 2 to 3 minutes.\n " +
-            //"Step 4: Top a hamburger bun with the mixture, a slice of cheese, and a few sliced dill pickles. ENJOY!"
-            public const string SloppyJoes = "Sloppy Joe Instructions";
-            public const string Spaghetti = "Spaghetti Instructions";
+            public const string SloppyJoes = "Step 1: In a skillet, brown your ground meat and drain the grease.\n " +
+            "Step 2: Add your Sloppy Joe seasoning mix and one 12oz can of tomatoe sauce.\n " +
+            "Step 3: Simmer on low for 15 mins, while stirring mixture every 2 to 3 minutes.\n " +
+            "Step 4: Top a hamburger bun with the mixture, a slice of cheese, and a few sliced dill pickles. ENJOY!";
+
+            //Future Spaghetti Instructions
+            public const string Spaghetti = "Step 1: In a large pot, add water and salt. Put heat on high and bring to a rolling boil. Add favorite pasta.\n " + 
+            "Step 2: In a skillet, add ground meat and onion. Brown your meat and drain the grease.\n " + 
+            "Step 3: Add garlic, seasoning, and tomatoes.\n " + 
+            "Step 4: Simmer on low for 30 mins, while stirring mixture every 2 to 3 minutes.\n " + 
+            "Step 5: Serve sauce over pasta and enjoy!";
+
             public const string PeanutButterAndJelly = "PB & J Instructions";
             public const string Toast = "Toast Instructions";
         }

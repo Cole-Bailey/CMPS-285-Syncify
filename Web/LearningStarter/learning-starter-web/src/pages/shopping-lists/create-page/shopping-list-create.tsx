@@ -16,21 +16,8 @@ import toast, { Toaster } from "react-hot-toast";
 const initialValues: ShoppingListCreateDto = {
   name: "",
 };
-function save(
-  ShoppingListCreatePage: () => JSX.Element
-): Promise<ShoppingListCreateDto> {
-  throw new Error("May Already Exist Try Again");
-}
+
 export const ShoppingListCreatePage = () => {
-  const notify = () => {
-    toast.success("Shopping List item created", {
-      position: "top-center",
-      style: {
-        background: "#333",
-        color: "#fff",
-      },
-    });
-  };
   const history = useHistory();
   const onSubmit = async (values: ShoppingListCreateDto) => {
     const response = await axios.post<ApiResponse<ShoppingListGetDto>>(

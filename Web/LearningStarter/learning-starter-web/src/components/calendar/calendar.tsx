@@ -12,6 +12,7 @@ import "./calendar.css";
 const locales = {
   "en-US": require("date-fns/locale/en-US"),
 };
+
 const localizer = dateFnsLocalizer({
   format,
   parse,
@@ -37,6 +38,8 @@ const Calendar = ({ events }: { events: EventGetDto[] }) => {
     });
     return prev;
   }, [] as BigCalendarEvent[]);
+
+  // const globalizeLocalizer = localizer(globalize);
 
   return (
     <BigCalendar

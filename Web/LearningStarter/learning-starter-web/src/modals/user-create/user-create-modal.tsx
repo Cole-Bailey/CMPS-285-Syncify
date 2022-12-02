@@ -13,21 +13,21 @@ import {
 import { BaseUrl } from "../../constants/env-cars";
 import toast from "react-hot-toast";
 
-function UserCreateModal() {
-  const [firstOpen, setFirstOpen] = useState(false);
-  const [secondOpen, setSecondOpen] = useState(false);
+const initialValues: UserCreateDto = {
+  profileColorId: 0,
+  firstName: "",
+  lastName: "",
+  username: "",
+  password: "",
+  phoneNumber: "",
+  email: "",
+  birthday: "",
+};
+
+export const UserCreateModal = () => {
+  const [open, setOpen] = useState(false);
   const [colorOptions, setColorOptions] = useState<OptionDto[]>();
   console.log("debug", colorOptions);
-  const initialValues: UserCreateDto = {
-    profileColorId: 0,
-    firstName: "",
-    lastName: "",
-    username: "",
-    password: "",
-    phoneNumber: "",
-    email: "",
-    birthday: "",
-  };
 
   const onSubmit = async (values: UserCreateDto) => {
     const response = await axios.post<ApiResponse<UserGetDto>>(
@@ -50,7 +50,7 @@ function UserCreateModal() {
         });
       });
     } else {
-      setSecondOpen(true);
+      setOpen(false);
       toast.success("User successfully created", {
         position: "top-center",
         style: {
@@ -78,16 +78,16 @@ function UserCreateModal() {
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         <Modal
           as={Form}
-          onClose={() => setFirstOpen(false)}
-          onOpen={() => setFirstOpen(true)}
-          open={firstOpen}
+          onClose={() => setOpen(false)}
+          onOpen={() => setOpen(true)}
+          open={open}
           trigger={
             <Button
               positive
               icon="signup"
               content="Register"
               labelPosition="left"
-              onClick={() => setFirstOpen(true)}
+              onClick={() => setOpen(true)}
             />
           }
         >
@@ -185,7 +185,7 @@ function UserCreateModal() {
               content="Cancel"
               labelPosition="left"
               negative
-              onClick={() => setFirstOpen(false)}
+              onClick={() => setOpen(false)}
             />
             <Button
               type="submit"
@@ -195,30 +195,8 @@ function UserCreateModal() {
               positive
             />
           </Modal.Actions>
-          <Modal
-            onCLose={() => setSecondOpen(false)}
-            open={secondOpen}
-            size="small"
-          >
-            <Modal.Header>Success!</Modal.Header>
-            <Modal.Content>
-              <p>You have successfully registered for Syncify. Please enjoy!</p>
-            </Modal.Content>
-            <Modal.Actions>
-              <Button
-                type="button"
-                icon="user"
-                content="Login"
-                labelPosition="left"
-                positive
-                onClick={() => setFirstOpen(false)}
-              />
-            </Modal.Actions>
-          </Modal>
         </Modal>
       </Formik>
     </>
   );
-}
-
-export default UserCreateModal;
+};

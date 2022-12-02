@@ -39,8 +39,8 @@ namespace LearningStarter.Controllers
                             Image = toDos.Calendar.Group.Image
                         }
                     },
-                    Title = toDos.Title,
-                    Description = toDos.Description,
+                    Name = toDos.Name,
+                    ToDoDetails = toDos.ToDoDetails,
                     StartDate = toDos.StartDate,
                     EndDate = toDos.EndDate,
                 })
@@ -72,8 +72,10 @@ namespace LearningStarter.Controllers
                             Image = toDos.Calendar.Group.Image
                         }
                     },
-                    Title = toDos.Title,
-                    Description = toDos.Description
+                    Name = toDos.Name,
+                    ToDoDetails = toDos.ToDoDetails,
+                    StartDate = toDos.StartDate,
+                    EndDate = toDos.EndDate,
                 })
                 .FirstOrDefault(toDos => toDos.Id == id);
 
@@ -97,12 +99,12 @@ namespace LearningStarter.Controllers
                 response.AddError("CalendarId", "Calendar Id does not exist.");
             }
 
-            if (string.IsNullOrEmpty(toDoCreateDto.Title))
+            if (string.IsNullOrEmpty(toDoCreateDto.Name))
             {
                 response.AddError("Title", "Title cannot be empty.");
             }
 
-            if (string.IsNullOrEmpty(toDoCreateDto.Description))
+            if (string.IsNullOrEmpty(toDoCreateDto.ToDoDetails))
             {
                 response.AddError("Description", "Description cannot be empty.");
             }
@@ -115,8 +117,8 @@ namespace LearningStarter.Controllers
             var toDoToAdd = new ToDo
             {
                 CalendarId = toDoCreateDto.CalendarId, 
-                Title = toDoCreateDto.Title,
-                Description = toDoCreateDto.Description,
+                Name = toDoCreateDto.Name,
+                ToDoDetails = toDoCreateDto.ToDoDetails,
                 StartDate = toDoCreateDto.StartDate,
                 EndDate = toDoCreateDto.EndDate,
             };
@@ -145,13 +147,12 @@ namespace LearningStarter.Controllers
                         Image = toDo.Calendar.Group.Image
                     }
                 },
-                Title = toDo.Title,
-                Description = toDo.Description,
+                Name = toDo.Name,
+                ToDoDetails = toDo.ToDoDetails,
                 StartDate = toDo.StartDate,
                 EndDate = toDo.EndDate,
             };
 
-            //returns 201 Code, which means created
             response.Data = toDoToReturn;
             return Created("", response);
         }
@@ -178,12 +179,12 @@ namespace LearningStarter.Controllers
                 response.AddError("CalendarId", "Calendar Id does not exist.");
             }
 
-            if (string.IsNullOrEmpty(toDoUpdateDto.Title))
+            if (string.IsNullOrEmpty(toDoUpdateDto.Name))
             {
                 response.AddError("Title", "Title cannot be empty.");
             }
 
-            if (string.IsNullOrEmpty(toDoUpdateDto.Description))
+            if (string.IsNullOrEmpty(toDoUpdateDto.ToDoDetails))
             {
                 response.AddError("Description", "Description cannot be empty.");
             }
@@ -194,8 +195,8 @@ namespace LearningStarter.Controllers
             }
 
             toDoToUpdate.CalendarId = toDoUpdateDto.CalendarId;
-            toDoToUpdate.Title = toDoUpdateDto.Title;
-            toDoToUpdate.Description = toDoUpdateDto.Description;
+            toDoToUpdate.Name = toDoUpdateDto.Name;
+            toDoToUpdate.ToDoDetails = toDoUpdateDto.ToDoDetails;
             toDoToUpdate.StartDate = toDoUpdateDto.StartDate;
             toDoToUpdate.EndDate = toDoUpdateDto.EndDate;
 
@@ -222,8 +223,8 @@ namespace LearningStarter.Controllers
                         Image = toDo.Calendar.Group.Image
                     }
                 },
-                Title = toDo.Title,
-                Description = toDo.Description,
+                Name = toDo.Name,
+                ToDoDetails = toDo.ToDoDetails,
                 StartDate = toDo.StartDate,
                 EndDate = toDo.EndDate,
             };

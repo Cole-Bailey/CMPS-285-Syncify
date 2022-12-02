@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using System;
 using System.Web;
 
 namespace LearningStarter.Entities
@@ -8,8 +9,8 @@ namespace LearningStarter.Entities
         public int Id { get; set; }
         public int CalendarId { get; set; }
         public Calendar Calendar { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
+        public string Name { get; set; }
+        public string ToDoDetails { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
     }
@@ -18,8 +19,8 @@ namespace LearningStarter.Entities
         public int Id { get; set; }
         public int CalendarId { get; set; }
         public CalendarGetDto Calendar { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
+        public string Name { get; set; }
+        public string ToDoDetails { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
     }
@@ -27,8 +28,8 @@ namespace LearningStarter.Entities
     {
         public int CalendarId { get; set; }
         public CalendarCreateDto Calendar { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
+        public string Name { get; set; }
+        public string ToDoDetails { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
     }
@@ -36,8 +37,8 @@ namespace LearningStarter.Entities
     {
         public int CalendarId { get; set; }
         public CalendarUpdateDto Calendar { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
+        public string Name { get; set; }
+        public string ToDoDetails { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
@@ -46,11 +47,11 @@ namespace LearningStarter.Entities
     public class ToDoDelete 
     {
         public int CalendarId { get; set; }
-        public CalendarUpdateDto calendar { get; set; }
-        public string Title { get; set; }
+        public CalendarUpdateDto Calendar { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
     }
 
 }

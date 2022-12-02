@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
-import { Button, Header, Input } from "semantic-ui-react";
+import { Button, Header, Input, TextArea } from "semantic-ui-react";
 import { ApiResponse, RecipeGetDto } from "../../../constants/types";
 import { useRouteMatch } from "react-router-dom";
 import { routes } from "../../../routes/config";
@@ -90,7 +90,7 @@ export const RecipeDeletePage = () => {
             </div>
             <div className="recipe-delete-container">
               <Field id="directions" name="directions">
-                {({ field }) => <Input {...field} />}
+                {({ field }) => <TextArea {...field} />}
               </Field>
             </div>
             <div className="recipe-delete-container">

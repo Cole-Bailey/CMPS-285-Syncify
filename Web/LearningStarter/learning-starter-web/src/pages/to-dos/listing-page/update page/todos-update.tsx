@@ -79,18 +79,18 @@ export const ToDoUpdatePage = () => {
         <Formik initialValues={todo} onSubmit={onSubmit}>
           <Form>
             <div className="todos-update-container">
-              <label htmlFor="title">Title</label>
+              <label htmlFor="name">Name</label>
             </div>
             <div className="todos-update-container">
-              <Field id="title" name="title">
+              <Field id="name" name="name">
                 {({ field }) => <Input {...field} />}
               </Field>
             </div>
             <div className="todos-update-container">
-              <label htmlFor="description">Description</label>
+              <label htmlFor="toDoDetails">To-Do Details</label>
             </div>
             <div className="todos-update-container">
-              <Field id="description" name="description">
+              <Field id="toDoDetails" name="toDoDetails">
                 {({ field }) => <Input {...field} />}
               </Field>
             </div>
@@ -99,7 +99,7 @@ export const ToDoUpdatePage = () => {
             </div>
             <div className="todos-update-container">
               <Field id="startDate" name="startDate">
-                {({ field }) => <Input type="date" {...field} />}
+                {({ field }) => <Input type="smalldatetime" {...field} />}
               </Field>
             </div>
             <div className="todos-update-container">
@@ -107,7 +107,7 @@ export const ToDoUpdatePage = () => {
             </div>
             <div className="todos-update-container">
               <Field id="endDate" name="endDate">
-                {({ field }) => <Input type="date" {...field} />}
+                {({ field }) => <Input type="smalldatetime" {...field} />}
               </Field>
             </div>
             <div className="todos-update-container">

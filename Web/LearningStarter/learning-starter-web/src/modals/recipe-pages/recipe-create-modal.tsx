@@ -18,22 +18,25 @@ import {
 } from "../../constants/types";
 import { BaseUrl } from "../../constants/env-cars";
 import toast from "react-hot-toast";
+import { useHistory } from "react-router-dom";
+import { routes } from "../../routes/config";
 
-function RecipeCreateModal() {
-  const [firstOpen, setFirstOpen] = useState(false);
-  const [secondOpen, setSecondOpen] = useState(false);
+const initialValues: RecipeCreateDto = {
+  name: "",
+  image: "",
+  servings: 0,
+  directions: "",
+  mealTypeId: 0,
+  calendarId: 0,
+};
+
+export const RecipeCreateModal = () => {
+  const history = useHistory();
+  const [open, setOpen] = useState(false);
   const [mealTypeOptions, setMealTypeOptions] = useState<OptionDto[]>();
   console.log("debug", mealTypeOptions);
   const [calendarOptions, setCalendarOptions] = useState<OptionDto[]>();
   console.log("debug", calendarOptions);
-  const initialValues: RecipeCreateDto = {
-    name: "",
-    image: "",
-    servings: 0,
-    directions: "",
-    mealTypeId: 0,
-    calendarId: 0,
-  };
 
   const onSubmit = async (values: RecipeCreateDto) => {
     const response = await axios.post<ApiResponse<RecipeGetDto>>(
@@ -56,7 +59,8 @@ function RecipeCreateModal() {
         console.log(err.message);
       });
     } else {
-      setSecondOpen(true);
+      setOpen(false);
+      history.push(routes.home);
       toast.success("Recipe successfully created", {
         position: "top-center",
         style: {
@@ -96,16 +100,16 @@ function RecipeCreateModal() {
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         <Modal
           as={Form}
-          onClose={() => setFirstOpen(false)}
-          onOpen={() => setFirstOpen(true)}
-          open={firstOpen}
+          onClose={() => setOpen(false)}
+          onOpen={() => setOpen(true)}
+          open={open}
           trigger={
             <Button
               icon="plus circle"
               labelPosition="left"
               content="Recipe"
               positive
-              onClick={() => setFirstOpen(true)}
+              onClick={() => setOpen(true)}
             />
           }
         >
@@ -193,7 +197,7 @@ function RecipeCreateModal() {
               content="Cancel"
               labelPosition="left"
               negative
-              onClick={() => setFirstOpen(false)}
+              onClick={() => setOpen(false)}
             />
             <Button
               type="submit"
@@ -203,33 +207,8 @@ function RecipeCreateModal() {
               positive
             />
           </Modal.Actions>
-          <Modal
-            onCLose={() => setSecondOpen(false)}
-            open={secondOpen}
-            size="small"
-          >
-            <Modal.Header>Success!</Modal.Header>
-            <Modal.Content>
-              <p>
-                You have successfully created a recipe within Syncify. Please
-                enjoy!
-              </p>
-            </Modal.Content>
-            <Modal.Actions>
-              <Button
-                type="button"
-                icon="home"
-                content="Home"
-                labelPosition="left"
-                positive
-                onClick={() => setFirstOpen(false)}
-              />
-            </Modal.Actions>
-          </Modal>
         </Modal>
       </Formik>
     </>
   );
-}
-
-export default RecipeCreateModal;
+};

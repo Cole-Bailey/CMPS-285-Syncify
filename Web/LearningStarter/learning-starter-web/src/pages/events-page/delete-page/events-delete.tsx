@@ -89,7 +89,7 @@ export const EventDeletePage = () => {
             </div>
             <div className="events-delete-container">
               <Field id="startDate" name="startDate">
-                {({ field }) => <Input {...field} />}
+                {({ field }) => <Input type="smalldatetime" {...field} />}
               </Field>
             </div>
             <div className="events-delete-container">
@@ -97,7 +97,7 @@ export const EventDeletePage = () => {
             </div>
             <div className="events-delete-container">
               <Field id="endDate" name="endDate">
-                {({ field }) => <Input {...field} />}
+                {({ field }) => <Input type="smalldatetime" {...field} />}
               </Field>
             </div>
             <div className="events-delete-container">
