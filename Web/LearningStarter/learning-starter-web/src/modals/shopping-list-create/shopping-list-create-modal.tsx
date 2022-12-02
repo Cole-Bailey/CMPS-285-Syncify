@@ -2,22 +2,24 @@ import "../../modals/modal.css";
 import axios from "axios";
 import { Field, Form, Formik } from "formik";
 import React, { useState } from "react";
-import { Button, Header, Input, Modal, TextArea } from "semantic-ui-react";
+import { Button, Header, Modal, TextArea } from "semantic-ui-react";
 import {
   ApiResponse,
   ShoppingListCreateDto,
   ShoppingListGetDto,
 } from "../../constants/types";
+import { useHistory } from "react-router-dom";
+import { routes } from "../../routes/config";
 import { BaseUrl } from "../../constants/env-cars";
 import toast from "react-hot-toast";
 
-function ShoppingListCreateModal() {
-  const [firstOpen, setFirstOpen] = useState(false);
-  const [secondOpen, setSecondOpen] = useState(false);
-  const initialValues: ShoppingListCreateDto = {
-    name: "",
-  };
+const initialValues: ShoppingListCreateDto = {
+  name: "",
+};
 
+export const ShoppingListCreateModal = () => {
+  const history = useHistory();
+  const [open, setOpen] = useState(false);
   const onSubmit = async (values: ShoppingListCreateDto) => {
     const response = await axios.post<ApiResponse<ShoppingListGetDto>>(
       `${BaseUrl}/api/shopping-lists`,
@@ -39,7 +41,8 @@ function ShoppingListCreateModal() {
         });
       });
     } else {
-      setSecondOpen(true);
+      setOpen(false);
+      history.push(routes.home);
       toast.success("Shopping List item created", {
         position: "top-center",
         style: {
@@ -55,16 +58,16 @@ function ShoppingListCreateModal() {
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         <Modal
           as={Form}
-          onClose={() => setFirstOpen(false)}
-          onOpen={() => setFirstOpen(true)}
-          open={firstOpen}
+          onClose={() => setOpen(false)}
+          onOpen={() => setOpen(true)}
+          open={open}
           trigger={
             <Button
               icon="circle plus"
               labelPosition="left"
               content="List Item"
               positive
-              onClick={() => setFirstOpen(true)}
+              onClick={() => setOpen(true)}
             />
           }
         >
@@ -77,7 +80,7 @@ function ShoppingListCreateModal() {
               </div>
               <div className="field-title">
                 <Field id="name" name="name">
-                  {({ field }) => <Input {...field} />}
+                  {({ field }) => <TextArea {...field} />}
                 </Field>
               </div>
             </Modal.Description>
@@ -90,7 +93,7 @@ function ShoppingListCreateModal() {
               content="Cancel"
               labelPosition="left"
               negative
-              onClick={() => setFirstOpen(false)}
+              onClick={() => setOpen(false)}
             />
             <Button
               type="submit"
@@ -100,33 +103,8 @@ function ShoppingListCreateModal() {
               positive
             />
           </Modal.Actions>
-          <Modal
-            onCLose={() => setSecondOpen(false)}
-            open={secondOpen}
-            size="small"
-          >
-            <Modal.Header>Success!</Modal.Header>
-            <Modal.Content>
-              <p>
-                You have successfully added an Item to your Shoppng List with
-                Syncify. Please enjoy!
-              </p>
-            </Modal.Content>
-            <Modal.Actions>
-              <Button
-                type="button"
-                icon="home"
-                content="Home"
-                labelPosition="left"
-                positive
-                onClick={() => setFirstOpen(false)}
-              />
-            </Modal.Actions>
-          </Modal>
         </Modal>
       </Formik>
     </>
   );
-}
-
-export default ShoppingListCreateModal;
+};

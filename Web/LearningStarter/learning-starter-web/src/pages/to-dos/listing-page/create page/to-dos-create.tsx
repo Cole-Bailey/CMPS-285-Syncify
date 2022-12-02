@@ -13,8 +13,8 @@ import { BaseUrl } from "../../../../constants/env-cars";
 
 const initialValues: ToDoCreateDto = {
   calendarId: 0,
-  title: "",
-  description: "",
+  name: "",
+  toDoDetails: "",
   startDate: new Date(),
   endDate: new Date(),
 };
@@ -40,15 +40,15 @@ export const ToDoCreatePage = () => {
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         <Form>
           <div>
-            <label htmlFor="title">Title</label>
+            <label htmlFor="name">Name</label>
           </div>
-          <Field id="title" name="title">
+          <Field id="name" name="name">
             {({ field }) => <Input {...field} />}
           </Field>
           <div>
-            <label htmlFor="description">Description</label>
+            <label htmlFor="toDoDetails">To-Do Details</label>
           </div>
-          <Field id="description" name="description">
+          <Field id="toDoDetails" name="toDoDetails">
             {({ field }) => <Input {...field} />}
           </Field>
           <div>

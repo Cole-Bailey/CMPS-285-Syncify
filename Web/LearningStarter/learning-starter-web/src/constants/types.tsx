@@ -119,24 +119,24 @@ export type CalendarUpdateDto = {
 export type ToDoGetDto = {
   id: number;
   calendar: CalendarGetDto;
-  title: string;
-  description: string;
+  name: string;
+  toDoDetails: string;
   startDate: Date;
   endDate: Date;
 };
 
 export type ToDoCreateDto = {
   calendarId: number;
-  title: string;
-  description: string;
+  name: string;
+  toDoDetails: string;
   startDate: Date;
   endDate: Date;
 };
 
 export type ToDoUpdateDto = {
   calendar: CalendarGetDto;
-  title: string;
-  description: string;
+  name: string;
+  toDoDetails: string;
   startDate: Date;
   endDate: Date;
 };

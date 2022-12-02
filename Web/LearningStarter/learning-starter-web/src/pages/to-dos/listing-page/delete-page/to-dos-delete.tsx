@@ -62,18 +62,18 @@ export const ToDoDeletePage = () => {
               <Header>Delete To-Do</Header>
             </div>
             <div className="todos-delete-container">
-              <label htmlFor="title">Title</label>
+              <label htmlFor="name">Name</label>
             </div>
             <div className="todos-delete-container">
-              <Field id="title" name="title">
+              <Field id="name" name="name">
                 {({ field }) => <Input {...field} />}
               </Field>
             </div>
             <div className="todos-delete-container">
-              <label htmlFor="description">Description</label>
+              <label htmlFor="toDoDetails">To-Do Details</label>
             </div>
             <div className="todos-delete-container">
-              <Field id="description" name="description">
+              <Field id="toDoDetails" name="toDoDetails">
                 {({ field }) => <Input {...field} />}
               </Field>
             </div>
@@ -82,7 +82,7 @@ export const ToDoDeletePage = () => {
             </div>
             <div className="todos-delete-container">
               <Field id="startDate" name="startDate">
-                {({ field }) => <Input {...field} />}
+                {({ field }) => <Input type="smalldatetime" {...field} />}
               </Field>
             </div>
             <div className="todos-delete-container">
@@ -90,7 +90,7 @@ export const ToDoDeletePage = () => {
             </div>
             <div className="todos-delete-container">
               <Field id="endDate" name="endDate">
-                {({ field }) => <Input {...field} />}
+                {({ field }) => <Input type="smalldatetime" {...field} />}
               </Field>
             </div>
             <div className="todos-delete-container">

@@ -46,10 +46,7 @@ import { GroupMembersListingPage } from "../pages/Group-Members-page/listing-pag
 import { GroupMembersUpdatePage } from "../pages/Group-Members-page/update-page/group-members-update";
 import { GroupMemberCreatePage } from "../pages/Group-Members-page/create-page/group-members-create";
 import { GroupMembersDeletePage } from "../pages/Group-Members-page/delete-page/group-members-delete";
-
-import App from "../components/calendar/calendar";
 import UserCreateModal from "../pages/users-page/create-page/user-create";
-import { LoginPage } from "../pages/login-page/login-page";
 
 //import { ShoppingListUpdatePage } from "../pages/shopping-lists/update-page/shopping-list-update";
 //This is where you will declare all of your routes (the ones that show up in the search bar)

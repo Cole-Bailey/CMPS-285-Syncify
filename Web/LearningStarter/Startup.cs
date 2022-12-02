@@ -673,8 +673,8 @@ namespace LearningStarter
                     Calendar = calendar.First(x => x.Group.Name == StringEnums.GroupNames.GroupD),
                     Name = "Cole's Birthday Bash!",
                     EventDetails = "Chillin at the Blue Moon, 10:00pm",
-                    StartDate = new DateTime(2022, 11, 1, 22, 0, 0),
-                    EndDate = new DateTime(2022, 11, 2, 2, 30, 0),
+                    StartDate = new DateTime(2022, 12, 11, 22, 0, 0),
+                    EndDate = new DateTime(2022, 12, 12, 2, 30, 0),
                     },
                     new Event
                     {
@@ -688,9 +688,9 @@ namespace LearningStarter
                     {
                     Calendar = calendar.First(x => x.Group.Name == StringEnums.GroupNames.GroupC),
                     Name = "Final Trip!",
-                    EventDetails = "Drive Home, 8:00pm",
-                    StartDate = new DateTime(2022, 11, 28, 8, 0, 0),
-                    EndDate = new DateTime(2022, 12, 02, 17, 0, 0)
+                    EventDetails = "Last commute until 2023",
+                    StartDate = new DateTime(2022, 12, 05, 8, 0, 0),
+                    EndDate = new DateTime(2022, 12, 09, 17, 0, 0)
                     }
                 };
 
@@ -711,24 +711,24 @@ namespace LearningStarter
                     new ToDo
                     {
                     Calendar = calendar.First(x => x.Group.Name == StringEnums.GroupNames.GroupA),
-                    Title = "Trash day",
-                    Description = "Take out the trash!",
+                    Name = "Trash day",
+                    ToDoDetails = "Take out the trash!",
                     StartDate = new DateTime(2022, 11, 10, 20, 0, 0),
                     EndDate = new DateTime(2022, 11, 10, 21, 0, 0),
                     },
                     new ToDo
                     {
                     Calendar = calendar.First(x => x.Group.Name == StringEnums.GroupNames.GroupB),
-                    Title = "Dishes",
-                    Description = "Wash the dishes!",
+                    Name = "Dishes",
+                    ToDoDetails = "Wash the dishes!",
                     StartDate = new DateTime(2022, 11, 17, 08, 0, 0),
                     EndDate = new DateTime(2022, 11, 17, 08, 0, 0),
                     },
                     new ToDo
                     {
                     Calendar = calendar.First(x => x.Group.Name == StringEnums.GroupNames.GroupC),
-                    Title = "Cook",
-                    Description = "My day to cook!",
+                    Name = "Cook",
+                    ToDoDetails = "My day to cook!",
                     StartDate = new DateTime(2022, 11, 24, 10, 0, 0),
                     EndDate = new DateTime(2022, 11, 24, 10, 0, 0),
                     }

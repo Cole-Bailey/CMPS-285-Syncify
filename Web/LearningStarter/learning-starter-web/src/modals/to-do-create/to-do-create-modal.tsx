@@ -1,4 +1,3 @@
-// import "../../modals/modal.css";
 import { Field, Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { Input, Modal, Button, Dropdown } from "semantic-ui-react";
@@ -8,22 +7,25 @@ import {
   ToDoCreateDto,
   ToDoGetDto,
 } from "../../constants/types";
+import { useHistory } from "react-router-dom";
+import { routes } from "../../routes/config";
 import axios from "axios";
 import { BaseUrl } from "../../constants/env-cars";
 import toast from "react-hot-toast";
 
-function ToDoCreateModal() {
-  const [firstOpen, setFirstOpen] = useState(false);
-  const [secondOpen, setSecondOpen] = useState(false);
+const initialValues: ToDoCreateDto = {
+  calendarId: 0,
+  name: "",
+  toDoDetails: "",
+  startDate: new Date(),
+  endDate: new Date(),
+};
+
+export const ToDoCreateModal = () => {
+  const history = useHistory();
+  const [open, setOpen] = useState(false);
   const [calendarOptions, setCalendarOptions] = useState<OptionDto[]>();
   console.log("debug", calendarOptions);
-  const initialValues: ToDoCreateDto = {
-    calendarId: 0,
-    title: "",
-    description: "",
-    startDate: new Date(),
-    endDate: new Date(),
-  };
 
   const onSubmit = async (values: ToDoCreateDto) => {
     const response = await axios.post<ApiResponse<ToDoGetDto>>(
@@ -46,7 +48,8 @@ function ToDoCreateModal() {
         });
       });
     } else {
-      setSecondOpen(true);
+      setOpen(false);
+      history.push(routes.home);
       toast.success("To-Do created", {
         position: "top-center",
         style: {
@@ -74,16 +77,16 @@ function ToDoCreateModal() {
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         <Modal
           as={Form}
-          onClose={() => setFirstOpen(false)}
-          onOpen={() => setFirstOpen(true)}
-          open={firstOpen}
+          onClose={() => setOpen(false)}
+          onOpen={() => setOpen(true)}
+          open={open}
           trigger={
             <Button
               icon="circle plus"
               labelPosition="left"
               content="To-Do"
               positive
-              onClick={() => setFirstOpen(true)}
+              onClick={() => setOpen(true)}
             />
           }
         >
@@ -94,36 +97,36 @@ function ToDoCreateModal() {
           <Modal.Content>
             <Modal.Description>
               <div>
-                <label htmlFor="title" className="field-title">
-                  To-Do Title
+                <label htmlFor="name" className="field-title">
+                  To-Do Name
                 </label>
               </div>
-              <Field id="title" name="title">
+              <Field id="name" name="name">
                 {({ field }) => <Input {...field} />}
               </Field>
               <div>
-                <label htmlFor="description" className="field-title">
-                  To-Do Description
+                <label htmlFor="toDoDetails" className="field-title">
+                  To-Do Details
                 </label>
               </div>
-              <Field id="description" name="description">
+              <Field id="toDoDetails" name="toDoDetails">
                 {({ field }) => <Input {...field} />}
               </Field>
               <div>
                 <label htmlFor="startDate" className="field-title">
-                  Date
+                  Start Date
                 </label>
               </div>
               <Field id="startDate" name="startDate">
-                {({ field }) => <Input type="date" {...field} />}
+                {({ field }) => <Input type="smalldatetime" {...field} />}
               </Field>
               <div>
                 <label htmlFor="endDate" className="field-title">
-                  Date
+                  End Date
                 </label>
               </div>
               <Field id="endDate" name="endDate">
-                {({ field }) => <Input type="date" {...field} />}
+                {({ field }) => <Input type="smalldatetime" {...field} />}
               </Field>
               <div>
                 <label htmlFor="calendarId">Calendar</label>
@@ -152,7 +155,7 @@ function ToDoCreateModal() {
               icon="cancel"
               content="Cancel"
               labelPosition="left"
-              onClick={() => setFirstOpen(false)}
+              onClick={() => setOpen(false)}
               negative
             />
             <Button
@@ -163,30 +166,8 @@ function ToDoCreateModal() {
               positive
             />
           </Modal.Actions>
-          <Modal
-            onClose={() => setSecondOpen(false)}
-            open={secondOpen}
-            size="small"
-          >
-            <Modal.Header>Success!</Modal.Header>
-            <Modal.Content>
-              <p>You have successfully created a to-do in Syncify!</p>
-            </Modal.Content>
-            <Modal.Actions>
-              <Button
-                type="button"
-                icon="home"
-                content="Home"
-                labelPosition="right"
-                positive
-                onClick={() => setFirstOpen(false)}
-              />
-            </Modal.Actions>
-          </Modal>
         </Modal>
       </Formik>
     </>
   );
-}
-
-export default ToDoCreateModal;
+};

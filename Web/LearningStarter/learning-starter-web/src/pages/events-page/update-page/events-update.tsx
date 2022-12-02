@@ -109,7 +109,7 @@ export const EventUpdatePage = () => {
             </div>
             <div className="events-update-container">
               <Field id="startDate" name="startDate">
-                {({ field }) => <Input type="date" {...field} />}
+                {({ field }) => <Input type="smalldatetime" {...field} />}
               </Field>
             </div>
             <div className="events-update-container">
@@ -117,7 +117,7 @@ export const EventUpdatePage = () => {
             </div>
             <div className="events-update-container">
               <Field id="endDate" name="endDate">
-                {({ field }) => <Input type="date" {...field} />}
+                {({ field }) => <Input type="smalldatetime" {...field} />}
               </Field>
             </div>
             <div className="events-update-container">

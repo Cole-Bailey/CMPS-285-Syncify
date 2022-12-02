@@ -7,22 +7,29 @@ import {
   EventGetDto,
   OptionDto,
 } from "../../constants/types";
+import { useHistory } from "react-router-dom";
+import { routes } from "../../routes/config";
 import axios from "axios";
 import { BaseUrl } from "../../constants/env-cars";
 import toast from "react-hot-toast";
 
-const EventCreateModal = ({ refetchEvents }: { refetchEvents: () => {} }) => {
-  const [firstOpen, setFirstOpen] = useState(false);
-  const [secondOpen, setSecondOpen] = useState(false);
+const initialValues: EventCreateDto = {
+  calendarId: 0,
+  name: "",
+  eventDetails: "",
+  startDate: new Date(),
+  endDate: new Date(),
+};
+
+export const EventCreateModal = ({
+  refetchEvents,
+}: {
+  refetchEvents: () => {};
+}) => {
+  const history = useHistory();
+  const [open, setOpen] = useState(false);
   const [calendarOptions, setCalendarOptions] = useState<OptionDto[]>();
   console.log("debug", calendarOptions);
-  const initialValues: EventCreateDto = {
-    calendarId: 0,
-    name: "",
-    eventDetails: "",
-    startDate: new Date(),
-    endDate: new Date(),
-  };
 
   const onSubmit = async (values: EventCreateDto) => {
     const response = await axios.post<ApiResponse<EventGetDto>>(
@@ -45,7 +52,8 @@ const EventCreateModal = ({ refetchEvents }: { refetchEvents: () => {} }) => {
         console.log(err.message);
       });
     } else {
-      setSecondOpen(true);
+      setOpen(false);
+      history.push(routes.home);
       toast.success("Event successfully created", {
         position: "top-center",
         style: {
@@ -74,18 +82,16 @@ const EventCreateModal = ({ refetchEvents }: { refetchEvents: () => {} }) => {
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         <Modal
           as={Form}
-          onClose={() => {
-            setFirstOpen(false);
-          }}
-          onOpen={() => setFirstOpen(true)}
-          open={firstOpen}
+          onClose={() => setOpen(false)}
+          onOpen={() => setOpen(true)}
+          open={open}
           trigger={
             <Button
               icon="circle plus"
               labelPosition="left"
               content="Event"
               positive
-              onClick={() => setFirstOpen(true)}
+              onClick={() => setOpen(true)}
             />
           }
         >
@@ -97,7 +103,7 @@ const EventCreateModal = ({ refetchEvents }: { refetchEvents: () => {} }) => {
             <Modal.Description>
               <div>
                 <label htmlFor="name" className="field-title">
-                  Event Title
+                  Event Name
                 </label>
               </div>
               <Field id="name" name="name">
@@ -105,7 +111,7 @@ const EventCreateModal = ({ refetchEvents }: { refetchEvents: () => {} }) => {
               </Field>
               <div>
                 <label htmlFor="eventDetails" className="field-title">
-                  Event Description
+                  Event Details
                 </label>
               </div>
               <Field id="eventDetails" name="eventDetails">
@@ -113,20 +119,20 @@ const EventCreateModal = ({ refetchEvents }: { refetchEvents: () => {} }) => {
               </Field>
               <div>
                 <label htmlFor="startDate" className="field-title">
-                  StartDate
+                  Start Date
                 </label>
               </div>
               <Field id="startDate" name="startDate">
-                {({ field }) => <Input type="date" {...field} />}
+                {({ field }) => <Input type="smalldatetime" {...field} />}
               </Field>
 
               <div>
                 <label htmlFor="endDate" className="field-title">
-                  EndDate
+                  End Date
                 </label>
               </div>
               <Field id="endDate" name="endDate">
-                {({ field }) => <Input type="date" {...field} />}
+                {({ field }) => <Input type="smalldatetime" {...field} />}
               </Field>
               <div>
                 <label htmlFor="calendar">Calendar</label>
@@ -155,7 +161,7 @@ const EventCreateModal = ({ refetchEvents }: { refetchEvents: () => {} }) => {
               icon="cancel"
               content="Cancel"
               labelPosition="left"
-              onClick={() => setFirstOpen(false)}
+              onClick={() => setOpen(false)}
               negative
             />
             <Button
@@ -166,32 +172,8 @@ const EventCreateModal = ({ refetchEvents }: { refetchEvents: () => {} }) => {
               positive
             />
           </Modal.Actions>
-          <Modal
-            onClose={() => setSecondOpen(false)}
-            open={secondOpen}
-            size="small"
-          >
-            <Modal.Header>Success!</Modal.Header>
-            <Modal.Content>
-              <p>You have successfully created an event in Syncify!</p>
-            </Modal.Content>
-            <Modal.Actions>
-              <Button
-                type="reset"
-                icon="home"
-                content="Home"
-                labelPosition="right"
-                positive
-                onClick={() => {
-                  setFirstOpen(false);
-                }}
-              />
-            </Modal.Actions>
-          </Modal>
         </Modal>
       </Formik>
     </>
   );
 };
-
-export default EventCreateModal;

@@ -4,7 +4,7 @@ import "./styles/global.css";
 import { Routes } from "./routes/config";
 import { GlobalStyles } from "./styles/index";
 import { AuthProvider } from "./authentication/use-auth";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 //This is almost the base level of your app.  You can also put global things here.
 function App() {
   return (

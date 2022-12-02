@@ -36,8 +36,8 @@ export const ToDoListingPage = () => {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Id</Table.HeaderCell>
-                <Table.HeaderCell>Title</Table.HeaderCell>
-                <Table.HeaderCell>Description</Table.HeaderCell>
+                <Table.HeaderCell>Name</Table.HeaderCell>
+                <Table.HeaderCell>To-Do Details</Table.HeaderCell>
                 <Table.HeaderCell>Start Date</Table.HeaderCell>
                 <Table.HeaderCell>End Date</Table.HeaderCell>
                 <Table.HeaderCell>Group Calendar</Table.HeaderCell>
@@ -50,8 +50,8 @@ export const ToDoListingPage = () => {
                 return (
                   <Table.Row key={todo.id}>
                     <Table.Cell>{todo.id}</Table.Cell>
-                    <Table.Cell>{todo.title}</Table.Cell>
-                    <Table.Cell>{todo.description}</Table.Cell>
+                    <Table.Cell>{todo.name}</Table.Cell>
+                    <Table.Cell>{todo.toDoDetails}</Table.Cell>
                     <Table.Cell>{todo.startDate}</Table.Cell>
                     <Table.Cell>{todo.endDate}</Table.Cell>
                     <Table.Cell>{todo.calendar.group.name}</Table.Cell>
